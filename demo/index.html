@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+      .centered {
+          display: block;
+          margin: 0 auto;
+      }
+    </style>
+</head>
+
+<body>
+    <img class="lozad centered" data-src="1.png" style="margin-bottom: 1500px;">
+    <img class="lozad centered" data-src="2.png" style="margin-bottom: 1500px;">
+    <img class="lozad centered" data-src="3.png">
+
+    <script src="../src/lozad.js"></script>
+    <script type="text/javascript">
+        var lozad = new Lozad({
+            selectorClass: 'lozad',
+            rootMargin: '50px 0px',
+            threshold: 0.1
+        });
+    </script>
+</body>
+
+</html>
