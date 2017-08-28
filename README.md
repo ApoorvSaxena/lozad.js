@@ -12,8 +12,9 @@ Installation
 
 **lozad.js** is *just 569 bytes* minified & gzipped.
 
-- Bower: `bower install lozad`
+- Yarn: `yarn add lozad`
 - NPM: `npm install lozad`
+- Bower: `bower install lozad`
 - [Download zip](https://github.com/ApoorvSaxena/lozad.js/archive/master.zip).
 
 **Note**: **lozad.js** supports AMD and commonJS module pattern out of the box.
