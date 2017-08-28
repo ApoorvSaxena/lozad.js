@@ -1,0 +1,26 @@
+{
+  "name": "lodaz",
+  "description": "A light-weight JS library to lazy load any HTML element such as images, ads, videos etc.",
+  "main": "dist/lodaz.min.js",
+  "author": "Apoorv Saxena",
+  "moduleType": [
+    "amd",
+    "globals"
+  ],
+  "ignore": [
+    "CONTRIBUTING.md",
+    "Gruntfile.js"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "lazy",
+    "loader",
+    "lazyloader",
+    "lazyload",
+    "performance",
+    "image",
+    "video",
+    "iframe",
+    "ads"
+  ]
+}
