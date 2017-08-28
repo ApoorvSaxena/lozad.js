@@ -2,12 +2,12 @@
   "name": "lozad",
   "title": "lozad.js",
   "description": "A light-weight JS library to lazy load any HTML element such as images, ads, videos etc.",
-  "version": "0.0.5",
+  "version": "0.0.1",
   "homepage": "",
   "author": {
     "name": "Apoorv Saxena",
     "email": "root@apoorv.pro",
-    "url": "http://apoorv.pro"
+    "url": "https://apoorv.pro"
   },
   "main": "dist/lozad.js",
   "repository": {
