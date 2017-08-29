@@ -7,6 +7,12 @@ lozad.js is a light-weight library to lazy load elements using JavaScript.
 
 It is written with an aim to lazy load images, ads, videos or any other element using the recently added [Intersection Observer API](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API) with tremendous performance benefits.
 
+Yet another Lazy Loading JavaScript library, why?
+-----
+Existing lazy loading libraries hook up the scroll event or use a periodic timer and call getBoundingClientRect() on elements that need to be lazy loaded. This approach, however, is painfully slow as each call to getBoundingClientRect() forces the browser to re-layout the entire page and will introduce considerable jank to your website.
+
+Making this more efficient and performant is what [IntersectionObserver](https://developers.google.com/web/updates/2016/04/intersectionobserver) is designed for, and it’s landed in Chrome 51. IntersectionObservers let you know when an observed element enters or exits the browser’s viewport.
+
 Demo
 -----
 [View demo](https://apoorv.pro/lozad.js/demo/index.html)
