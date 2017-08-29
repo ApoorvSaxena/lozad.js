@@ -1,26 +1,47 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <title>Lozad demo - Advanced Lazy Loader</title>
     <style>
-      .centered {
-          display: block;
-          margin: 0 auto;
+      .lozad {
+          margin-bottom: 1500px;
       }
     </style>
 </head>
 
 <body>
-    <img class="lozad centered" data-src="1.png" style="margin-bottom: 1500px;">
-    <img class="lozad centered" data-src="2.png" style="margin-bottom: 1500px;">
-    <img class="lozad centered" data-src="3.png">
+    <div>
+      <img class="lozad" data-src="1.png" data-index="1">
+    </div>
+    <div>
+      <img class="lozad" data-src="2.png" data-index="2">
+    </div>
+    <div>
+      <img class="lozad" data-src="3.png" data-index="3">
+    </div>
+
+    <!-- Toastr resources for Notifications -->
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <!-- Toastr resources -->
 
     <script src="../src/lozad.js"></script>
+
     <script type="text/javascript">
+        toastr.options = {
+          "progressBar": true,
+          "timeOut": "1500"
+        }
+        // Initialize library to lazy load images
         var lozad = new Lozad({
             selectorClass: 'lozad',
-            rootMargin: '50px 0px',
             threshold: 0.1
         });
+        lozad.load = function(el) {
+          el.src = el.dataset.src;
+          toastr["success"]("Image " + el.dataset.index + " lazy loaded.")
+        }
     </script>
 </body>
 

@@ -7,15 +7,19 @@ lozad.js is a light-weight library to lazy load elements using JavaScript.
 
 It is written with an aim to lazy load images, ads, videos or any other element using the recently added [Intersection Observer API](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API) with tremendous performance benefits.
 
+Demo
+-----
+[View demo](https://apoorv.pro/lozad.js/demo/index.html){:target="_blank"}
+
 Installation
 -----
 
-**lozad.js** is *just 569 bytes* minified & gzipped.
+**lozad.js** is *just 569 bytes* minified & gzipped. It has NO DEPENDENCIES :).
 
 - Yarn: `yarn add lozad`
 - NPM: `npm install lozad`
 - Bower: `bower install lozad`
-- [Download zip](https://github.com/ApoorvSaxena/lozad.js/archive/master.zip).
+- [Download zip](https://github.com/ApoorvSaxena/lozad.js/archive/master.zip){:target="_blank"}
 
 **Note**: **lozad.js** supports AMD and commonJS module pattern out of the box.
 
@@ -34,13 +38,13 @@ new Lozad({
 })
 ```
 Reference:
-- [IntersectionObserver options: rootMargin](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver/rootMargin)
-- [IntersectionObserver options: thresholds](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver/thresholds)
+- [IntersectionObserver options: rootMargin](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver/rootMargin){:target="_blank"}
+- [IntersectionObserver options: thresholds](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver/thresholds){:target="_blank"}
 
 Browser Support
 -----
 
-Available in [latest browsers](http://caniuse.com/#search=intersection). If browser support is not available, then make use of this [polyfill](https://www.npmjs.com/package/intersection-observer).
+Available in [latest browsers](http://caniuse.com/#search=intersection){:target="_blank"}. If browser support is not available, then make use of this [polyfill](https://www.npmjs.com/package/intersection-observer){:target="_blank"}.
 
 Contributing
 -----
