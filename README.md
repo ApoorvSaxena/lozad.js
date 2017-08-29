@@ -41,6 +41,19 @@ Reference:
 - [IntersectionObserver options: rootMargin](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver/rootMargin)
 - [IntersectionObserver options: thresholds](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver/thresholds)
 
+give custom function definition to load element:
+```
+// Initialize Lozad
+let lozad = new Lozad();
+
+lozad.load = function(el) {
+	console.log('loading element');
+
+	// Custom implementation to load an element
+	// e.g. el.src = el.dataset.src;
+}
+```
+
 Browser Support
 -----
 
