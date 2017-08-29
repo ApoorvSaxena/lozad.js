@@ -9,7 +9,7 @@ It is written with an aim to lazy load images, ads, videos or any other element 
 
 Demo
 -----
-[View demo](https://apoorv.pro/lozad.js/demo/index.html){:target="_blank"}
+[View demo](https://apoorv.pro/lozad.js/demo/index.html)
 
 Installation
 -----
@@ -19,7 +19,7 @@ Installation
 - Yarn: `yarn add lozad`
 - NPM: `npm install lozad`
 - Bower: `bower install lozad`
-- [Download zip](https://github.com/ApoorvSaxena/lozad.js/archive/master.zip){:target="_blank"}
+- [Download zip](https://github.com/ApoorvSaxena/lozad.js/archive/master.zip)
 
 **Note**: **lozad.js** supports AMD and commonJS module pattern out of the box.
 
@@ -38,13 +38,13 @@ new Lozad({
 })
 ```
 Reference:
-- [IntersectionObserver options: rootMargin](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver/rootMargin){:target="_blank"}
-- [IntersectionObserver options: thresholds](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver/thresholds){:target="_blank"}
+- [IntersectionObserver options: rootMargin](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver/rootMargin)
+- [IntersectionObserver options: thresholds](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver/thresholds)
 
 Browser Support
 -----
 
-Available in [latest browsers](http://caniuse.com/#search=intersection){:target="_blank"}. If browser support is not available, then make use of this [polyfill](https://www.npmjs.com/package/intersection-observer){:target="_blank"}.
+Available in [latest browsers](http://caniuse.com/#search=intersection). If browser support is not available, then make use of this [polyfill](https://www.npmjs.com/package/intersection-observer).
 
 Contributing
 -----
