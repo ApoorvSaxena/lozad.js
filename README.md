@@ -1,6 +1,6 @@
 Lozad [![npm version](https://badge.fury.io/js/lozad.svg)](https://badge.fury.io/js/lozad)
 =====
-*Advanced Lazy Loader using Intersection Observer API*
+*Advanced performant Lazy Loader using Intersection Observer API*
 ***
 
 lozad.js is a light-weight library to lazy load elements using JavaScript.
@@ -13,11 +13,8 @@ Existing lazy loading libraries hook up the scroll event or use a periodic timer
 
 Making this more efficient and performant is what [IntersectionObserver](https://developers.google.com/web/updates/2016/04/intersectionobserver) is designed for, and it’s landed in Chrome 51. IntersectionObservers let you know when an observed element enters or exits the browser’s viewport.
 
-Demo
+[Demo](https://apoorv.pro/lozad.js/demo/index.html)
 -----
-[View demo](https://apoorv.pro/lozad.js/demo/index.html)
-
-![Lazy loading images javascript library](./screenshots/recording.gif "Lazy loading images javascript library")
 
 Installation
 -----
