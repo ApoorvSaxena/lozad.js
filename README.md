@@ -11,6 +11,8 @@ Demo
 -----
 [View demo](https://apoorv.pro/lozad.js/demo/index.html)
 
+![Lazy loading images javascript library](./screenshots/recording.gif "Lazy loading images javascript library")
+
 Installation
 -----
 
