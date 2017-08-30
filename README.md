@@ -3,7 +3,11 @@ Lozad [![npm version](https://badge.fury.io/js/lozad.svg)](https://badge.fury.io
 *Advanced performant Lazy Loader using Intersection Observer API*
 ***
 
-lozad.js is a light-weight library to lazy load elements using JavaScript.
+![lozad.js lazy loading javascript library](./banner/lozad-banner.png "lozad.js lazy loading javascript library")
+
+- is a light-weight library, *just **569 bytes*** minified & gzipped,
+- has NO DEPENDENCIES :)
+- lazy loads elements performantly using pure JavaScript.
 
 It is written with an aim to lazy load images, ads, videos or any other element using the recently added [Intersection Observer API](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API) with tremendous performance benefits.
 
@@ -16,25 +20,47 @@ Making this more efficient and performant is what [IntersectionObserver](https:/
 [Demo](https://apoorv.pro/lozad.js/demo/index.html)
 -----
 
-Installation
+Get Started
 -----
 
-**lozad.js** is *just 569 bytes* minified & gzipped. It has NO DEPENDENCIES :).
+Get the library using one of the following ways:
 
-- Yarn: `yarn add lozad`
-- NPM: `npm install lozad`
-- Bower: `bower install lozad`
-- [Download zip](https://github.com/ApoorvSaxena/lozad.js/archive/master.zip)
+1. **GitHub**
+
+Full build
+
+ - [unminified] : https://raw.githubusercontent.com/ApoorvSaxena/lozad.js/master/dist/lozad.js
+ - [minified] : https://raw.githubusercontent.com/ApoorvSaxena/lozad.js/master/dist/lozad.min.js
+
+2. **Yarn** : `yarn add lozad`
+
+3. **Bower** : `bower install lozad`
+
+3. **npm**: `npm install --save lozad`
+
+4. **CDN**: [https://cdn.jsdelivr.net/npm/lozad](https://cdn.jsdelivr.net/npm/lozad)
+
+Now include the library in the ``HEAD`` tag of your page:
+
+```html
+<script type="text/javascript" src="lozad.js"></script>
+```
+or
+
+```html
+<script type="text/javascript" src="lozad.min.js"></script>
+```
 
 **Note**: **lozad.js** supports AMD and commonJS module pattern out of the box.
 
 Usage
 -----
 
+All you need to do now is just instantiate Lozad as follows:
 ```
 new Lozad(); // lazy loads images with selector class as 'lozad'
 ```
-with custom options:
+or with custom options:
 ```
 new Lozad({
     selectorClass: 'lozad', // for identification of images to lazy load
@@ -43,13 +69,13 @@ new Lozad({
 })
 ```
 Reference:
-- [IntersectionObserver options: rootMargin](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver/rootMargin)
-- [IntersectionObserver options: thresholds](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver/thresholds)
 
-give custom function definition to load element:
+ - [IntersectionObserver options: rootMargin](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver/rootMargin)
+ - [IntersectionObserver options: thresholds](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver/thresholds)
+
+or if you want to give custom function definition to load element:
 ```
-// Initialize Lozad
-let lozad = new Lozad();
+var lozad = new Lozad();
 
 lozad.load = function(el) {
 	console.log('loading element');
