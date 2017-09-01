@@ -39,8 +39,12 @@
             threshold: 0.1
         });
         lozad.load = function(el) {
+          toastr["success"]("Lazy loading image " + el.dataset.index + ".")
           el.src = el.dataset.src;
-          toastr["success"]("Image " + el.dataset.index + " lazy loaded.")
+          el.onload = function() {
+            toastr.remove();
+            toastr["success"]("Image " + el.dataset.index + " lazy loaded.")
+          }
         }
     </script>
 </body>
