@@ -1,0 +1,41 @@
+/*
+	Multiverse by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+*/
+
+/* Panel */
+
+	.panel > .inner.split:after {
+		clear: both;
+		content: '';
+		display: block;
+	}
+
+	.panel > .inner.split > div {
+		float: left;
+		margin-left: 0;
+		padding-left: 0;
+	}
+
+	.panel > .inner.split > :first-child {
+		padding-left: 0;
+	}
+
+/* Wrapper */
+
+	#wrapper:before {
+		display: none;
+	}
+
+/* Main */
+
+	#main:after {
+		clear: both;
+		content: '';
+		display: block;
+	}
+
+	#main .thumb {
+		float: left;
+	}
