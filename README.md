@@ -57,11 +57,11 @@ Usage
 -----
 
 All you need to do now is just instantiate Lozad as follows:
-```
+```js
 new Lozad(); // lazy loads images with selector class as 'lozad'
 ```
 or with custom options:
-```
+```js
 new Lozad({
     selectorClass: 'lozad', // for identification of images to lazy load
     rootMargin: '10px 0px', // syntax similar to that of CSS Margin
@@ -74,7 +74,7 @@ Reference:
  - [IntersectionObserver options: thresholds](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver/thresholds)
 
 or if you want to give custom function definition to load element:
-```
+```js
 var lozad = new Lozad();
 
 lozad.load = function(el) {
