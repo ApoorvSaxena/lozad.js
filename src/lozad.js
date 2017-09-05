@@ -26,8 +26,7 @@
     };
 
     const getElements = function() {
-        var elements = document.querySelectorAll(this.config.selector);
-        return elements;
+        return document.querySelectorAll(this.config.selector);
     };
 
     const loadAll = function() {

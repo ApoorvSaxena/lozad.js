@@ -1,4 +1,4 @@
-/*! lozad.js - v0.0.2 - 2017-09-05
+/*! lozad.js - v0.0.3 - 2017-09-05
 * https://github.com/ApoorvSaxena/lozad.js
 * Copyright (c) 2017 Apoorv Saxena; Licensed MIT */
 
@@ -30,8 +30,7 @@
     };
 
     const getElements = function() {
-        var elements = document.querySelectorAll(this.config.selector);
-        return elements;
+        return document.querySelectorAll(this.config.selector);
     };
 
     const loadAll = function() {
