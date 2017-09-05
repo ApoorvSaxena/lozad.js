@@ -89,6 +89,13 @@ lozad.load = function(el) {
 	// e.g. el.src = el.dataset.src;
 }
 ```
+If you want to lazy load dynamically added images:
+```js
+var lozad = new Lozad();
+
+// ... code to dynamically add elements
+lozad.activate(); // observes newly added elements as well
+```
 
 Browser Support
 -----
