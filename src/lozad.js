@@ -2,7 +2,7 @@
 
     const _Lozad = function(config) {
         this.config = config || {};
-        this.config.selectorClass = this.config.selectorClass || 'lozad';
+        this.config.selector = this.config.selector || '.lozad';
         this.config.rootMargin = this.config.rootMargin || '0px';
         this.config.threshold = this.config.threshold || 0;
         this.activate();
@@ -26,8 +26,7 @@
     };
 
     const getElements = function() {
-        var elements = document.getElementsByClassName(this.config.selectorClass);
-        return elements;
+        return document.querySelectorAll(this.config.selector);
     };
 
     const loadAll = function() {

@@ -56,14 +56,19 @@ or
 Usage
 -----
 
+In HTML, add an identifier to the element (default selector identified is `lozad` class):
+```html
+<img class="lozad" data-src="image.png" />
+```
+
 All you need to do now is just instantiate Lozad as follows:
 ```js
-new Lozad(); // lazy loads images with selector class as 'lozad'
+new Lozad(); // lazy loads images with selector as '.lozad'
 ```
 or with custom options:
 ```js
 new Lozad({
-    selectorClass: 'lozad', // for identification of images to lazy load
+    selector: '.lozad', // for identification of images to lazy load
     rootMargin: '10px 0px', // syntax similar to that of CSS Margin
     threshold: 0.1 // ratio of image convergence
 })
