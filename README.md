@@ -63,12 +63,12 @@ In HTML, add an identifier to the element (default selector identified is `lozad
 
 All you need to do now is just instantiate Lozad as follows:
 ```js
-new Lozad(); // lazy loads images with selector as '.lozad'
+new Lozad(); // lazy loads elements with selector as '.lozad'
 ```
 or with custom options:
 ```js
 new Lozad({
-    selector: '.lozad', // for identification of images to lazy load
+    selector: '.lozad', // for identification of elements to lazy load
     rootMargin: '10px 0px', // syntax similar to that of CSS Margin
     threshold: 0.1 // ratio of image convergence
 })
@@ -89,7 +89,7 @@ lozad.load = function(el) {
 	// e.g. el.src = el.dataset.src;
 }
 ```
-If you want to lazy load dynamically added images:
+If you want to lazy load dynamically added elements:
 ```js
 var lozad = new Lozad();
 
