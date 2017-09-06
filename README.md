@@ -5,7 +5,7 @@ Lozad [![npm version](https://badge.fury.io/js/lozad.svg)](https://badge.fury.io
 
 ![lozad.js lazy loading javascript library](./banner/lozad-banner.png "lozad.js lazy loading javascript library")
 
-- is a light-weight library, *just **569 bytes*** minified & gzipped,
+- is a light-weight library, *just **535 bytes*** minified & gzipped,
 - has NO DEPENDENCIES :)
 - lazy loads elements performantly using pure JavaScript.
 
@@ -63,12 +63,11 @@ In HTML, add an identifier to the element (default selector identified is `lozad
 
 All you need to do now is just instantiate Lozad as follows:
 ```js
-new Lozad(); // lazy loads elements with selector as '.lozad'
+lozad(); // lazy loads elements with selector as '.lozad'
 ```
 or with custom options:
 ```js
-new Lozad({
-    selector: '.lozad', // for identification of elements to lazy load
+lozad('.lozad', {
     rootMargin: '10px 0px', // syntax similar to that of CSS Margin
     threshold: 0.1 // ratio of image convergence
 })
@@ -80,21 +79,14 @@ Reference:
 
 or if you want to give custom function definition to load element:
 ```js
-var lozad = new Lozad();
+lozad('.lozad', {
+    load: function(el) {
+        console.log('loading element');
 
-lozad.load = function(el) {
-	console.log('loading element');
-
-	// Custom implementation to load an element
-	// e.g. el.src = el.dataset.src;
-}
-```
-If you want to lazy load dynamically added elements:
-```js
-var lozad = new Lozad();
-
-// ... code to dynamically add elements
-lozad.activate(); // observes newly added elements as well
+        // Custom implementation to load an element
+        // e.g. el.src = el.dataset.src;
+    }
+})
 ```
 
 Browser Support
