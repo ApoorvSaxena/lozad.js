@@ -112,17 +112,16 @@
         "timeOut": "1500"
     }
     // Initialize library to lazy load images
-    var lozad = new Lozad({
-        selector: '.lozad',
-        threshold: 0.1
-    });
-    lozad.load = function(el) {
-        el.src = el.dataset.src;
-        el.onload = function() {
-            el.style.width = "100%";
-            toastr["success"]("Image " + el.dataset.index + " lazy loaded.")
+    lozad('.lozad', {
+        threshold: 0.1,
+        load: function(el) {
+            el.src = el.dataset.src;
+            el.onload = function() {
+                el.style.width = "100%";
+                toastr["success"]("Image " + el.dataset.index + " lazy loaded.")
+            }
         }
-    }
+    })
     </script>
 </body>
 
