@@ -2,7 +2,7 @@ const defaultConfig = {
   rootMargin: '0px',
   threshold: 0,
   load(element) {
-    element.src = element.dataset.src;
+    element.src = element.dataset.src
   }
 }
 
@@ -22,7 +22,7 @@ const onIntersection = load => (entries, observer) => {
   })
 }
 
-export default function(selector = '.lozad', options = {}) {
+export default function (selector = '.lozad', options = {}) {
   const {rootMargin, threshold, load} = {...defaultConfig, ...options}
 
   const elements = [].filter.call(document.querySelectorAll(selector),

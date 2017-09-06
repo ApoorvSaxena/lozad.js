@@ -12,11 +12,12 @@ const targets = {
 function build(format) {
   const defaultPlugins = [
     license({
-      banner: '/*! <%= pkg.title || pkg.name %> - v<%= pkg.version %> - ' +
-      '<%= moment().format("YYYY-MM-DD") + "\\n" %>' +
-      '<%= pkg.homepage ? "* " + pkg.homepage + "\\n" : "" %>' +
-      '* Copyright (c) <%= moment().format("YYYY") %> <%= pkg.author.name %>;' +
-      ' Licensed <%= _.map(pkg.licenses, "type").join(", ") %> */\n\n'
+      banner:
+        '/*! <%= pkg.title || pkg.name %> - v<%= pkg.version %> - ' +
+        '<%= moment().format("YYYY-MM-DD") + "\\n" %>' +
+        '<%= pkg.homepage ? "* " + pkg.homepage + "\\n" : "" %>' +
+        '* Copyright (c) <%= moment().format("YYYY") %> <%= pkg.author.name %>;' +
+        ' Licensed <%= _.map(pkg.licenses, "type").join(", ") %> */\n\n'
     }),
     babel({
       babelrc: false,
@@ -33,27 +34,29 @@ function build(format) {
     filesize()
   ]
 
-  const plugins = format === 'min' ? 
-    defaultPlugins.concat(uglify({
-      output: {
-        comments: true
-      }
-    })) : 
-    defaultPlugins
+  const plugins =
+    format === 'min' ?
+      defaultPlugins.concat(
+          uglify({
+            output: {
+              comments: true
+            }
+          })
+        ) :
+      defaultPlugins
 
   return rollup({
     input: 'src/lozad.js',
     plugins
-  }).then(bundle => bundle.write({
-    file: targets[format],
-    format: format === 'min' ? 'umd' : format,
-    name: 'lozad'
-  }))
+  }).then(bundle =>
+    bundle.write({
+      file: targets[format],
+      format: format === 'min' ? 'umd' : format,
+      name: 'lozad'
+    })
+  )
 }
 
-Promise.all([
-  build('umd'),
-  build('min')
-]).catch(err => {
+Promise.all([build('umd'), build('min')]).catch(err => {
   console.error(err)
 })
