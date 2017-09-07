@@ -49,51 +49,63 @@
                 <h1>Lozad.js - Performant Lazy Loading Library</h1>
             </article>
             <article class="thumb">
-                <img class="lozad" data-src="images/thumbs/01.jpg" data-index="1" alt="" />
+                <img class="lozad" data-src="images/thumbs/01.jpg" data-index="1" />
+                <noscript><img src="images/thumbs/01.jpg" data-index="1" /></noscript>
                 <h2>Image 1</h2>
             </article>
             <article class="thumb">
-                <img class="lozad" data-src="images/thumbs/02.jpg" data-index="2" alt="" />
+                <img class="lozad" data-src="images/thumbs/02.jpg" data-index="2" />
+                <noscript><img src="images/thumbs/02.jpg" data-index="2" /></noscript>
                 <h2>Image 2</h2>
             </article>
             <article class="thumb">
-                <img class="lozad" data-src="images/thumbs/03.jpg" data-index="3" alt="" />
+                <img class="lozad" data-src="images/thumbs/03.jpg" data-index="3" />
+                <noscript><img src="images/thumbs/03.jpg" data-index="3" /></noscript>
                 <h2>Image 3</h2>
             </article>
             <article class="thumb">
-                <img class="lozad" data-src="images/thumbs/04.jpg" data-index="4" alt="" />
+                <img class="lozad" data-src="images/thumbs/04.jpg" data-index="4" />
+                <noscript><img src="images/thumbs/04.jpg" data-index="4" /></noscript>
                 <h2>Image 4</h2>
             </article>
             <article class="thumb">
-                <img class="lozad" data-src="images/thumbs/05.jpg" data-index="5" alt="" />
+                <img class="lozad" data-src="images/thumbs/05.jpg" data-index="5" />
+                <noscript><img src="images/thumbs/05.jpg" data-index="5" /></noscript>
                 <h2>Image 5</h2>
             </article>
             <article class="thumb">
-                <img class="lozad" data-src="images/thumbs/06.jpg" data-index="6" alt="" />
+                <img class="lozad" data-src="images/thumbs/06.jpg" data-index="6" />
+                <noscript><img src="images/thumbs/06.jpg" data-index="6" /></noscript>
                 <h2>Image 6</h2>
             </article>
             <article class="thumb">
-                <img class="lozad" data-src="images/thumbs/07.jpg" data-index="7" alt="" />
+                <img class="lozad" data-src="images/thumbs/07.jpg" data-index="7" />
+                <noscript><img src="images/thumbs/07.jpg" data-index="7" /></noscript>
                 <h2>Image 7</h2>
             </article>
             <article class="thumb">
-                <img class="lozad" data-src="images/thumbs/08.jpg" data-index="8" alt="" />
+                <img class="lozad" data-src="images/thumbs/08.jpg" data-index="8" />
+                <noscript><img src="images/thumbs/08.jpg" data-index="8" /></noscript>
                 <h2>Image 8</h2>
             </article>
             <article class="thumb">
-                <img class="lozad" data-src="images/thumbs/09.jpg" data-index="9" alt="" />
+                <img class="lozad" data-src="images/thumbs/09.jpg" data-index="9" />
+                <noscript><img src="images/thumbs/09.jpg" data-index="9" /></noscript>
                 <h2>Image 9</h2>
             </article>
             <article class="thumb">
-                <img class="lozad" data-src="images/thumbs/10.jpg" data-index="10" alt="" />
+                <img class="lozad" data-src="images/thumbs/10.jpg" data-index="10" />
+                <noscript><img src="images/thumbs/10.jpg" data-index="10" /></noscript>
                 <h2>Image 10</h2>
             </article>
             <article class="thumb">
-                <img class="lozad" data-src="images/thumbs/11.jpg" data-index="11" alt="" />
+                <img class="lozad" data-src="images/thumbs/11.jpg" data-index="11" />
+                <noscript><img src="images/thumbs/11.jpg" data-index="11" /></noscript>
                 <h2>Image 11</h2>
             </article>
             <article class="thumb">
-                <img class="lozad" data-src="images/thumbs/12.jpg" data-index="12" alt="" />
+                <img class="lozad" data-src="images/thumbs/12.jpg" data-index="12" />
+                <noscript><img src="images/thumbs/12.jpg" data-index="12" /></noscript>
                 <h2>Image 12</h2>
             </article>
         </div>
@@ -119,7 +131,6 @@
     lozad.load = function(el) {
         el.src = el.dataset.src;
         el.onload = function() {
-            el.style.width = "100%";
             toastr["success"]("Image " + el.dataset.index + " lazy loaded.")
         }
     }
