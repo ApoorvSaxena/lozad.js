@@ -25,25 +25,29 @@ const onIntersection = load => (entries, observer) => {
 export default function (selector = '.lozad', options = {}) {
   const {rootMargin, threshold, load} = {...defaultConfig, ...options}
 
-  const elements = [].filter.call(document.querySelectorAll(selector),
-    element => !isLoaded(element))
-
-  if (!window.IntersectionObserver) {
-    elements
-      .forEach(element => {
-        load(element)
-        markAsLoaded(element)
-      })
-
-    return
-  }
-
   const observer = new IntersectionObserver(onIntersection(load), {
     rootMargin,
     threshold
   })
 
-  elements.forEach(element => {
-    observer.observe(element)
-  })
+  return {
+    observe() {
+      const elements = [].filter.call(document.querySelectorAll(selector),
+      element => !isLoaded(element))
+
+      if (!window.IntersectionObserver) {
+        elements
+          .forEach(element => {
+            load(element)
+            markAsLoaded(element)
+          })
+
+        return
+      }
+
+      elements.forEach(element => {
+        observer.observe(element)
+      })
+    }
+  }
 }

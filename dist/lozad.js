@@ -1,4 +1,4 @@
-/*! lozad.js - v0.0.3 - 2017-09-06
+/*! lozad.js - v0.0.3 - 2017-09-08
 * https://github.com/ApoorvSaxena/lozad.js
 * Copyright (c) 2017 Apoorv Saxena; Licensed MIT */
 
@@ -48,27 +48,31 @@ var lozad = function () {
       threshold = _defaultConfig$option.threshold,
       load = _defaultConfig$option.load;
 
-  var elements = [].filter.call(document.querySelectorAll(selector), function (element) {
-    return !isLoaded(element);
-  });
-
-  if (!window.IntersectionObserver) {
-    elements.forEach(function (element) {
-      load(element);
-      markAsLoaded(element);
-    });
-
-    return;
-  }
-
   var observer = new IntersectionObserver(onIntersection(load), {
     rootMargin: rootMargin,
     threshold: threshold
   });
 
-  elements.forEach(function (element) {
-    observer.observe(element);
-  });
+  return {
+    observe: function observe() {
+      var elements = [].filter.call(document.querySelectorAll(selector), function (element) {
+        return !isLoaded(element);
+      });
+
+      if (!window.IntersectionObserver) {
+        elements.forEach(function (element) {
+          load(element);
+          markAsLoaded(element);
+        });
+
+        return;
+      }
+
+      elements.forEach(function (element) {
+        observer.observe(element);
+      });
+    }
+  };
 };
 
 return lozad;

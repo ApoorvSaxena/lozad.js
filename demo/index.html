@@ -112,7 +112,7 @@
         "timeOut": "1500"
     }
     // Initialize library to lazy load images
-    lozad('.lozad', {
+    var observer = lozad('.lozad', {
         threshold: 0.1,
         load: function(el) {
             el.src = el.dataset.src;
@@ -122,6 +122,8 @@
             }
         }
     })
+
+    observer.observe()
     </script>
 </body>
 
