@@ -16,7 +16,7 @@ It is written with an aim to lazy load images, iframes, ads, videos or any other
 
 - [Demo](https://apoorv.pro/lozad.js/demo/)
 - [Background](#yet-another-lazy-loading-javascript-library-why)
-- [Get started](#get-started)
+- [Install](#install)
 - [Usage](#usage)
 - [Browser Support](#browser-support)
 - [Contribute](#contribute)
@@ -28,7 +28,7 @@ Existing lazy loading libraries hook up to the scroll event or use a periodic ti
 
 Making this more efficient and performant is what [IntersectionObserver](https://developers.google.com/web/updates/2016/04/intersectionobserver) is designed for, and it’s landed in Chrome 51. IntersectionObservers let you know when an observed element enters or exits the browser’s viewport.
 
-## Get Started
+## Install
 
 Get the library using one of the following ways:
 
