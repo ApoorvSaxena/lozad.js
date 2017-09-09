@@ -4,6 +4,11 @@
   "description": "A light-weight JS library to lazy load any HTML element such as images, ads, videos etc.",
   "version": "0.0.3",
   "homepage": "https://github.com/ApoorvSaxena/lozad.js",
+  "scripts": {
+    "build": "node build.js",
+    "prelint": "prettier --single-quote --no-semi --no-bracket-spacing --trailing-comma none --write \"lib/**/*.js\" --write build.js --write",
+    "lint": "xo --fix src/*.js build.js"
+  },
   "author": {
     "name": "Apoorv Saxena",
     "email": "root@apoorv.pro",
@@ -35,9 +40,21 @@
     "ads"
   ],
   "devDependencies": {
-    "grunt-contrib-concat": "~0.5.1",
-    "grunt": "~0.4.5",
-    "grunt-contrib-jshint": "^0.11.0",
-    "grunt-contrib-uglify": "~0.8.0"
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-stage-0": "^6.24.1",
+    "prettier": "^1.6.1",
+    "rollup": "^0.49.2",
+    "rollup-plugin-babel": "^3.0.2",
+    "rollup-plugin-filesize": "^1.4.2",
+    "rollup-plugin-license": "^0.5.0",
+    "rollup-plugin-uglify": "^2.0.1"
+  },
+  "xo": {
+    "envs": [
+      "browser"
+    ],
+    "semicolon": false,
+    "space": true
   }
 }

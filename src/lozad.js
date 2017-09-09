@@ -1,80 +1,53 @@
-;(function() {
+const defaultConfig = {
+  rootMargin: '0px',
+  threshold: 0,
+  load(element) {
+    element.src = element.dataset.src
+  }
+}
 
-    const _Lozad = function(config) {
-        this.config = config || {};
-        this.config.selector = this.config.selector || '.lozad';
-        this.config.rootMargin = this.config.rootMargin || '0px';
-        this.config.threshold = this.config.threshold || 0;
-        this.activate();
-    };
+function markAsLoaded(element) {
+  element.dataset.loaded = true
+}
 
-    _Lozad.prototype.activate = function() {
-        if (!window.IntersectionObserver) {
-            loadAll.call(this);
-        } else {
-            if (this.observer) {
-                this.observer.disconnect();
-            }
-            this.observer = new IntersectionObserver(onIntersection.bind(this), this.config);
-            var elements = getElements.call(this);
-            for (var i = 0; i < elements.length; i++) {
-                if (!isLoaded(elements[i])) {
-                    this.observer.observe(elements[i]);
-                }
-            }
-        }
-    };
+const isLoaded = element => element.dataset.loaded === 'true'
 
-    const getElements = function() {
-        return document.querySelectorAll(this.config.selector);
-    };
-
-    const loadAll = function() {
-        var elements = getElements.call(this);
-        for (var i = 0; i < elements.length; i++) {
-            if (!isLoaded(elements[i])) {
-                this.load(elements[i]);
-                markAsLoaded(elements[i]);
-            }
-        }
-    };
-
-    _Lozad.prototype.load = function(el) {
-        el.src = el.dataset.src;
-    };
-
-    const markAsLoaded = function(el) {
-        el.dataset.loaded = true;
-    };
-
-    const onIntersection = function(entries) {
-        for (var i = 0; i < entries.length; i++) {
-            if (entries[i].intersectionRatio > 0) {
-                this.observer.unobserve(entries[i].target);
-                this.load(entries[i].target);
-                markAsLoaded(entries[i].target);
-            }
-        }
-    };
-
-    const isLoaded = function(el) {
-        return (el.dataset.loaded === "true");
-    };
-
-    // open to the world.
-    // commonjs
-    if (typeof exports === 'object') {
-        module.exports = _Lozad;
+const onIntersection = load => (entries, observer) => {
+  entries.forEach(entry => {
+    if (entry.intersectionRatio > 0) {
+      observer.unobserve(entry.target)
+      load(entry.target)
+      markAsLoaded(entry.target)
     }
-    // AMD module
-    else if (typeof define === 'function' && define.amd) {
-        define('Lozad', function() {
-            return _Lozad;
-        });
-    }
-    // Browser global
-    else {
-        window.Lozad = _Lozad;
-    }
+  })
+}
 
-})();
+export default function (selector = '.lozad', options = {}) {
+  const {rootMargin, threshold, load} = {...defaultConfig, ...options}
+
+  const observer = new IntersectionObserver(onIntersection(load), {
+    rootMargin,
+    threshold
+  })
+
+  return {
+    observe() {
+      const elements = [].filter.call(document.querySelectorAll(selector),
+      element => !isLoaded(element))
+
+      if (!window.IntersectionObserver) {
+        elements
+          .forEach(element => {
+            load(element)
+            markAsLoaded(element)
+          })
+
+        return
+      }
+
+      elements.forEach(element => {
+        observer.observe(element)
+      })
+    }
+  }
+}

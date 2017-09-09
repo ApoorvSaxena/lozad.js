@@ -1,84 +1,80 @@
-/*! lozad.js - v0.0.3 - 2017-09-05
+/*! lozad.js - v0.0.3 - 2017-09-08
 * https://github.com/ApoorvSaxena/lozad.js
 * Copyright (c) 2017 Apoorv Saxena; Licensed MIT */
 
-;(function() {
 
-    const _Lozad = function(config) {
-        this.config = config || {};
-        this.config.selector = this.config.selector || '.lozad';
-        this.config.rootMargin = this.config.rootMargin || '0px';
-        this.config.threshold = this.config.threshold || 0;
-        this.activate();
-    };
+(function (global, factory) {
+	typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
+	typeof define === 'function' && define.amd ? define(factory) :
+	(global.lozad = factory());
+}(this, (function () { 'use strict';
 
-    _Lozad.prototype.activate = function() {
-        if (!window.IntersectionObserver) {
-            loadAll.call(this);
-        } else {
-            if (this.observer) {
-                this.observer.disconnect();
-            }
-            this.observer = new IntersectionObserver(onIntersection.bind(this), this.config);
-            var elements = getElements.call(this);
-            for (var i = 0; i < elements.length; i++) {
-                if (!isLoaded(elements[i])) {
-                    this.observer.observe(elements[i]);
-                }
-            }
-        }
-    };
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-    const getElements = function() {
-        return document.querySelectorAll(this.config.selector);
-    };
+var defaultConfig = {
+  rootMargin: '0px',
+  threshold: 0,
+  load: function load(element) {
+    element.src = element.dataset.src;
+  }
+};
 
-    const loadAll = function() {
-        var elements = getElements.call(this);
-        for (var i = 0; i < elements.length; i++) {
-            if (!isLoaded(elements[i])) {
-                this.load(elements[i]);
-                markAsLoaded(elements[i]);
-            }
-        }
-    };
+function markAsLoaded(element) {
+  element.dataset.loaded = true;
+}
 
-    _Lozad.prototype.load = function(el) {
-        el.src = el.dataset.src;
-    };
+var isLoaded = function isLoaded(element) {
+  return element.dataset.loaded === 'true';
+};
 
-    const markAsLoaded = function(el) {
-        el.dataset.loaded = true;
-    };
+var onIntersection = function onIntersection(load) {
+  return function (entries, observer) {
+    entries.forEach(function (entry) {
+      if (entry.intersectionRatio > 0) {
+        observer.unobserve(entry.target);
+        load(entry.target);
+        markAsLoaded(entry.target);
+      }
+    });
+  };
+};
 
-    const onIntersection = function(entries) {
-        for (var i = 0; i < entries.length; i++) {
-            if (entries[i].intersectionRatio > 0) {
-                this.observer.unobserve(entries[i].target);
-                this.load(entries[i].target);
-                markAsLoaded(entries[i].target);
-            }
-        }
-    };
+var lozad = function () {
+  var selector = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '.lozad';
+  var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 
-    const isLoaded = function(el) {
-        return (el.dataset.loaded === "true");
-    };
+  var _defaultConfig$option = _extends({}, defaultConfig, options),
+      rootMargin = _defaultConfig$option.rootMargin,
+      threshold = _defaultConfig$option.threshold,
+      load = _defaultConfig$option.load;
 
-    // open to the world.
-    // commonjs
-    if (typeof exports === 'object') {
-        module.exports = _Lozad;
-    }
-    // AMD module
-    else if (typeof define === 'function' && define.amd) {
-        define('Lozad', function() {
-            return _Lozad;
+  var observer = new IntersectionObserver(onIntersection(load), {
+    rootMargin: rootMargin,
+    threshold: threshold
+  });
+
+  return {
+    observe: function observe() {
+      var elements = [].filter.call(document.querySelectorAll(selector), function (element) {
+        return !isLoaded(element);
+      });
+
+      if (!window.IntersectionObserver) {
+        elements.forEach(function (element) {
+          load(element);
+          markAsLoaded(element);
         });
-    }
-    // Browser global
-    else {
-        window.Lozad = _Lozad;
-    }
 
-})();
+        return;
+      }
+
+      elements.forEach(function (element) {
+        observer.observe(element);
+      });
+    }
+  };
+};
+
+return lozad;
+
+})));
