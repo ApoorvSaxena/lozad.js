@@ -19,6 +19,7 @@ It is written with an aim to lazy load images, iframes, ads, videos or any other
 - [Install](#install)
 - [Usage](#usage)
 - [Browser Support](#browser-support)
+- [FAQs](#faqs)
 - [Contribute](#contribute)
 - [Changelog](#changelog)
 - [License](#license)
@@ -109,6 +110,10 @@ observer.observe(); // observes newly added elements as well
 ## Browser Support
 
 Available in [latest browsers](http://caniuse.com/#feat=intersectionobserver). If browser support is not available, then make use of this [polyfill](https://www.npmjs.com/package/intersection-observer).
+
+## FAQs
+
+Checkout the [FAQ Wiki](https://github.com/ApoorvSaxena/lozad.js/wiki/Frequently-Asked-Questions) for some common gotchas to be aware of while using **lozad.js**
 
 ## Contribute
 
