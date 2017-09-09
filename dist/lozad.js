@@ -1,4 +1,4 @@
-/*! lozad.js - v0.0.3 - 2017-09-08
+/*! lozad.js - v1.0.0 - 2017-09-10
 * https://github.com/ApoorvSaxena/lozad.js
 * Copyright (c) 2017 Apoorv Saxena; Licensed MIT */
 
@@ -48,10 +48,14 @@ var lozad = function () {
       threshold = _defaultConfig$option.threshold,
       load = _defaultConfig$option.load;
 
-  var observer = new IntersectionObserver(onIntersection(load), {
-    rootMargin: rootMargin,
-    threshold: threshold
-  });
+  var observer = void 0;
+
+  if (window.IntersectionObserver) {
+    observer = new IntersectionObserver(onIntersection(load), {
+      rootMargin: rootMargin,
+      threshold: threshold
+    });
+  }
 
   return {
     observe: function observe() {
@@ -59,7 +63,7 @@ var lozad = function () {
         return !isLoaded(element);
       });
 
-      if (!window.IntersectionObserver) {
+      if (!observer) {
         elements.forEach(function (element) {
           load(element);
           markAsLoaded(element);
