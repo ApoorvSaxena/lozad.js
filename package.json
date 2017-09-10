@@ -5,6 +5,7 @@
   "version": "1.0.1",
   "homepage": "https://github.com/ApoorvSaxena/lozad.js",
   "scripts": {
+    "test": "nyc mocha",
     "build": "node build.js",
     "prelint": "prettier --single-quote --no-semi --no-bracket-spacing --trailing-comma none --write \"lib/**/*.js\" --write build.js --write",
     "lint": "xo --fix src/*.js build.js"
@@ -43,6 +44,10 @@
     "babel-core": "^6.26.0",
     "babel-preset-env": "^1.6.0",
     "babel-preset-stage-0": "^6.24.1",
+    "jsdom": "^11.2.0",
+    "jsdom-global": "^3.0.2",
+    "mocha": "^3.5.1",
+    "nyc": "^11.2.1",
     "prettier": "^1.6.1",
     "rollup": "^0.49.2",
     "rollup-plugin-babel": "^3.0.2",
