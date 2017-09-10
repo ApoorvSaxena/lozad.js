@@ -25,7 +25,7 @@ describe('lozad', function() {
     beforeEach(function(){
       document.body.innerHTML = "";
       const image = document.createElement('img');
-      image.dataset.src = 'test-src';
+      image.dataset.src = Math.random().toString(36).substring(7);
       document.body.appendChild(image);
     })
 
@@ -41,7 +41,7 @@ describe('lozad', function() {
   	beforeEach(function(){
       document.body.innerHTML = "";
 	    const image = document.createElement('img');
-      image.dataset.src = 'test-src';
+      image.dataset.src = Math.random().toString(36).substring(7);
       image.setAttribute('class', 'lozad');
       document.body.appendChild(image);
 	  })
@@ -55,6 +55,25 @@ describe('lozad', function() {
     it('should load an image after observe function is called', function() {
       const observer = lozad();
       const image = document.getElementsByTagName('img')[0];
+      observer.observe();
+      assert.equal('true', image.dataset.loaded);
+      assert.equal(image.getAttribute('src'), image.dataset.src);
+    });
+  });
+
+  describe('images inside viewport with different class', function() {
+    beforeEach(function(){
+      document.body.innerHTML = "";
+      const image = document.createElement('img');
+      image.dataset.src = Math.random().toString(36).substring(7);
+      document.body.appendChild(image);
+    })
+
+    it('should load the image', function() {
+      const className = Math.random().toString(36).substring(7);
+      const observer = lozad('.' + className);
+      const image = document.getElementsByTagName('img')[0];
+      image.setAttribute('class', className);
       observer.observe();
       assert.equal('true', image.dataset.loaded);
       assert.equal(image.getAttribute('src'), image.dataset.src);
