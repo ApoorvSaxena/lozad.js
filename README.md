@@ -31,24 +31,42 @@ Making this more efficient and performant is what [IntersectionObserver](https:/
 
 ## Install
 
-Get the library using one of the following ways:
+This project uses [node](http://nodejs.org) and [npm](https://npmjs.com). Go check them out if you don't have them locally installed.
 
-1. **GitHub**
+```sh
+$ npm install --save lozad
+```
 
-Full build
+Alternatively you can use [Yarn](https://yarnpkg.com/en/).
 
- - [unminified] : https://cdn.jsdelivr.net/npm/lozad@1.0.1/dist/lozad.js
- - [minified] : https://cdn.jsdelivr.net/npm/lozad@1.0.1/dist/lozad.min.js
+```sh
+$ yarn add lozad
+```
 
-2. **Yarn** : `yarn add lozad`
+Another option is to use [Bower](https://bower.io/).
 
-3. **Bower** : `bower install lozad`
+```sh
+$ bower install lozad
+```
 
-3. **npm**: `npm install --save lozad`
+Then with a module bundler like [rollup](http://rollupjs.org/) or [webpack](https://webpack.js.org/), use as you would anything else:
 
-4. **CDN**: [https://cdn.jsdelivr.net/npm/lozad](https://cdn.jsdelivr.net/npm/lozad)
+```javascript
+// using ES6 modules
+import lozad from 'lozad'
 
-Now include the library in the ``HEAD`` tag of your page:
+// using CommonJS modules
+var lozad = require('lozad')
+```
+
+The [UMD](https://github.com/umdjs/umd) build is also available on [unpkg](https://unpkg.com):
+
+```html
+<script src="https://unpkg.com/lozad/dist/lozad.min.js"></script>
+```
+You can find the library on `window.lozad`.
+
+Another option is to download the [unminified](https://cdn.jsdelivr.net/npm/lozad@1.0.1/dist/lozad.js) or the [minified](https://cdn.jsdelivr.net/npm/lozad@1.0.1/dist/lozad.min.js) builds and include in the `head` tag of your page.
 
 ```html
 <script type="text/javascript" src="lozad.js"></script>
@@ -59,7 +77,7 @@ or
 <script type="text/javascript" src="lozad.min.js"></script>
 ```
 
-**Note**: `lozad.js` supports AMD and commonJS module pattern out of the box.
+You can find the library on `window.lozad`.
 
 ## Usage
 
