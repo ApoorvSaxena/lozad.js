@@ -37,8 +37,8 @@ Get the library using one of the following ways:
 
 Full build
 
- - [unminified] : https://cdn.jsdelivr.net/npm/lozad@1.0.1/dist/lozad.js
- - [minified] : https://cdn.jsdelivr.net/npm/lozad@1.0.1/dist/lozad.min.js
+ - [unminified] : https://cdn.jsdelivr.net/npm/lozad/dist/lozad.js
+ - [minified] : https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js
 
 2. **Yarn** : `yarn add lozad`
 
