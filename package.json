@@ -29,14 +29,7 @@
     }
   ],
   "files": [
-    "dist/",
-    "src/",
-    "build.js",
-    "bower.json",
-    "package.json",
-    "LICENSE",
-    "README.md",
-    "yarn.lock"
+    "dist/"
   ],
   "keywords": [
     "lazy",
