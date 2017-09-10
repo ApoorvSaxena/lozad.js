@@ -24,13 +24,13 @@ const onIntersection = load => (entries, observer) => {
 
 export default function (selector = '.lozad', options = {}) {
   const {rootMargin, threshold, load} = {...defaultConfig, ...options}
-  let observer;
+  let observer
 
   if (window.IntersectionObserver) {
     observer = new IntersectionObserver(onIntersection(load), {
       rootMargin,
       threshold
-    });
+    })
   }
 
   return {
