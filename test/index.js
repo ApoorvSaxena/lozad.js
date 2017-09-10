@@ -52,15 +52,12 @@ describe('lozad', function() {
       assert.equal(undefined, image.dataset.loaded);
     });
 
-    it('should load an image after observe function is called', function(done) {
+    it('should load an image after observe function is called', function() {
       const observer = lozad();
       const image = document.getElementsByTagName('img')[0];
       observer.observe();
-      setTimeout(function() {
-        assert.equal('true', image.dataset.loaded);
-        assert.equal(image.getAttribute('src'), image.dataset.src);
-        done();
-      });
+      assert.equal('true', image.dataset.loaded);
+      assert.equal(image.getAttribute('src'), image.dataset.src);
     });
   });
 
@@ -72,17 +69,14 @@ describe('lozad', function() {
       document.body.appendChild(image);
     })
 
-    it('should load the image', function(done) {
-      const className = Math.random().toString(36).substring(7);
+    it('should load the image', function() {
+      const className = 'test-class';
       const observer = lozad('.' + className);
       const image = document.getElementsByTagName('img')[0];
       image.setAttribute('class', className);
       observer.observe();
-      setTimeout(function() {
-        assert.equal('true', image.dataset.loaded);
-        assert.equal(image.getAttribute('src'), image.dataset.src);
-        done();
-      });
+      assert.equal('true', image.dataset.loaded);
+      assert.equal(image.getAttribute('src'), image.dataset.src);
     });
   });
 });
