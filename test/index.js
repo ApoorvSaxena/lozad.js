@@ -21,11 +21,28 @@ describe('lozad', function() {
     });
   });
 
-  describe('#lozad lazy loading', function() {
+  describe('images inside viewport without class lozad', function() {
+    beforeEach(function(){
+      document.body.innerHTML = "";
+      const image = document.createElement('img');
+      image.dataset.src = 'test-src';
+      document.body.appendChild(image);
+    })
+
+    it('should not load image', function() {
+      const observer = lozad();
+      observer.observe();
+      const image = document.getElementsByTagName('img')[0];
+      assert.equal(undefined, image.dataset.loaded);
+    });
+  });
+
+  describe('images inside viewport with class lozad', function() {
   	beforeEach(function(){
+      document.body.innerHTML = "";
 	    const image = document.createElement('img');
-      image.dataset.src = 'http://google.com';
-      image.classList += " lozad";
+      image.dataset.src = 'test-src';
+      image.setAttribute('class', 'lozad');
       document.body.appendChild(image);
 	  })
 
@@ -35,11 +52,12 @@ describe('lozad', function() {
       assert.equal(undefined, image.dataset.loaded);
     });
 
-    it('should not load an image till observe function is called', function() {
+    it('should load an image after observe function is called', function() {
       const observer = lozad();
       const image = document.getElementsByTagName('img')[0];
       observer.observe();
       assert.equal('true', image.dataset.loaded);
+      assert.equal(image.getAttribute('src'), image.dataset.src);
     });
   });
 });
