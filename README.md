@@ -57,14 +57,7 @@ import lozad from 'lozad'
 
 // using CommonJS modules
 var lozad = require('lozad')
-```
-
-The [UMD](https://github.com/umdjs/umd) build is also available on [unpkg](https://unpkg.com):
-
-```html
-<script src="https://unpkg.com/lozad/dist/lozad.min.js"></script>
-```
-You can find the library on `window.lozad`.
+````
 
 Another option is to download the [unminified](https://cdn.jsdelivr.net/npm/lozad/dist/lozad.js) or the [minified](https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js) builds and include in the `head` tag of your page.
 
