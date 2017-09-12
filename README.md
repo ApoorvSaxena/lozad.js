@@ -66,7 +66,7 @@ The [UMD](https://github.com/umdjs/umd) build is also available on [unpkg](https
 ```
 You can find the library on `window.lozad`.
 
-Another option is to download the [unminified](https://cdn.jsdelivr.net/npm/lozad@1.0.1/dist/lozad.js) or the [minified](https://cdn.jsdelivr.net/npm/lozad@1.0.1/dist/lozad.min.js) builds and include in the `head` tag of your page.
+Another option is to download the [unminified](https://cdn.jsdelivr.net/npm/lozad/dist/lozad.js) or the [minified](https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js) builds and include in the `head` tag of your page.
 
 ```html
 <script type="text/javascript" src="lozad.js"></script>
