@@ -1,7 +1,7 @@
 {
   "name": "lozad",
   "description": "A light-weight JS library to lazy load any HTML element such as images, ads, videos etc.",
-  "main": "dist/lozad.min.js",
+  "main": "dist/lozad.js",
   "author": "Apoorv Saxena",
   "moduleType": [
     "amd",
