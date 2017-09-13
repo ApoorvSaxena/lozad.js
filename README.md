@@ -42,7 +42,7 @@ $ yarn add lozad
 $ bower install lozad
 ```
 
-Then with a module bundler like [rollup](http://rollupjs.org/) or [webpack](https://webpack.js.org/), use as you would anything else:
+Then with a module bundler like rollup or webpack, use as you would anything else:
 
 ```javascript
 // using ES6 modules
@@ -50,20 +50,20 @@ import lozad from 'lozad'
 
 // using CommonJS modules
 var lozad = require('lozad')
-````
+```
 
-Another option is to download the [unminified](https://cdn.jsdelivr.net/npm/lozad/dist/lozad.js) or the [minified](https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js) builds and include in the `head` tag of your page.
+Or load via **CDN** and include in the `head` tag of your page.
 
 ```html
-<script type="text/javascript" src="lozad.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.js"></script>
 ```
 or
 
 ```html
-<script type="text/javascript" src="lozad.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
 ```
 
-You can find the library on `window.lozad`.
+When loading from CDN, you can find the library on `window.lozad`.
 
 ## Usage
 
