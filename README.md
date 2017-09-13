@@ -31,21 +31,14 @@ Making this more efficient and performant is what [IntersectionObserver](https:/
 
 ## Install
 
-This project uses [node](http://nodejs.org) and [npm](https://npmjs.com). Go check them out if you don't have them locally installed.
-
 ```sh
+# You can install lozad with npm
 $ npm install --save lozad
-```
 
-Alternatively you can use [Yarn](https://yarnpkg.com/en/).
-
-```sh
+# Alternatively you can use Yarn.
 $ yarn add lozad
-```
 
-Another option is to use [Bower](https://bower.io/).
-
-```sh
+# Another option is to use Bower.
 $ bower install lozad
 ```
 
