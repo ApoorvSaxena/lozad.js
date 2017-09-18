@@ -35,22 +35,16 @@ export default function (selector = '.lozad', options = {}) {
 
   return {
     observe() {
-      const elements = [].filter.call(document.querySelectorAll(selector),
-      element => !isLoaded(element))
-
-      if (!observer) {
-        elements
-          .forEach(element => {
-            load(element)
-            markAsLoaded(element)
-          })
-
-        return
+      const elements = document.querySelectorAll(selector)
+      for (let i = 0; i < elements.length; i++) {
+        if(!isLoaded(elements[i])) {
+          load(elements[i])
+          markAsLoaded(elements[i])
+          if (observer) {
+            observer.observe(elements[i])
+          }
+        }
       }
-
-      elements.forEach(element => {
-        observer.observe(element)
-      })
     }
   }
 }
