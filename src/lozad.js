@@ -37,14 +37,15 @@ export default function (selector = '.lozad', options = {}) {
     observe() {
       const elements = document.querySelectorAll(selector)
       for (let i = 0; i < elements.length; i++) {
-        if(!isLoaded(elements[i])) {
-          if (observer) {
-            observer.observe(elements[i])
-          } else {
-            load(elements[i])
-            markAsLoaded(elements[i])
-          }
+        if(isLoaded(elements[i])) {
+          continue
         }
+        if (observer) {
+          observer.observe(elements[i])
+          continue
+        }
+        load(elements[i])
+        markAsLoaded(elements[i])
       }
     }
   }
