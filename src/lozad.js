@@ -2,10 +2,10 @@ const defaultConfig = {
   rootMargin: '0px',
   threshold: 0,
   load(element) {
-    if(element.dataset.src) {
+    if (element.dataset.src) {
       element.src = element.dataset.src
     }
-    if(element.dataset.srcset) {
+    if (element.dataset.srcset) {
       element.srcset = element.dataset.srcset
     }
   }
@@ -42,7 +42,7 @@ export default function (selector = '.lozad', options = {}) {
     observe() {
       const elements = document.querySelectorAll(selector)
       for (let i = 0; i < elements.length; i++) {
-        if(isLoaded(elements[i])) {
+        if (isLoaded(elements[i])) {
           continue
         }
         if (observer) {
