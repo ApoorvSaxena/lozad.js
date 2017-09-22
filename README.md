@@ -31,35 +31,39 @@ Making this more efficient and performant is what [IntersectionObserver](https:/
 
 ## Install
 
-Get the library using one of the following ways:
+```sh
+# You can install lozad with npm
+$ npm install --save lozad
 
-1. **GitHub**
+# Alternatively you can use Yarn.
+$ yarn add lozad
 
-Full build
+# Another option is to use Bower.
+$ bower install lozad
+```
 
- - [unminified] : https://raw.githubusercontent.com/ApoorvSaxena/lozad.js/master/dist/lozad.js
- - [minified] : https://raw.githubusercontent.com/ApoorvSaxena/lozad.js/master/dist/lozad.min.js
+Then with a module bundler like rollup or webpack, use as you would anything else:
 
-2. **Yarn** : `yarn add lozad`
+```javascript
+// using ES6 modules
+import lozad from 'lozad'
 
-3. **Bower** : `bower install lozad`
+// using CommonJS modules
+var lozad = require('lozad')
+```
 
-3. **npm**: `npm install --save lozad`
-
-4. **CDN**: [https://cdn.jsdelivr.net/npm/lozad](https://cdn.jsdelivr.net/npm/lozad)
-
-Now include the library in the ``HEAD`` tag of your page:
+Or load via **CDN** and include in the `head` tag of your page.
 
 ```html
-<script type="text/javascript" src="lozad.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.js"></script>
 ```
 or
 
 ```html
-<script type="text/javascript" src="lozad.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
 ```
 
-**Note**: `lozad.js` supports AMD and commonJS module pattern out of the box.
+When loading from CDN, you can find the library on `window.lozad`.
 
 ## Usage
 

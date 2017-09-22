@@ -2,12 +2,14 @@
   "name": "lozad",
   "title": "lozad.js",
   "description": "A light-weight JS library to lazy load any HTML element such as images, ads, videos etc.",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "homepage": "https://github.com/ApoorvSaxena/lozad.js",
   "scripts": {
     "test": "nyc mocha",
     "build": "node build.js",
+    "prepublish": "npm run build",
     "prelint": "prettier --single-quote --no-semi --no-bracket-spacing --trailing-comma none --write \"lib/**/*.js\" --write build.js --write",
+    "precommit": "npm run lint",
     "lint": "xo --fix src/*.js build.js"
   },
   "author": {
@@ -51,6 +53,7 @@
     "jsdom-global": "^3.0.2",
     "mocha": "^3.5.1",
     "nyc": "^11.2.1",
+    "husky": "^0.14.3",
     "prettier": "^1.6.1",
     "rollup": "^0.49.2",
     "rollup-plugin-babel": "^3.0.2",
