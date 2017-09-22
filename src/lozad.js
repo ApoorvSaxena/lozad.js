@@ -2,7 +2,12 @@ const defaultConfig = {
   rootMargin: '0px',
   threshold: 0,
   load(element) {
-    element.src = element.dataset.src
+    if(element.dataset.src) {
+      element.src = element.dataset.src
+    }
+    if(element.dataset.srcset) {
+      element.srcset = element.dataset.srcset
+    }
   }
 }
 
