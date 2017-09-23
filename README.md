@@ -2,13 +2,14 @@
 
 > Highly performant, light ~0.5kb and configurable lazy loader in pure JS with no dependencies for images, iframes and more, using IntersectionObserver API
 
-![lozad.js lazy loading javascript library](./banner/lozad-banner.png "lozad.js lazy loading javascript library")
+![lozad.js lazy loading javascript library](./banner/lozad-banner.jpg "lozad.js lazy loading javascript library")
 
 **Lozad.js**:
 - lazy loads elements performantly using pure JavaScript,
 - is a light-weight library, *just **535 bytes*** minified & gzipped,
 - has NO DEPENDENCIES :)
-- allows lazy loading of dynamically added elements as well.
+- allows lazy loading of dynamically added elements as well,
+- supports responsive images
 
 It is written with an aim to lazy load images, iframes, ads, videos or any other element using the recently added [Intersection Observer API](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API) with tremendous performance benefits.
 
@@ -110,6 +111,13 @@ observer.observe();
 
 // ... code to dynamically add elements
 observer.observe(); // observes newly added elements as well
+```
+
+for use with responsive images
+
+```html
+<!-- responsive image example -->
+<img class="lozad" data-src="image.png" data-srcset="image.png 1000w, image-2x.png 2000w" />
 ```
 ## Browser Support
 
