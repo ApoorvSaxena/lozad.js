@@ -37,7 +37,7 @@ export default function (selector = '.lozad', options = {}) {
     observe() {
       const elements = document.querySelectorAll(selector)
       for (let i = 0; i < elements.length; i++) {
-        if(isLoaded(elements[i])) {
+        if (isLoaded(elements[i])) {
           continue
         }
         if (observer) {
