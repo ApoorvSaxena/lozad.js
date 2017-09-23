@@ -6,6 +6,7 @@
   "homepage": "https://github.com/ApoorvSaxena/lozad.js",
   "scripts": {
     "test": "nyc mocha",
+    "dev": "node example/server",
     "build": "node build.js",
     "prepublish": "npm run build",
     "prelint": "prettier --single-quote --no-semi --no-bracket-spacing --trailing-comma none --write \"lib/**/*.js\" --write build.js --write",
@@ -47,8 +48,10 @@
   ],
   "devDependencies": {
     "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.0",
     "babel-preset-stage-0": "^6.24.1",
+    "express": "^4.15.4",
     "jsdom": "^11.2.0",
     "jsdom-global": "^3.0.2",
     "mocha": "^3.5.1",
@@ -60,6 +63,8 @@
     "rollup-plugin-filesize": "^1.4.2",
     "rollup-plugin-license": "^0.5.0",
     "rollup-plugin-uglify": "^2.0.1",
+    "webpack": "^3.6.0",
+    "webpack-dev-middleware": "^1.12.0",
     "xo": "^0.18.2"
   },
   "xo": {

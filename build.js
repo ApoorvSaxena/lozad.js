@@ -35,15 +35,15 @@ function build(format) {
   ]
 
   const plugins =
-    format === 'min'
-      ? defaultPlugins.concat(
+    format === 'min' ?
+      defaultPlugins.concat(
           uglify({
             output: {
               comments: true
             }
           })
-        )
-      : defaultPlugins
+        ) :
+      defaultPlugins
 
   return rollup({
     input: 'src/lozad.js',
