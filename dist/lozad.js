@@ -1,4 +1,4 @@
-/*! lozad.js - v1.0.5 - 2017-09-24
+/*! lozad.js - v1.0.6 - 2017-09-25
 * https://github.com/ApoorvSaxena/lozad.js
 * Copyright (c) 2017 Apoorv Saxena; Licensed MIT */
 
@@ -20,6 +20,9 @@ var defaultConfig = {
     }
     if (element.dataset.srcset) {
       element.srcset = element.dataset.srcset;
+    }
+    if (element.dataset.backgroundImage) {
+      element.style.backgroundImage = 'url(' + element.dataset.backgroundImage + ')';
     }
   }
 };
