@@ -1,4 +1,4 @@
-/*! lozad.js - v1.0.5 - 2017-09-22
+/*! lozad.js - v1.0.5 - 2017-09-24
 * https://github.com/ApoorvSaxena/lozad.js
 * Copyright (c) 2017 Apoorv Saxena; Licensed MIT */
 
@@ -15,7 +15,12 @@ var defaultConfig = {
   rootMargin: '0px',
   threshold: 0,
   load: function load(element) {
-    element.src = element.dataset.src;
+    if (element.dataset.src) {
+      element.src = element.dataset.src;
+    }
+    if (element.dataset.srcset) {
+      element.srcset = element.dataset.srcset;
+    }
   }
 };
 
