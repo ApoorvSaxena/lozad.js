@@ -9,7 +9,7 @@
 - is a light-weight library, *just **535 bytes*** minified & gzipped,
 - has NO DEPENDENCIES :)
 - allows lazy loading of dynamically added elements as well,
-- supports responsive images
+- supports responsive images and background images
 
 It is written with an aim to lazy load images, iframes, ads, videos or any other element using the recently added [Intersection Observer API](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API) with tremendous performance benefits.
 
@@ -119,6 +119,15 @@ for use with responsive images
 <!-- responsive image example -->
 <img class="lozad" data-src="image.png" data-srcset="image.png 1000w, image-2x.png 2000w" />
 ```
+
+for use with background images
+```html
+<!-- background image example -->
+<div class="lozad" data-background-image="image.png">
+</div>
+```
+
+
 ## Browser Support
 
 Available in [latest browsers](http://caniuse.com/#feat=intersectionobserver). If browser support is not available, then make use of this [polyfill](https://www.npmjs.com/package/intersection-observer).
