@@ -1,6 +1,6 @@
+require('jsdom-global')()
 const assert = require('assert')
 const lozad = require('../dist/lozad.js')
-require('jsdom-global')()
 
 describe('lozad', () => {
   describe('#lozad', () => {
