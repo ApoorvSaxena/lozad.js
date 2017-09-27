@@ -9,7 +9,7 @@
     "build": "node build.js",
     "prepublish": "npm run build",
     "prelint": "prettier --single-quote --no-semi --no-bracket-spacing --trailing-comma none --write \"lib/**/*.js\" --write build.js --write \"test/*.js\"",
-    "precommit": "npm run lint",
+    "precommit": "npm run lint && npm run build",
     "lint": "xo --fix src/*.js build.js test/*.js"
   },
   "author": {
