@@ -73,7 +73,6 @@ var lozad = function () {
       var elements = document.querySelectorAll(selector);
       for (var i = 0; i < elements.length; i++) {
         if (isLoaded(elements[i])) {
-          console.log(elements[i]);
           continue;
         }
         if (observer) {
