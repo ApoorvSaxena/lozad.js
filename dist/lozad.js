@@ -83,11 +83,13 @@ var lozad = function () {
         markAsLoaded(elements[i]);
       }
     },
-    triggerLoad: function triggerLoad(selector) {
+    triggerLoad: function triggerLoad(selectorToTrigger) {
       var elements = document.querySelectorAll(selector);
       for (var i = 0; i < elements.length; i++) {
-        load(elements[i]);
-        markAsLoaded(elements[i]);
+        if (elements[i].matches(selectorToTrigger)) {
+          load(elements[i]);
+          markAsLoaded(elements[i]);
+        }
       }
     }
   };

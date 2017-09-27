@@ -59,11 +59,13 @@ export default function (selector = '.lozad', options = {}) {
         markAsLoaded(elements[i])
       }
     },
-    triggerLoad(selector) {
+    triggerLoad(selectorToTrigger) {
       const elements = document.querySelectorAll(selector)
       for (let i = 0; i < elements.length; i++) {
-        load(elements[i])
-        markAsLoaded(elements[i])
+        if (elements[i].matches(selectorToTrigger)) {
+          load(elements[i])
+          markAsLoaded(elements[i])
+        }
       }
     }
   }
