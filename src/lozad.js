@@ -1,3 +1,9 @@
+if (!Element.prototype.matches) {
+  Element.prototype.matches =
+    Element.prototype.msMatchesSelector ||
+    Element.prototype.webkitMatchesSelector
+}
+
 const defaultConfig = {
   rootMargin: '0px',
   threshold: 0,
