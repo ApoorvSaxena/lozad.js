@@ -8,9 +8,9 @@
     "test": "nyc mocha",
     "build": "node build.js",
     "prepublish": "npm run build",
-    "prelint": "prettier --single-quote --no-semi --no-bracket-spacing --trailing-comma none --write \"lib/**/*.js\" --write build.js --write",
+    "prelint": "prettier --single-quote --no-semi --no-bracket-spacing --trailing-comma none --write \"lib/**/*.js\" --write build.js --write \"test/*.js\"",
     "precommit": "npm run lint",
-    "lint": "xo --fix src/*.js build.js"
+    "lint": "xo --fix src/*.js build.js test/*.js"
   },
   "author": {
     "name": "Apoorv Saxena",
@@ -64,7 +64,8 @@
   },
   "xo": {
     "envs": [
-      "browser"
+      "browser",
+      "mocha"
     ],
     "semicolon": false,
     "space": true

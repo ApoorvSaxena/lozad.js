@@ -24,8 +24,11 @@ const onIntersection = load => (entries, observer) => {
   entries.forEach(entry => {
     if (entry.intersectionRatio > 0) {
       observer.unobserve(entry.target)
-      load(entry.target)
-      markAsLoaded(entry.target)
+      
+      if (!isLoaded(entry.target)) {
+        load(entry.target)
+        markAsLoaded(entry.target)
+      }
     }
   })
 }
@@ -52,6 +55,13 @@ export default function (selector = '.lozad', options = {}) {
           observer.observe(elements[i])
           continue
         }
+        load(elements[i])
+        markAsLoaded(elements[i])
+      }
+    },
+    triggerLoad(selector) {
+      const elements = document.querySelectorAll(selector)
+      for (let i = 0; i < elements.length; i++) {
         load(elements[i])
         markAsLoaded(elements[i])
       }
