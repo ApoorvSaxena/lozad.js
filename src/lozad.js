@@ -8,8 +8,8 @@ const defaultConfig = {
     if (element.dataset.srcset) {
       element.srcset = element.dataset.srcset
     }
-    if (element.dataset.backgroundImage) {
-      element.style.backgroundImage = 'url(' + element.dataset.backgroundImage + ')'
+    if (element.dataset.backgroundimage) {
+      element.style.backgroundImage = 'url(' + element.dataset.backgroundimage + ')'
     }
   }
 }
