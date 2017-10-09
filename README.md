@@ -127,7 +127,7 @@ for use with background images
 </div>
 ```
 
-If you want to load specific images before they appear:
+If you want to load the images before they appear:
 
 ```js
 const observer = lozad();
