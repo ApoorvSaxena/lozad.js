@@ -137,14 +137,17 @@
     var observer = lozad('.lozad', {
         threshold: 0.1,
         load: function(el) {
-            el.src = el.dataset.src;
+            el.src = el.getAttribute("data-src");
             el.onload = function() {
                 el.style.width = "100%";
-                toastr["success"]("Image " + el.dataset.index + " lazy loaded.")
+                toastr["success"]("Image " + el.getAttribute("data-index") + " lazy loaded.")
             }
         }
     })
 
+    setTimeout(function() {
+        location.reload();
+    }, 2000);
     observer.observe()
     </script>
 </body>
