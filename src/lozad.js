@@ -1,9 +1,3 @@
-if (!Element.prototype.matches) {
-  Element.prototype.matches =
-    Element.prototype.msMatchesSelector ||
-    Element.prototype.webkitMatchesSelector
-}
-
 const defaultConfig = {
   rootMargin: '0px',
   threshold: 0,
@@ -65,13 +59,15 @@ export default function (selector = '.lozad', options = {}) {
         markAsLoaded(elements[i])
       }
     },
-    triggerLoad(selectorToTrigger) {
+    triggerLoad() {
       const elements = document.querySelectorAll(selector)
-      for (let i = 0; i < elements.length; i++) {
-        if (elements[i].matches(selectorToTrigger)) {
-          load(elements[i])
-          markAsLoaded(elements[i])
+      for (let i = 0; i < elements.length; i++) {       
+        if (isLoaded(elements[i])) {
+          continue
         }
+
+        load(elements[i])
+        markAsLoaded(elements[i])
       }
     }
   }
