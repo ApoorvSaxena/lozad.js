@@ -61,7 +61,7 @@ export default function (selector = '.lozad', options = {}) {
     },
     triggerLoad() {
       const elements = document.querySelectorAll(selector)
-      for (let i = 0; i < elements.length; i++) {       
+      for (let i = 0; i < elements.length; i++) {
         if (isLoaded(elements[i])) {
           continue
         }

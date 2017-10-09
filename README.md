@@ -133,8 +133,8 @@ If you want to load specific images before they appear:
 const observer = lozad();
 observer.observe();
 
-// ... trigger the load of a specific image
-observer.triggerLoad('.specific-selector'); // this will load the image that satisfies the .lozad.specific-selector selector
+// ... trigger the load of the images
+observer.triggerLoad();
 ```
 
 ## Browser Support

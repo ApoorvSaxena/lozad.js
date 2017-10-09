@@ -1,4 +1,4 @@
-/*! lozad.js - v1.0.6 - 2017-09-27
+/*! lozad.js - v1.0.6 - 2017-10-09
 * https://github.com/ApoorvSaxena/lozad.js
 * Copyright (c) 2017 Apoorv Saxena; Licensed MIT */
 
@@ -10,10 +10,6 @@
 }(this, (function () { 'use strict';
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-if (!Element.prototype.matches) {
-  Element.prototype.matches = Element.prototype.msMatchesSelector || Element.prototype.webkitMatchesSelector;
-}
 
 var defaultConfig = {
   rootMargin: '0px',
@@ -87,13 +83,15 @@ var lozad = function () {
         markAsLoaded(elements[i]);
       }
     },
-    triggerLoad: function triggerLoad(selectorToTrigger) {
+    triggerLoad: function triggerLoad() {
       var elements = document.querySelectorAll(selector);
       for (var i = 0; i < elements.length; i++) {
-        if (elements[i].matches(selectorToTrigger)) {
-          load(elements[i]);
-          markAsLoaded(elements[i]);
+        if (isLoaded(elements[i])) {
+          continue;
         }
+
+        load(elements[i]);
+        markAsLoaded(elements[i]);
       }
     }
   };
