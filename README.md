@@ -98,7 +98,7 @@ lozad('.lozad', {
         console.log('loading element');
 
         // Custom implementation to load an element
-        // e.g. el.src = el.dataset.src;
+        // e.g. el.src = el.getAttribute('data-src');
     }
 });
 ```
