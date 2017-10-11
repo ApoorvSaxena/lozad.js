@@ -98,7 +98,7 @@ lozad('.lozad', {
         console.log('loading element');
 
         // Custom implementation to load an element
-        // e.g. el.src = el.dataset.src;
+        // e.g. el.src = el.getAttribute('data-src');
     }
 });
 ```
@@ -133,8 +133,9 @@ If you want to load the images before they appear:
 const observer = lozad();
 observer.observe();
 
-// ... trigger the load of the images
-observer.triggerLoad();
+const coolImage = document.querySelector('.image-to-load-first')
+// ... trigger the load of a image before it appears on the viewport
+observer.triggerLoad(coolImage);
 ```
 
 ## Browser Support

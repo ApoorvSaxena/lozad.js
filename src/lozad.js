@@ -2,23 +2,23 @@ const defaultConfig = {
   rootMargin: '0px',
   threshold: 0,
   load(element) {
-    if (element.dataset.src) {
-      element.src = element.dataset.src
+    if (element.getAttribute('data-src')) {
+      element.src = element.getAttribute('data-src')
     }
-    if (element.dataset.srcset) {
-      element.srcset = element.dataset.srcset
+    if (element.getAttribute('data-srcset')) {
+      element.srcset = element.getAttribute('data-srcset')
     }
-    if (element.dataset.backgroundImage) {
-      element.style.backgroundImage = 'url(' + element.dataset.backgroundImage + ')'
+    if (element.getAttribute('data-backgroundImage')) {
+      element.style.backgroundImage = 'url(' + element.getAttribute('data-backgroundImage') + ')'
     }
   }
 }
 
 function markAsLoaded(element) {
-  element.dataset.loaded = true
+  element.setAttribute('data-loaded', true)
 }
 
-const isLoaded = element => element.dataset.loaded === 'true'
+const isLoaded = element => element.getAttribute('data-loaded') === 'true'
 
 const onIntersection = load => (entries, observer) => {
   entries.forEach(entry => {
@@ -59,16 +59,13 @@ export default function (selector = '.lozad', options = {}) {
         markAsLoaded(elements[i])
       }
     },
-    triggerLoad() {
-      const elements = document.querySelectorAll(selector)
-      for (let i = 0; i < elements.length; i++) {
-        if (isLoaded(elements[i])) {
-          continue
-        }
-
-        load(elements[i])
-        markAsLoaded(elements[i])
+    triggerLoad(element) {
+      if (isLoaded(element)) {
+        return
       }
+
+      load(element)
+      markAsLoaded(element)
     }
   }
 }
