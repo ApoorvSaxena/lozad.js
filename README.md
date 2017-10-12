@@ -127,6 +127,16 @@ for use with background images
 </div>
 ```
 
+If you want to load the images before they appear:
+
+```js
+const observer = lozad();
+observer.observe();
+
+const coolImage = document.querySelector('.image-to-load-first')
+// ... trigger the load of a image before it appears on the viewport
+observer.triggerLoad(coolImage);
+```
 
 ## Browser Support
 
