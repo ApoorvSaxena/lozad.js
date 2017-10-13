@@ -10,7 +10,8 @@
     "prepublish": "npm run build",
     "prelint": "prettier --single-quote --no-semi --no-bracket-spacing --trailing-comma none --write \"lib/**/*.js\" --write build.js --write \"test/*.js\"",
     "precommit": "npm run lint && npm run build",
-    "lint": "xo --fix src/*.js build.js test/*.js"
+    "lint": "xo --fix src/*.js build.js test/*.js",
+    "dev": "browser-sync start --server \"demo\" --server \".\" --files \"demo\" --files \"dist\" --port 3000"
   },
   "author": {
     "name": "Apoorv Saxena",
@@ -49,11 +50,12 @@
     "babel-core": "^6.26.0",
     "babel-preset-env": "^1.6.0",
     "babel-preset-stage-0": "^6.24.1",
+    "browser-sync": "^2.18.13",
+    "husky": "^0.14.3",
     "jsdom": "^11.2.0",
     "jsdom-global": "^3.0.2",
     "mocha": "^3.5.1",
     "nyc": "^11.2.1",
-    "husky": "^0.14.3",
     "prettier": "^1.6.1",
     "rollup": "^0.49.2",
     "rollup-plugin-babel": "^3.0.2",
