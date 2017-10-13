@@ -85,4 +85,34 @@ describe('lozad', () => {
       assert.equal(image.getAttribute('src'), image.dataset.src)
     })
   })
+
+  describe('images inside viewport with different attributes', () => {
+    beforeEach(() => {
+      document.body.innerHTML = ''
+      const image = document.createElement('img')
+      document.body.appendChild(image)
+    })
+
+    it('should load the image with data-srcset attribute', () => {
+      const dataSrcSetAttr = 'test-srcset'
+      const observer = lozad()
+      const image = document.getElementsByTagName('img')[0]
+      image.setAttribute('class', 'lozad')
+      image.setAttribute('data-srcset', dataSrcSetAttr)
+      observer.observe()
+      assert.equal('true', image.dataset.loaded)
+      assert.equal(image.getAttribute('srcset'), dataSrcSetAttr)
+    })
+
+    it('should load the image with data-background-image attribute', () => {
+      const bgImageAttr = 'test-bg-image'
+      const observer = lozad()
+      const image = document.getElementsByTagName('img')[0]
+      image.setAttribute('class', 'lozad')
+      image.setAttribute('data-background-image', bgImageAttr)
+      observer.observe()
+      assert.equal('true', image.dataset.loaded)
+      assert.equal(image.style.backgroundImage, 'url(' + bgImageAttr + ')')
+    })
+  })
 })
