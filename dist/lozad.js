@@ -21,8 +21,8 @@ var defaultConfig = {
     if (element.getAttribute('data-srcset')) {
       element.srcset = element.getAttribute('data-srcset');
     }
-    if (element.getAttribute('data-backgroundImage')) {
-      element.style.backgroundImage = 'url(' + element.getAttribute('data-backgroundImage') + ')';
+    if (element.getAttribute('data-background-image')) {
+      element.style.backgroundImage = 'url(' + element.getAttribute('data-background-image') + ')';
     }
   }
 };
