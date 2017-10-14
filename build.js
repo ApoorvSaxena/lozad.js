@@ -3,6 +3,7 @@ const babel = require('rollup-plugin-babel')
 const filesize = require('rollup-plugin-filesize')
 const uglify = require('rollup-plugin-uglify')
 const license = require('rollup-plugin-license')
+const chokidar = require('chokidar')
 
 const targets = {
   umd: 'dist/lozad.js',
@@ -57,6 +58,17 @@ function build(format) {
   )
 }
 
-Promise.all([build('umd'), build('min')]).catch(err => {
-  console.error(err)
-})
+function main() {
+  return Promise.all([build('umd'), build('min')]).catch(err => {
+    console.error(err)
+  })
+}
+
+main()
+
+if (process.env.NODE_ENV === 'development') {
+  chokidar.watch('src/**/*.js').on('change', path => {
+    console.log('CHANGE: ' + path)
+    main()
+  })
+}
