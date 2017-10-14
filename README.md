@@ -146,6 +146,10 @@ Available in [latest browsers](http://caniuse.com/#feat=intersectionobserver). I
 
 Checkout the [FAQ Wiki](https://github.com/ApoorvSaxena/lozad.js/wiki/Frequently-Asked-Questions) for some common gotchas to be aware of while using **lozad.js**
 
+## Support Lozad.js
+
+Lozad.js is completely free and open-source. If you find it useful, you can show your support by sharing it in your social network or by simply letting me know how much you 💖 it by tweeting to [@Apoorv_Saxena](https://twitter.com/Apoorv_Saxena).
+
 ## Contribute
 
 Interested in contributing features and fixes?
