@@ -1,12 +1,12 @@
 # Lozad.js [![npm version](https://badge.fury.io/js/lozad.svg)](https://badge.fury.io/js/lozad) [![Build Status](https://travis-ci.org/ApoorvSaxena/lozad.js.svg?branch=master)](https://travis-ci.org/ApoorvSaxena/lozad.js) [![](https://data.jsdelivr.com/v1/package/npm/lozad/badge)](https://www.jsdelivr.com/package/npm/lozad)
 
-> Highly performant, light ~0.5kb and configurable lazy loader in pure JS with no dependencies for images, iframes and more, using IntersectionObserver API
+> Highly performant, light ~0.7kb and configurable lazy loader in pure JS with no dependencies for images, iframes and more, using IntersectionObserver API
 
 ![lozad.js lazy loading javascript library](./banner/lozad-banner.jpg "lozad.js lazy loading javascript library")
 
 **Lozad.js**:
 - lazy loads elements performantly using pure JavaScript,
-- is a light-weight library, *just **535 bytes*** minified & gzipped,
+- is a light-weight library, just [![](http://img.badgesize.io/https://cdn.jsdelivr.net/npm/lozad?compression=gzip)](https://cdn.jsdelivr.net/npm/lozad) minified & gzipped,
 - has NO DEPENDENCIES :)
 - allows lazy loading of dynamically added elements as well,
 - supports responsive images and background images
@@ -54,11 +54,6 @@ var lozad = require('lozad')
 ```
 
 Or load via **CDN** and include in the `head` tag of your page.
-
-```html
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.js"></script>
-```
-or
 
 ```html
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
