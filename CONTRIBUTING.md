@@ -7,6 +7,9 @@ Use your best judgment, and feel free to propose changes to this document in a p
 
 ## How can I contribute?
 
+### Using Lozad.js?
+Share with us, and we'll mention it on the project homepage. When adding site to the *list of sites using Lozad.js*, please mention where to verify this in the PR description.
+
 ### Improve documentation
 
 As a user of Lozad.js, you're the perfect candidate to help us improve our documentation. Typo corrections, error fixes, better explanations, more examples, etc. Open issues for things that could be improved. Anything. Even improvements to this document.
@@ -22,7 +25,7 @@ We're always looking for more opinions on discussions in the issue tracker. It's
 ## Reporting Issues
 
 - Found a problem? Want a new feature? First of all see if your issue or idea has [already been reported](https://github.com/ApoorvSaxena/lozad.js/issues).
-- If don't, just open a [new clear and descriptive issue](https://github.com/ApoorvSaxena/lozad.js/issues/new).
+- If not, just open a [new clear and descriptive issue](https://github.com/ApoorvSaxena/lozad.js/issues/new).
 - Use a clear and descriptive title.
 - Include as much information as possible: Steps to reproduce the issue, error message, Browser version, operating system, etc.
 - The more time you put into an issue, the more we will.
