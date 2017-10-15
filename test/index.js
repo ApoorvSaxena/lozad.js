@@ -115,4 +115,26 @@ describe('lozad', () => {
       assert.equal(image.style.backgroundImage, 'url(' + bgImageAttr + ')')
     })
   })
+
+  describe('public API functions', () => {
+    beforeEach(() => {
+      document.body.innerHTML = ''
+      const image = document.createElement('img')
+      image.dataset.src = Math.random()
+        .toString(36)
+        .substring(7)
+      document.body.appendChild(image)
+    })
+
+    it('should load image via triggerLoad function', () => {
+      const dataSrcSetAttr = 'test-srcset'
+      const observer = lozad()
+      const image = document.getElementsByTagName('img')[0]
+      image.setAttribute('class', 'lozad')
+      image.setAttribute('data-srcset', dataSrcSetAttr)
+      observer.triggerLoad(image)
+      assert.equal('true', image.dataset.loaded)
+      assert.equal(image.getAttribute('src'), image.dataset.src)
+    })
+  })
 })
