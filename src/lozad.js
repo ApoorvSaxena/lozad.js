@@ -33,6 +33,19 @@ const onIntersection = load => (entries, observer) => {
   })
 }
 
+const getElementsBySelector = selector => {
+  if (typeof selector === 'string') {
+    return document.querySelectorAll(selector)
+  } else if (selector instanceof Node) {
+    return [selector]
+  } else {
+    throw new Error(`
+      selector should be of type string ex: '.lozad' or
+      Node ex: document.getElementById('#lozad')
+    `)
+  }
+}
+
 export default function (selector = '.lozad', options = {}) {
   const {rootMargin, threshold, load} = {...defaultConfig, ...options}
   let observer
@@ -46,7 +59,7 @@ export default function (selector = '.lozad', options = {}) {
 
   return {
     observe() {
-      const elements = document.querySelectorAll(selector)
+      const elements = getElementsBySelector(selector);
       for (let i = 0; i < elements.length; i++) {
         if (isLoaded(elements[i])) {
           continue
