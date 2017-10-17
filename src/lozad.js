@@ -38,12 +38,11 @@ const getElementsBySelector = selector => {
     return document.querySelectorAll(selector)
   } else if (selector instanceof Node) {
     return [selector]
-  } else {
-    throw new Error(`
-      selector should be of type string ex: '.lozad' or
-      Node ex: document.getElementById('#lozad')
-    `)
   }
+  throw new Error(
+    `selector should be of type string ex: '.lozad' or \
+    Node ex: document.getElementById('#lozad')`
+  )
 }
 
 export default function (selector = '.lozad', options = {}) {
@@ -59,7 +58,7 @@ export default function (selector = '.lozad', options = {}) {
 
   return {
     observe() {
-      const elements = getElementsBySelector(selector);
+      const elements = getElementsBySelector(selector)
       for (let i = 0; i < elements.length; i++) {
         if (isLoaded(elements[i])) {
           continue
