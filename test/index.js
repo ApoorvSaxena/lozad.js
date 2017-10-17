@@ -137,4 +137,35 @@ describe('lozad', () => {
       assert.equal(image.getAttribute('src'), image.dataset.src)
     })
   })
+
+  describe('different type of selectors', () => {
+    beforeEach(() => {
+      document.body.innerHTML = ''
+      const image = document.createElement('img')
+      image.dataset.src = Math.random()
+        .toString(36)
+        .substring(7)
+      image.setAttribute('class', 'lozad')
+      document.body.appendChild(image)
+    })
+
+    it('string selector should load all matching images', () => {
+      const observer = lozad('.lozad')
+      observer.observe()
+
+      const image = document.getElementsByTagName('img')[0]
+      assert.equal('true', image.dataset.loaded)
+      assert.equal(image.getAttribute('src'), image.dataset.src)
+    })
+
+    it('element selector should load the particular element image', () => {
+      const element = document.getElementsByTagName('img')[0]
+      const observer = lozad(element)
+      observer.observe()
+
+      const image = document.getElementsByTagName('img')[0]
+      assert.equal('true', image.dataset.loaded)
+      assert.equal(image.getAttribute('src'), image.dataset.src)
+    })
+  })
 })
