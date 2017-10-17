@@ -34,16 +34,11 @@ const onIntersection = load => (entries, observer) => {
 }
 
 const getElementsBySelector = selector => {
-  if (typeof selector === 'string') {
-    return document.querySelectorAll(selector)
-  } else if (selector instanceof Node) {
+  if (selector instanceof Node) {
     return [selector]
-  } else {
-    throw new Error(
-      `selector should be of type string ex: '.lozad' or ` +
-      `type Node ex: document.getElementById('#lozad')`
-    )
   }
+
+  return document.querySelectorAll(selector)
 }
 
 export default function (selector = '.lozad', options = {}) {

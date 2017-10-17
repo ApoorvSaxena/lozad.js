@@ -167,13 +167,5 @@ describe('lozad', () => {
       assert.equal('true', image.dataset.loaded)
       assert.equal(image.getAttribute('src'), image.dataset.src)
     })
-
-    it('invalid selector should throw an error', () => {
-      let observer = lozad(['array'])
-      assert.throws(
-        observer.observe,
-        Error
-      )
-    })
   })
 })
