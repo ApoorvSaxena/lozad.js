@@ -13,6 +13,13 @@
 
 It is written with an aim to lazy load images, iframes, ads, videos or any other element using the recently added [Intersection Observer API](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API) with tremendous performance benefits.
 
+##### Featured in:
+- [Product Hunt](https://www.producthunt.com/posts/lozad-js)
+- [Reddit](https://www.reddit.com/r/webdev/comments/6zg1x0/highly_performant_light_05kb_and_configurable/)
+- [CSS Tricks](https://css-tricks.com/lozad-js-performant-lazy-loading-images)
+- [David Walsh](https://twitter.com/davidwalshblog/status/915319510646829061)
+- [Codrops](https://twitter.com/Apoorv_Saxena/status/906586828265758720)
+
 ## Table of Contents
 
 - [Demo](https://apoorv.pro/lozad.js/demo/)
