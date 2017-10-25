@@ -13,7 +13,8 @@
     "precommit": "npm run lint && npm run build",
     "lint": "xo --fix src/*.js build.js test/*.js",
     "serve": "browser-sync start --server \"demo\" --server \".\" --files \"demo\" --files \"dist\" --port 3000",
-    "dev": "run-p -r serve build:watch"
+    "dev": "run-p -r serve build:watch",
+    "tag": "npm version minor --no-git-tag-version && npm run build && PACKAGE_VERSION=$(cat package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && git commit -am \"$PACKAGE_VERSION release\" && git tag v$PACKAGE_VERSION"
   },
   "author": {
     "name": "Apoorv Saxena",
