@@ -150,6 +150,7 @@ Checkout the [FAQ Wiki](https://github.com/ApoorvSaxena/lozad.js/wiki/Frequently
 
 ## Sites using Lozad.js
 
+* [gis.utah.gov](https://gis.utah.gov)
 * *[Add your site]* - See [Contributing section](./CONTRIBUTING.md)
 
 ## Support Lozad.js
