@@ -31,8 +31,14 @@ function markAsLoaded(element) {
   var imgLoad = new Image();
   imgLoad.onload = function () {
     element.setAttribute('data-loaded', true);
+    console.log('loaded');
   };
-  imgLoad.src = element.getAttribute('src');
+  if (element.getAttribute('data-src')) {
+    imgLoad.src = element.getAttribute('src');
+  }
+  if (element.getAttribute('data-background-image')) {
+    imgLoad.src = element.getAttribute('data-background-image');
+  }
 }
 
 var isLoaded = function isLoaded(element) {
