@@ -60,8 +60,13 @@ describe('lozad', () => {
       const observer = lozad()
       const image = document.getElementsByTagName('img')[0]
       observer.observe()
-      assert.equal('true', image.dataset.loaded)
-      assert.equal(image.getAttribute('src'), image.dataset.src)
+      const imgLoad = new Image()
+      imgLoad.onload = () => {
+        image.setAttribute('data-loaded', true)
+        assert.equal('true', image.dataset.loaded)
+        assert.equal(image.getAttribute('src'), image.dataset.src)
+      }
+      imgLoad.src = image.getAttribute('src')      
     })
   })
 
@@ -81,8 +86,12 @@ describe('lozad', () => {
       const image = document.getElementsByTagName('img')[0]
       image.setAttribute('class', className)
       observer.observe()
-      assert.equal('true', image.dataset.loaded)
-      assert.equal(image.getAttribute('src'), image.dataset.src)
+      const imgLoad = new Image()
+      imgLoad.onload = () => {
+        image.setAttribute('data-loaded', true)
+        assert.equal('true', image.dataset.loaded)
+        assert.equal(image.getAttribute('src'), image.dataset.src)
+      }      
     })
   })
 
