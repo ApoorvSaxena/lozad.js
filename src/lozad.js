@@ -15,7 +15,11 @@ const defaultConfig = {
 }
 
 function markAsLoaded(element) {
-  element.setAttribute('data-loaded', true)
+  const imgLoad = new Image()
+  imgLoad.onload = () => {
+    element.setAttribute('data-loaded', true)
+  }
+  imgLoad.src = element.getAttribute('src')
 }
 
 const isLoaded = element => element.getAttribute('data-loaded') === 'true'
