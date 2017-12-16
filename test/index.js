@@ -66,7 +66,7 @@ describe('lozad', () => {
         assert.equal('true', image.dataset.loaded)
         assert.equal(image.getAttribute('src'), image.dataset.src)
       }
-      imgLoad.src = image.getAttribute('src')      
+      imgLoad.src = image.getAttribute('src')
     })
   })
 
@@ -91,7 +91,7 @@ describe('lozad', () => {
         image.setAttribute('data-loaded', true)
         assert.equal('true', image.dataset.loaded)
         assert.equal(image.getAttribute('src'), image.dataset.src)
-      }      
+      }
     })
   })
 
