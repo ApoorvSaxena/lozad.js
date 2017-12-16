@@ -18,7 +18,6 @@ function markAsLoaded(element) {
   const imgLoad = new Image()
   imgLoad.onload = () => {
     element.setAttribute('data-loaded', true)
-    console.log('loaded')
   }
   if (element.getAttribute('data-src')) {
     imgLoad.src = element.getAttribute('src')
