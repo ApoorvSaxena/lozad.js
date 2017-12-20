@@ -26,6 +26,7 @@ It is written with an aim to lazy load images, iframes, ads, videos or any other
 - [Background](#yet-another-lazy-loading-javascript-library-why)
 - [Install](#install)
 - [Usage](#usage)
+- [Example with picture tag](#example-with-picture-tag)
 - [Browser Support](#browser-support)
 - [FAQs](#faqs)
 - [Contribute](#contribute)
@@ -139,6 +140,25 @@ const coolImage = document.querySelector('.image-to-load-first')
 // ... trigger the load of a image before it appears on the viewport
 observer.triggerLoad(coolImage);
 ```
+
+## Example with picture tag
+
+Create _a broken_ picture element structure
+
+```html
+<!-- For an element to be caught, add a block type that is different from the inline -->
+<picture class="lozad" style="display: block;">
+    <source srcset="images/thumbs/04.jpg" media="(min-width: 1280px)">
+    <source srcset="images/thumbs/05.jpg" media="(min-width: 980px)">
+    <source srcset="images/thumbs/06.jpg" media="(min-width: 320px)">
+    <!-- NO img element -->
+    <!-- instead of img element, there will be the last source with the minimum dimensions -->
+    <!-- for disabled JS you can set <noscript><img></noscript> -->
+</picture>
+``` 
+
+When _lozad_ load this picture element, it will fix it.  
+That's all ))
 
 ## Browser Support
 
