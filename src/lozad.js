@@ -2,6 +2,10 @@ const defaultConfig = {
   rootMargin: '0px',
   threshold: 0,
   load(element) {
+    if (element.nodeName.toLowerCase() === 'picture') {
+      var img = document.createElement('img');
+      element.appendChild(img);
+    }
     if (element.getAttribute('data-src')) {
       element.src = element.getAttribute('data-src')
     }

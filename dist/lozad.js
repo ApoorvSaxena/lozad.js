@@ -1,4 +1,4 @@
-/*! lozad.js - v1.0.9 - 2017-10-26
+/*! lozad.js - v1.0.9 - 2017-12-20
 * https://github.com/ApoorvSaxena/lozad.js
 * Copyright (c) 2017 Apoorv Saxena; Licensed MIT */
 
@@ -15,6 +15,10 @@ var defaultConfig = {
   rootMargin: '0px',
   threshold: 0,
   load: function load(element) {
+    if (element.nodeName.toLowerCase() === 'picture') {
+      var img = document.createElement('img');
+      element.appendChild(img);
+    }
     if (element.getAttribute('data-src')) {
       element.src = element.getAttribute('data-src');
     }
