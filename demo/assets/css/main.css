@@ -789,6 +789,21 @@ body.loading #main .thumb {
 	transition-delay: 2.3s;
 }
 
+/* Pictures */
+
+#pictures .screen {
+	min-height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+#pictures .picture {
+	max-width: 400px;
+	margin: 3rem;
+}
+
+
 @media screen and (max-width: 1680px) {
 	#main .thumb {
 		-moz-transition-delay: 2.075s;
