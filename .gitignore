@@ -1,2 +1,6 @@
 node_modules
 .nyc_output
+.idea
+.DS_Store
+thumbs.db
+*.log*
