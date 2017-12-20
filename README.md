@@ -102,6 +102,14 @@ lozad('.lozad', {
 
         // Custom implementation to load an element
         // e.g. el.src = el.getAttribute('data-src');
+        
+        // for picture tag
+        /*
+        if (element.nodeName.toLowerCase() === 'picture') {
+             var img = document.createElement('img');
+             element.appendChild(img);
+        }
+        */
     }
 });
 ```
