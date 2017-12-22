@@ -1,4 +1,4 @@
-/*! lozad.js - v1.0.9 - 2017-10-26
+/*! lozad.js - v1.0.9 - 2017-12-16
 * https://github.com/ApoorvSaxena/lozad.js
 * Copyright (c) 2017 Apoorv Saxena; Licensed MIT */
 
@@ -28,7 +28,16 @@ var defaultConfig = {
 };
 
 function markAsLoaded(element) {
-  element.setAttribute('data-loaded', true);
+  var imgLoad = new Image();
+  imgLoad.onload = function () {
+    element.setAttribute('data-loaded', true);
+  };
+  if (element.getAttribute('data-src')) {
+    imgLoad.src = element.getAttribute('src');
+  }
+  if (element.getAttribute('data-background-image')) {
+    imgLoad.src = element.getAttribute('data-background-image');
+  }
 }
 
 var isLoaded = function isLoaded(element) {
