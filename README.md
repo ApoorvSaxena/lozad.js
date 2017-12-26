@@ -104,7 +104,7 @@ lozad('.lozad', {
         // e.g. el.src = el.getAttribute('data-src');
         
         // for picture tag
-        var isIE = !!(/* @cc_on!@ */ false || document.documentMode);
+        var isIE = !!document.documentMode;
         if (element.nodeName.toLowerCase() === 'picture') {
              var img = document.createElement('img');
              if (isIE && element.getAttribute('data-iesrc')) {

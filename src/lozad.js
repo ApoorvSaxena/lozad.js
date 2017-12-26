@@ -3,14 +3,14 @@
  * @const {boolean}
  * @private
  */
-const isIE = !!(/* @cc_on!@ */ false || document.documentMode);
+const isIE = document.documentMode
 
 const defaultConfig = {
   rootMargin: '0px',
   threshold: 0,
   load(element) {
     if (element.nodeName.toLowerCase() === 'picture') {
-      let img = document.createElement('img')
+      const img = document.createElement('img')
       if (isIE && element.getAttribute('data-iesrc')) {
         img.src = element.getAttribute('data-iesrc')
       }

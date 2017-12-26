@@ -16,7 +16,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
  * @const {boolean}
  * @private
  */
-var isIE = !!( /* @cc_on!@ */false || document.documentMode);
+var isIE = document.documentMode;
 
 var defaultConfig = {
   rootMargin: '0px',
