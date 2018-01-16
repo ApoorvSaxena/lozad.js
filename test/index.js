@@ -86,6 +86,25 @@ describe('lozad', () => {
     })
   })
 
+  describe('images inside viewport using a DOMNode reference', () => {
+    beforeEach(() => {
+      document.body.innerHTML = ''
+      const image = document.createElement('img')
+      image.dataset.src = Math.random()
+        .toString(36)
+        .substring(7)
+      document.body.appendChild(image)
+    })
+
+    it('should load the image', () => {
+      const node = document.querySelector('img')
+      const observer = lozad(node)
+      observer.observe()
+      assert.equal('true', node.dataset.loaded)
+      assert.equal(node.getAttribute('src'), node.dataset.src)
+    })
+  })
+
   describe('images inside viewport with different attributes', () => {
     beforeEach(() => {
       document.body.innerHTML = ''

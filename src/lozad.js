@@ -33,6 +33,12 @@ const onIntersection = load => (entries, observer) => {
   })
 }
 
+const getElements = selector => {
+  if(selector instanceof Element) return [selector]
+  if(selector instanceof NodeList) return selector
+  return document.querySelectorAll(selector)
+}
+
 export default function (selector = '.lozad', options = {}) {
   const {rootMargin, threshold, load} = {...defaultConfig, ...options}
   let observer
@@ -46,7 +52,8 @@ export default function (selector = '.lozad', options = {}) {
 
   return {
     observe() {
-      const elements = document.querySelectorAll(selector)
+      const elements = getElements(selector)
+
       for (let i = 0; i < elements.length; i++) {
         if (isLoaded(elements[i])) {
           continue
