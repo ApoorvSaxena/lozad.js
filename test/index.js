@@ -113,7 +113,6 @@ describe('lozad', () => {
         .toString(36)
         .substring(7)
       document.body.appendChild(image)
-
       const imageTwo = document.createElement('img')
       imageTwo.dataset.src = Math.random()
         .toString(36)
@@ -125,7 +124,7 @@ describe('lozad', () => {
       const nodes = document.querySelectorAll('img')
       const observer = lozad(nodes)
       observer.observe()
-
+      assert.equal(nodes.length, 2)
       nodes.forEach(node => {
         assert.equal('true', node.dataset.loaded)
         assert.equal(node.getAttribute('src'), node.dataset.src)
