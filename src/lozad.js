@@ -34,8 +34,12 @@ const onIntersection = load => (entries, observer) => {
 }
 
 const getElements = selector => {
-  if(selector instanceof Element) return [selector]
-  if(selector instanceof NodeList) return selector
+  if (selector instanceof Element) {
+    return [selector]
+  }
+  if (selector instanceof NodeList) {
+    return selector
+  }
   return document.querySelectorAll(selector)
 }
 
