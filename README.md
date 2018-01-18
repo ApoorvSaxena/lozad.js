@@ -80,6 +80,12 @@ All you need to do now is just instantiate Lozad as follows:
 const observer = lozad(); // lazy loads elements with default selector as '.lozad'
 observer.observe();
 ```
+or with a DOM `Element` reference:
+```js
+const el = document.querySelector('img');
+const observer = lozad(el); // passing a `NodeList` (e.g. `document.querySelectorAll()`) is also valid
+observer.observe();
+```
 or with custom options:
 ```js
 const observer = lozad('.lozad', {
