@@ -81,6 +81,12 @@ All you need to do now is just instantiate Lozad as follows:
 const observer = lozad(); // lazy loads elements with default selector as '.lozad'
 observer.observe();
 ```
+or with a DOM `Element` reference:
+```js
+const el = document.querySelector('img');
+const observer = lozad(el); // passing a `NodeList` (e.g. `document.querySelectorAll()`) is also valid
+observer.observe();
+```
 or with custom options:
 ```js
 const observer = lozad('.lozad', {
@@ -104,6 +110,7 @@ lozad('.lozad', {
         // e.g. el.src = el.getAttribute('data-src');
         
         // for picture tag
+        // more information see in "Example with picture tag" section 
         var isIE = !!document.documentMode;
         if (element.nodeName.toLowerCase() === 'picture') {
              var img = document.createElement('img');
@@ -183,6 +190,7 @@ Checkout the [FAQ Wiki](https://github.com/ApoorvSaxena/lozad.js/wiki/Frequently
 
 ## Sites using Lozad.js
 
+* [gis.utah.gov](https://gis.utah.gov)
 * *[Add your site]* - See [Contributing section](./CONTRIBUTING.md)
 
 ## Support Lozad.js
