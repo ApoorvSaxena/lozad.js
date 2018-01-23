@@ -115,6 +115,67 @@
                 <h2>Image 12</h2>
             </article>
         </div>
+
+	    <!-- <picture> example -->
+
+	    <!-- SubMain -->
+	    <div id="sub-main">
+		    <article class="main-heading">
+			    <h1>&lt;picture> example</h1>
+			    <p style="font-size: 75%"><em>* You can open your network section in dev tools, for see how images are loading</em></p>
+		    </article>
+	    </div>
+	    <!-- Pictures -->
+	    <div id="pictures">
+		    <article class="screen">
+			    <div class="picture">
+				    <picture class="lozad-picture" style="display: block; min-height: 1rem;" data-iesrc="images/thumbs/picture-01.jpg">
+					    <source srcset="images/thumbs/picture-01.jpg" media="(min-width: 1280px)">
+					    <source srcset="images/thumbs/picture-02.jpg" media="(min-width: 980px)">
+					    <source srcset="images/thumbs/picture-03.jpg" media="(min-width: 320px)">
+					    <noscript><img src="images/thumbs/picture-01.jpg"></noscript>
+				    </picture>
+				    <h2>Example 1</h2>
+				    <pre>
+picture-01.jpg media="(min-width: 1280px)"
+picture-02.jpg media="(min-width: 980px)"
+picture-03.jpg media="(min-width: 320px)"
+			        </pre>
+			    </div>
+		    </article>
+		    <article class="screen">
+			    <div class="picture">
+				    <picture class="lozad-picture" style="display: block; min-height: 1rem;" data-iesrc="images/thumbs/picture-04.jpg">
+					    <source srcset="images/thumbs/picture-04.jpg" media="(min-width: 1280px)">
+					    <source srcset="images/thumbs/picture-05.jpg" media="(min-width: 980px)">
+					    <source srcset="images/thumbs/picture-06.jpg" media="(min-width: 320px)">
+					    <noscript><img src="images/thumbs/picture-04.jpg"></noscript>
+				    </picture>
+				    <h2>Example 2</h2>
+				    <pre>
+picture-04.jpg media="(min-width: 1280px)"
+picture-05.jpg media="(min-width: 980px)"
+picture-06.jpg media="(min-width: 320px)"
+			        </pre>
+			    </div>
+		    </article>
+		    <article class="screen">
+			    <div class="picture">
+				    <picture class="lozad-picture" style="display: block; min-height: 1rem;" data-iesrc="images/thumbs/picture-07.jpg">
+					    <source srcset="images/thumbs/picture-07.jpg" media="(min-width: 1280px)">
+					    <source srcset="images/thumbs/picture-08.jpg" media="(min-width: 980px)">
+					    <source srcset="images/thumbs/picture-09.jpg" media="(min-width: 320px)">
+					    <noscript><img src="images/thumbs/picture-07.jpg"></noscript>
+				    </picture>
+				    <h2>Example 3</h2>
+				    <pre>
+picture-07.jpg media="(min-width: 1280px)"
+picture-08.jpg media="(min-width: 980px)"
+picture-09.jpg media="(min-width: 320px)"
+			        </pre>
+			    </div>
+		    </article>
+	    </div>
     </div>
 
     <!-- Toastr resources for Notifications -->
@@ -145,7 +206,14 @@
         }
     })
 
+    // Picture observer
+    // with default `load` method
+    var pictureObserver = lozad('.lozad-picture', {
+	    threshold: 0.1
+    })
+
     observer.observe()
+    pictureObserver.observe()
     </script>
 </body>
 
