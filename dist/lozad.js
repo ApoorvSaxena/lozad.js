@@ -1,4 +1,4 @@
-/*! lozad.js - v1.1.0 - 2018-01-19
+/*! lozad.js - v1.1.1 - 2018-01-20
 * https://github.com/ApoorvSaxena/lozad.js
 * Copyright (c) 2018 Apoorv Saxena; Licensed MIT */
 
@@ -11,10 +11,24 @@
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
+/**
+ * Detect IE browser
+ * @const {boolean}
+ * @private
+ */
+var isIE = document.documentMode;
+
 var defaultConfig = {
   rootMargin: '0px',
   threshold: 0,
   load: function load(element) {
+    if (element.nodeName.toLowerCase() === 'picture') {
+      var img = document.createElement('img');
+      if (isIE && element.getAttribute('data-iesrc')) {
+        img.src = element.getAttribute('data-iesrc');
+      }
+      element.appendChild(img);
+    }
     if (element.getAttribute('data-src')) {
       element.src = element.getAttribute('data-src');
     }

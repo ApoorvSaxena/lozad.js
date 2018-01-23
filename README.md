@@ -26,6 +26,7 @@ It is written with an aim to lazy load images, iframes, ads, videos or any other
 - [Background](#yet-another-lazy-loading-javascript-library-why)
 - [Install](#install)
 - [Usage](#usage)
+- [Example with picture tag](#example-with-picture-tag)
 - [Browser Support](#browser-support)
 - [FAQs](#faqs)
 - [Contribute](#contribute)
@@ -107,6 +108,17 @@ lozad('.lozad', {
 
         // Custom implementation to load an element
         // e.g. el.src = el.getAttribute('data-src');
+        
+        // for picture tag
+        // more information see in "Example with picture tag" section 
+        var isIE = !!document.documentMode;
+        if (element.nodeName.toLowerCase() === 'picture') {
+             var img = document.createElement('img');
+             if (isIE && element.getAttribute('data-iesrc')) {
+                 img.src = element.getAttribute('data-iesrc');
+             }             
+             element.appendChild(img);
+        }
     }
 });
 ```
@@ -145,6 +157,28 @@ const coolImage = document.querySelector('.image-to-load-first')
 // ... trigger the load of a image before it appears on the viewport
 observer.triggerLoad(coolImage);
 ```
+
+## Example with picture tag
+
+Create _a broken_ picture element structure.  
+
+> IE browser don't support picture tag!  
+> You need to set `data-iesrc` attribute (only for your picture tags) with source for IE browser
+
+```html
+<!-- For an element to be caught, add a block type that is different from the inline and some min-height for correct caught into view -->
+<picture class="lozad" style="display: block; min-height: 1rem" data-iesrc="images/thumbs/04.jpg">
+    <source srcset="images/thumbs/04.jpg" media="(min-width: 1280px)">
+    <source srcset="images/thumbs/05.jpg" media="(min-width: 980px)">
+    <source srcset="images/thumbs/06.jpg" media="(min-width: 320px)">
+    <!-- NO img element -->
+    <!-- instead of img element, there will be the last source with the minimum dimensions -->
+    <!-- for disabled JS you can set <noscript><img src="images/thumbs/04.jpg"></noscript> -->
+</picture>
+``` 
+
+When _lozad_ load this picture element, it will fix it.  
+That's all ))
 
 ## Browser Support
 

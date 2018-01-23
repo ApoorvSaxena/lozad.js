@@ -1,7 +1,21 @@
+/**
+ * Detect IE browser
+ * @const {boolean}
+ * @private
+ */
+const isIE = document.documentMode
+
 const defaultConfig = {
   rootMargin: '0px',
   threshold: 0,
   load(element) {
+    if (element.nodeName.toLowerCase() === 'picture') {
+      const img = document.createElement('img')
+      if (isIE && element.getAttribute('data-iesrc')) {
+        img.src = element.getAttribute('data-iesrc')
+      }
+      element.appendChild(img)
+    }
     if (element.getAttribute('data-src')) {
       element.src = element.getAttribute('data-src')
     }
