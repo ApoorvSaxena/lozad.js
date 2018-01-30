@@ -35,15 +35,14 @@ function markAsLoaded(element) {
 const isLoaded = element => element.getAttribute('data-loaded') === 'true'
 
 const onIntersection = load => (entries, observer) => {
-  entries.forEach(entry => {
-    if (entry.intersectionRatio > 0) {
+  entries
+    .filter(entry => entry.intersectionRatio > 0)
+    .forEach(entry => {
       observer.unobserve(entry.target)
-
       if (!isLoaded(entry.target)) {
         load(entry.target)
         markAsLoaded(entry.target)
       }
-    }
   })
 }
 
