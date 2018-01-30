@@ -32,7 +32,7 @@ function markAsLoaded(element) {
   element.setAttribute('data-loaded', true)
 }
 
-const isLoaded = element => element.getAttribute('data-loaded')
+const isLoaded = element => element.getAttribute('data-loaded') === 'true'
 
 const onIntersection = load => (entries, observer) => {
   entries
@@ -43,7 +43,7 @@ const onIntersection = load => (entries, observer) => {
         load(entry.target)
         markAsLoaded(entry.target)
       }
-  })
+    })
 }
 
 const getElements = selector => {
