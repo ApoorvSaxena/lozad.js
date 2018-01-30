@@ -46,7 +46,7 @@ function markAsLoaded(element) {
 }
 
 var isLoaded = function isLoaded(element) {
-  return element.getAttribute('data-loaded') === 'true';
+  return element.getAttribute('data-loaded');
 };
 
 var onIntersection = function onIntersection(load) {
