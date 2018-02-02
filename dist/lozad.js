@@ -1,4 +1,4 @@
-/*! lozad.js - v1.2.0 - 2018-01-24
+/*! lozad.js - v1.2.0 - 2018-01-30
 * https://github.com/ApoorvSaxena/lozad.js
 * Copyright (c) 2018 Apoorv Saxena; Licensed MIT */
 
@@ -51,14 +51,13 @@ var isLoaded = function isLoaded(element) {
 
 var onIntersection = function onIntersection(load) {
   return function (entries, observer) {
-    entries.forEach(function (entry) {
-      if (entry.intersectionRatio > 0) {
-        observer.unobserve(entry.target);
-
-        if (!isLoaded(entry.target)) {
-          load(entry.target);
-          markAsLoaded(entry.target);
-        }
+    entries.filter(function (entry) {
+      return entry.intersectionRatio > 0;
+    }).forEach(function (entry) {
+      observer.unobserve(entry.target);
+      if (!isLoaded(entry.target)) {
+        load(entry.target);
+        markAsLoaded(entry.target);
       }
     });
   };
