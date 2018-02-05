@@ -14,6 +14,7 @@ const defaultConfig = {
       if (isIE && element.getAttribute('data-iesrc')) {
         img.src = element.getAttribute('data-iesrc')
       }
+      img.alt = element.getAttribute('data-alt') || ''
       element.appendChild(img)
     }
     if (element.getAttribute('data-src')) {

@@ -183,4 +183,37 @@ describe('lozad', () => {
       assert.equal(image.getAttribute('src'), image.dataset.src)
     })
   })
+
+  describe('should include the image with alt attribute for picture tags', () => {
+    beforeEach(() => {
+      document.body.innerHTML = ''
+      const picture = document.createElement('picture')
+      picture.dataset.src = Math.random()
+        .toString(36)
+        .substring(7)
+      document.body.appendChild(picture)
+    })
+
+    it('should include an empty tag as default', () => {
+      const observer = lozad()
+      const picture = document.getElementsByTagName('picture')[0]
+      picture.setAttribute('class', 'lozad')
+      observer.triggerLoad(picture)
+      assert.equal('true', picture.dataset.loaded)
+      const img = document.getElementsByTagName('img')[0]
+      assert.equal(img.getAttribute('alt'), '')
+    })
+
+    it('should set specific alt attr.', () => {
+      const dataAltAttr = 'test alt attr'
+      const observer = lozad()
+      const picture = document.getElementsByTagName('picture')[0]
+      picture.setAttribute('class', 'lozad')
+      picture.setAttribute('data-alt', dataAltAttr)
+      observer.triggerLoad(picture)
+      assert.equal('true', picture.dataset.loaded)
+      const img = document.getElementsByTagName('img')[0]
+      assert.equal(img.getAttribute('alt'), dataAltAttr)
+    })
+  })
 })
