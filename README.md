@@ -112,6 +112,16 @@ lozad('.lozad', {
 });
 ```
 
+If you would like to override the `loaded` state of elements, you can add the loaded option:
+```js
+lozad('.lozad', {
+    loaded: function(el) {
+        // Custom implementation on a loaded element
+        el.classList.add('loaded');
+    }
+});
+```
+
 If you want to lazy load dynamically added elements:
 
 ```js
