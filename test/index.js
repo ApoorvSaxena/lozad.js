@@ -182,5 +182,17 @@ describe('lozad', () => {
       assert.equal('true', image.dataset.loaded)
       assert.equal(image.getAttribute('src'), image.dataset.src)
     })
+
+    it('should run loaded function after loading an element', () => {
+      const observer = lozad('.lozad', {
+        loaded(element) {
+          element.classList.add('loaded')
+        }
+      })
+      const image = document.getElementsByTagName('img')[0]
+      image.setAttribute('class', 'lozad')
+      observer.triggerLoad(image)
+      assert.equal(true, image.classList.contains('loaded'))
+    })
   })
 })

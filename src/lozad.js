@@ -25,6 +25,9 @@ const defaultConfig = {
     if (element.getAttribute('data-background-image')) {
       element.style.backgroundImage = `url(${element.getAttribute('data-background-image')})`
     }
+  },
+  loaded(element) {
+    markAsLoaded(element)
   }
 }
 
@@ -58,7 +61,7 @@ const getElements = selector => {
 }
 
 export default function (selector = '.lozad', options = {}) {
-  const {rootMargin, threshold, load} = {...defaultConfig, ...options}
+  const {rootMargin, threshold, load, loaded} = {...defaultConfig, ...options}
   let observer
 
   if (window.IntersectionObserver) {
@@ -81,7 +84,7 @@ export default function (selector = '.lozad', options = {}) {
           continue
         }
         load(elements[i])
-        markAsLoaded(elements[i])
+        loaded(elements[i])
       }
     },
     triggerLoad(element) {
@@ -90,7 +93,7 @@ export default function (selector = '.lozad', options = {}) {
       }
 
       load(element)
-      markAsLoaded(element)
+      loaded(element)
     }
   }
 }
