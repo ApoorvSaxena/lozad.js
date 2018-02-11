@@ -1,4 +1,4 @@
-/*! lozad.js - v1.2.0 - 2018-02-08
+/*! lozad.js - v1.2.0 - 2018-02-10
 * https://github.com/ApoorvSaxena/lozad.js
 * Copyright (c) 2018 Apoorv Saxena; Licensed MIT */
 
@@ -39,9 +39,7 @@ var defaultConfig = {
       element.style.backgroundImage = 'url(' + element.getAttribute('data-background-image') + ')';
     }
   },
-  loaded: function loaded(element) {
-    markAsLoaded(element);
-  }
+  loaded: function loaded() {}
 };
 
 function markAsLoaded(element) {
@@ -52,7 +50,7 @@ var isLoaded = function isLoaded(element) {
   return element.getAttribute('data-loaded') === 'true';
 };
 
-var onIntersection = function onIntersection(load) {
+var onIntersection = function onIntersection(load, loaded) {
   return function (entries, observer) {
     entries.forEach(function (entry) {
       if (entry.intersectionRatio > 0) {
@@ -61,6 +59,7 @@ var onIntersection = function onIntersection(load) {
         if (!isLoaded(entry.target)) {
           load(entry.target);
           markAsLoaded(entry.target);
+          loaded(entry.target);
         }
       }
     });
@@ -90,7 +89,7 @@ var lozad = function () {
   var observer = void 0;
 
   if (window.IntersectionObserver) {
-    observer = new IntersectionObserver(onIntersection(load), {
+    observer = new IntersectionObserver(onIntersection(load, loaded), {
       rootMargin: rootMargin,
       threshold: threshold
     });
@@ -109,6 +108,7 @@ var lozad = function () {
           continue;
         }
         load(elements[i]);
+        markAsLoaded(elements[i]);
         loaded(elements[i]);
       }
     },
@@ -118,6 +118,7 @@ var lozad = function () {
       }
 
       load(element);
+      markAsLoaded(element);
       loaded(element);
     }
   };

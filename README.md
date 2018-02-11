@@ -112,7 +112,9 @@ lozad('.lozad', {
 });
 ```
 
-If you would like to override the `loaded` state of elements, you can add the loaded option:
+If you would like to extend the `loaded` state of elements, you can add the loaded option:
+
+> **Note**: The `"data-loaded"="true"` attribute is used by lozad to determine if an element has been previously loaded.
 ```js
 lozad('.lozad', {
     loaded: function(el) {

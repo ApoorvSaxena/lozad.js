@@ -26,9 +26,7 @@ const defaultConfig = {
       element.style.backgroundImage = `url(${element.getAttribute('data-background-image')})`
     }
   },
-  loaded(element) {
-    markAsLoaded(element)
-  }
+  loaded() {}
 }
 
 function markAsLoaded(element) {
@@ -37,7 +35,7 @@ function markAsLoaded(element) {
 
 const isLoaded = element => element.getAttribute('data-loaded') === 'true'
 
-const onIntersection = load => (entries, observer) => {
+const onIntersection = (load, loaded) => (entries, observer) => {
   entries.forEach(entry => {
     if (entry.intersectionRatio > 0) {
       observer.unobserve(entry.target)
@@ -45,6 +43,7 @@ const onIntersection = load => (entries, observer) => {
       if (!isLoaded(entry.target)) {
         load(entry.target)
         markAsLoaded(entry.target)
+        loaded(entry.target)
       }
     }
   })
@@ -65,7 +64,7 @@ export default function (selector = '.lozad', options = {}) {
   let observer
 
   if (window.IntersectionObserver) {
-    observer = new IntersectionObserver(onIntersection(load), {
+    observer = new IntersectionObserver(onIntersection(load, loaded), {
       rootMargin,
       threshold
     })
@@ -84,6 +83,7 @@ export default function (selector = '.lozad', options = {}) {
           continue
         }
         load(elements[i])
+        markAsLoaded(elements[i])
         loaded(elements[i])
       }
     },
@@ -93,6 +93,7 @@ export default function (selector = '.lozad', options = {}) {
       }
 
       load(element)
+      markAsLoaded(element)
       loaded(element)
     }
   }
