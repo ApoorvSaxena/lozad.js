@@ -231,30 +231,5 @@ describe('lozad', () => {
       assert.equal('true', image.dataset.loaded)
       assert.equal(image.getAttribute('src'), image.dataset.src)
     })
-
-    // It('should run loaded function after loading an element', () => {
-    //   const observer = lozad('.lozad', {
-    //     loaded(element) {
-    //       element.classList.add('loaded')
-    //     }
-    //   })
-    //   const image = document.getElementsByTagName('img')[0]
-    //   image.setAttribute('class', 'lozad')
-    //   observer.triggerLoad(image)
-    //   assert.equal(true, image.classList.contains('loaded'))
-    // })
-
-    // it('should set data attribute when custom implementation of loaded is used', () => {
-    //   const observer = lozad('.lozad', {
-    //     loaded(element) {
-    //       element.classList.add('loaded')
-    //     }
-    //   })
-    //   const image = document.getElementsByTagName('img')[0]
-    //   image.setAttribute('class', 'lozad')
-    //   observer.triggerLoad(image)
-    //   assert.equal(true, image.classList.contains('loaded'))
-    //   assert.equal('true', image.dataset.loaded)
-    // })
   })
 })
