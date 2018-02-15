@@ -1,4 +1,4 @@
-/*! lozad.js - v1.2.0 - 2018-01-24
+/*! lozad.js - v1.2.0 - 2018-02-10
 * https://github.com/ApoorvSaxena/lozad.js
 * Copyright (c) 2018 Apoorv Saxena; Licensed MIT */
 
@@ -38,7 +38,8 @@ var defaultConfig = {
     if (element.getAttribute('data-background-image')) {
       element.style.backgroundImage = 'url(' + element.getAttribute('data-background-image') + ')';
     }
-  }
+  },
+  loaded: function loaded() {}
 };
 
 function markAsLoaded(element) {
@@ -49,7 +50,7 @@ var isLoaded = function isLoaded(element) {
   return element.getAttribute('data-loaded') === 'true';
 };
 
-var onIntersection = function onIntersection(load) {
+var onIntersection = function onIntersection(load, loaded) {
   return function (entries, observer) {
     entries.forEach(function (entry) {
       if (entry.intersectionRatio > 0) {
@@ -58,6 +59,7 @@ var onIntersection = function onIntersection(load) {
         if (!isLoaded(entry.target)) {
           load(entry.target);
           markAsLoaded(entry.target);
+          loaded(entry.target);
         }
       }
     });
@@ -81,12 +83,13 @@ var lozad = function () {
   var _defaultConfig$option = _extends({}, defaultConfig, options),
       rootMargin = _defaultConfig$option.rootMargin,
       threshold = _defaultConfig$option.threshold,
-      load = _defaultConfig$option.load;
+      load = _defaultConfig$option.load,
+      loaded = _defaultConfig$option.loaded;
 
   var observer = void 0;
 
   if (window.IntersectionObserver) {
-    observer = new IntersectionObserver(onIntersection(load), {
+    observer = new IntersectionObserver(onIntersection(load, loaded), {
       rootMargin: rootMargin,
       threshold: threshold
     });
@@ -106,6 +109,7 @@ var lozad = function () {
         }
         load(elements[i]);
         markAsLoaded(elements[i]);
+        loaded(elements[i]);
       }
     },
     triggerLoad: function triggerLoad(element) {
@@ -115,6 +119,7 @@ var lozad = function () {
 
       load(element);
       markAsLoaded(element);
+      loaded(element);
     }
   };
 };

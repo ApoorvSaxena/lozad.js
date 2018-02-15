@@ -112,6 +112,18 @@ lozad('.lozad', {
 });
 ```
 
+If you would like to extend the `loaded` state of elements, you can add the loaded option:
+
+> **Note**: The `"data-loaded"="true"` attribute is used by lozad to determine if an element has been previously loaded.
+```js
+lozad('.lozad', {
+    loaded: function(el) {
+        // Custom implementation on a loaded element
+        el.classList.add('loaded');
+    }
+});
+```
+
 If you want to lazy load dynamically added elements:
 
 ```js
