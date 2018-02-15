@@ -119,7 +119,7 @@
 	    <!-- <picture> example -->
 
 	    <!-- SubMain -->
-	    <div id="sub-main">
+	    <div class="sub-main">
 		    <article class="main-heading">
 			    <h1>&lt;picture> example</h1>
 			    <p style="font-size: 75%"><em>* You can open your network section in dev tools, for see how images are loading</em></p>
@@ -178,6 +178,19 @@ picture-09.jpg media="(min-width: 320px)"
 	    </div>
     </div>
 
+    <!-- <iframe> example -->
+
+    <div class="sub-main">
+      <article class="main-heading">
+        <h1>&lt;iframe> example</h1>
+      </article>
+    </div>
+    <div id="iframe">
+      <article class="frame">
+        <iframe width="560" height="315" data-src="https://www.youtube.com/embed/Rt0oX-4Hbxc" class="lozad" frameborder="0" allowfullscreen data-index="1"></iframe>
+      </article>
+    </div>
+
     <!-- Toastr resources for Notifications -->
     <script src="assets/js/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
@@ -200,8 +213,7 @@ picture-09.jpg media="(min-width: 320px)"
         load: function(el) {
             el.src = el.getAttribute("data-src");
             el.onload = function() {
-                el.style.width = "100%";
-                toastr["success"]("Image " + el.getAttribute("data-index") + " lazy loaded.")
+              toastr["success"](el.localName + " " + el.getAttribute("data-index") + " lazy loaded.")
             }
         }
     })
