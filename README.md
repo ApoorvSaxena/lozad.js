@@ -172,7 +172,7 @@ That's all ))
 ## Example with iframe
 
 ```html
-<iframe width="560" height="315" data-src="https://www.youtube.com/embed/Rt0oX-4Hbxc" class="lozad" frameborder="0" allowfullscreen></iframe>
+<iframe data-src="embed.html" class="lozad"></iframe>
 ```
 That's all, just add the `lozad` class.
 
