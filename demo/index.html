@@ -213,7 +213,7 @@ picture-09.jpg media="(min-width: 320px)"
         load: function(el) {
             el.src = el.getAttribute("data-src");
             el.onload = function() {
-              toastr["success"](el.localName + " " + el.getAttribute("data-index") + " lazy loaded.")
+              toastr["success"](el.localName.toUpperCase() + " " + el.getAttribute("data-index") + " lazy loaded.")
             }
         }
     })
