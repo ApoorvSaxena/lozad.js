@@ -181,6 +181,13 @@ Create _a broken_ picture element structure.
 When _lozad_ load this picture element, it will fix it.
 That's all ))
 
+## Example with iframe
+
+```html
+<iframe data-src="embed.html" class="lozad"></iframe>
+```
+That's all, just add the `lozad` class.
+
 ## Browser Support
 
 Available in [latest browsers](http://caniuse.com/#feat=intersectionobserver). If browser support is not available, then make use of this [polyfill](https://www.npmjs.com/package/intersection-observer).
