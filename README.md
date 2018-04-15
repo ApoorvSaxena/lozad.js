@@ -196,18 +196,38 @@ Available in [latest browsers](http://caniuse.com/#feat=intersectionobserver). I
 
 Checkout the [FAQ Wiki](https://github.com/ApoorvSaxena/lozad.js/wiki/Frequently-Asked-Questions) for some common gotchas to be aware of while using **lozad.js**
 
-## Sites using Lozad.js
+## More than 3000 sites are using Lozad.js, here's few of them:
 
 * [gis.utah.gov](https://gis.utah.gov)
+* [Reitmans](https://www.reitmans.com/)
+* [Black Desert Online](https://www.blackdesertonline.com/)
+* [Barkers](https://www.barkersonline.co.nz/)
+* [Promoda](http://www.promoda.com.mx/)
+* [Dormy Golf & Fashion AB](https://www.dormy.se/)
+* [L'ovedbaby](https://www.lovedbaby.com/)
+* [LitNet](https://litnet.com/)
+* [CARD.com](https://www.card.com/)
+* [Wittchen](https://www.wittchen.com/)
+* [Fiege Group](https://www.fiege.com/)
+* [Kolgot](https://kolgot.net/)
+* [CYSM - Colombia y su Moda](https://cysm.com/)
+* [Siege Media](https://www.siegemedia.com/)
+* [Hi-Fi Class](https://www.hfc.com.pl/)
+* [StagonNews](http://www.stagonnews.gr/)
+* [Insurance Zebra](https://www.thezebra.com/)
+* [Summoners Inn](https://www.summoners-inn.de/de/start)
+* [Roots](https://roots.io/)
+* [Chrdk](https://chrdk.ru/)
 * [Giving Assistant](https://givingassistant.org/)
 * [Just A Pinch Recipe Club](https://www.justapinch.com/)
 * [am](https://www.am.com.mx/)
 * [Admiral Markets](https://admiralmarkets.com/)
 * [KickResume](https://www.kickresume.com/)
+* [Paper Tiger](https://www.papertiger.com/)
 * [Gmelius](https://gmelius.com/)
 * [Dormy](https://www.dormy.se/)
 * [Nabobil](https://nabobil.no/)
-* [Atbox.io](https://atbox.io/)
+* [Atbox](https://atbox.io/)
 * *[Add your site]* - See [Contributing section](./CONTRIBUTING.md)
 
 ## Support Lozad.js
