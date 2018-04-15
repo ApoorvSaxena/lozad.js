@@ -23,7 +23,7 @@ const defaultConfig = {
       element.srcset = element.getAttribute('data-srcset')
     }
     if (element.getAttribute('data-background-image')) {
-      element.style.backgroundImage = `url(${element.getAttribute('data-background-image')})`
+      element.style.backgroundImage = `url('${element.getAttribute('data-background-image')}')`
     }
   },
   loaded() {}
