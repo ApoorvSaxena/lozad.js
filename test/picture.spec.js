@@ -1,6 +1,6 @@
 import puppeteer from "puppeteer";
 
-const LOZAD_DEMO = "http://localhost:3000";
+const LOZAD_DEMO_URL = "http://localhost:3000";
 
 let page;
 let browser;
@@ -10,6 +10,9 @@ const height = 1080;
 function wait(ms) {
   return new Promise(resolve => setTimeout(() => resolve(), ms));
 }
+
+// Utility function to scroll the page (by increments) to the bottom, wait a little and scroll the page all the way up.
+// => in order to trigger lazy-loading behavior hooked to the intersection observer
 
 async function scrollUpAndDown(page){
   // Get the height of the rendered page
@@ -51,9 +54,10 @@ afterAll(() => {
 });
 
 describe("Picture elements", () => {
-  //just a dummy test,
+
+  //just a dummy test, to delete ?
   test("assert that demo page is loaded and correct (<title> is correct)", async () => {
-    await page.goto(LOZAD_DEMO);
+    await page.goto(LOZAD_DEMO_URL);
     const title = await page.title();
     expect(title).toBe("Lozad.js: Highly performant lazy loader");
   });
@@ -61,34 +65,19 @@ describe("Picture elements", () => {
   test(
     "lazyloaded picture tags should have an <img> injected, with correct src",
     async () => {
-      await page.goto(LOZAD_DEMO);
+      await page.goto(LOZAD_DEMO_URL);
 
       await scrollUpAndDown(page);
 
-      await page.waitForSelector("#pictures");
-      /*await page.evaluate(_ => {
-        window.scrollBy(0, window.innerHeight);
-      });*/
-      /*await page.waitFor(_=>{
-      window.scrollBy(0, window.innerHeight);
-    });*/
-      //await page.waitFor(5000);
+      await page.waitForSelector("#pictures"); //?
 
-      const pictureImgs = await page.$$eval(".lozad-picture img", imgs => imgs.map(e=>e.currentSrc));
+      const pictureImgsCurrentSrc = await page.$$eval(".lozad-picture img", imgs => imgs.map(e=>e.currentSrc));
 
-      /*imgs = await page.evaluate(_ => {
-      let imgz = document.querySelectorAll(".lozad-picture img");
-      imgz.forEach(e=>{console.log(e.currentSrc)});
-      return imgz;
-      //img
-    });*/
-      //console.log(imgs)
-      console.log(pictureImgs);
+      // test if we have 3 <img> tags injected after scroll
+      expect(pictureImgsCurrentSrc.length).toBe(3);
 
-      expect(pictureImgs.length).toBe(3);
-
-      expect(pictureImgs).toEqual(["http://localhost:3000/images/thumbs/picture-01.jpg","http://localhost:3000/images/thumbs/picture-04.jpg","http://localhost:3000/images/thumbs/picture-07.jpg"])
-
+      // test if currentSrc attributes on imgs are relevant
+      expect(pictureImgsCurrentSrc).toEqual(["http://localhost:3000/images/thumbs/picture-01.jpg","http://localhost:3000/images/thumbs/picture-04.jpg","http://localhost:3000/images/thumbs/picture-07.jpg"])
 
     },
     16000
