@@ -2,6 +2,12 @@ import puppeteer from "puppeteer";
 
 const LOZAD_DEMO_URL = "http://localhost:3000";
 
+const LARGE_PICTURE_URLS = [
+  `${LOZAD_DEMO_URL}/images/thumbs/picture-01.jpg`,
+  `${LOZAD_DEMO_URL}/images/thumbs/picture-04.jpg`,
+  `${LOZAD_DEMO_URL}/images/thumbs/picture-07.jpg`
+];
+
 let page;
 let browser;
 const width = 1920;
@@ -14,7 +20,7 @@ function wait(ms) {
 // Utility function to scroll the page (by increments) to the bottom, wait a little and scroll the page all the way up.
 // => in order to trigger lazy-loading behavior hooked to the intersection observer
 
-async function scrollUpAndDown(page){
+async function scrollUpAndDown(page) {
   // Get the height of the rendered page
   const bodyHandle = await page.$("body");
   const { height } = await bodyHandle.boundingBox();
@@ -54,7 +60,6 @@ afterAll(() => {
 });
 
 describe("Picture elements", () => {
-
   //just a dummy test, to delete ?
   test("assert that demo page is loaded and correct (<title> is correct)", async () => {
     await page.goto(LOZAD_DEMO_URL);
@@ -71,14 +76,16 @@ describe("Picture elements", () => {
 
       await page.waitForSelector("#pictures"); //?
 
-      const pictureImgsCurrentSrc = await page.$$eval(".lozad-picture img", imgs => imgs.map(e=>e.currentSrc));
+      const pictureImgsCurrentSrc = await page.$$eval(
+        ".lozad-picture img",
+        imgs => imgs.map(e => e.currentSrc)
+      );
 
       // test if we have 3 <img> tags injected after scroll
       expect(pictureImgsCurrentSrc.length).toBe(3);
 
       // test if currentSrc attributes on imgs are relevant
-      expect(pictureImgsCurrentSrc).toEqual(["http://localhost:3000/images/thumbs/picture-01.jpg","http://localhost:3000/images/thumbs/picture-04.jpg","http://localhost:3000/images/thumbs/picture-07.jpg"])
-
+      expect(pictureImgsCurrentSrc).toEqual(LARGE_PICTURE_URLS);
     },
     16000
   );
