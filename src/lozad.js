@@ -28,6 +28,9 @@ const defaultConfig = {
     if (element.getAttribute('data-background-image')) {
       element.style.backgroundImage = `url('${element.getAttribute('data-background-image')}')`
     }
+    if (element.getAttribute('data-toggle-class')) {
+      element.classList.toggle(element.getAttribute('data-toggle-class'))
+    }
   },
   loaded() {}
 }
