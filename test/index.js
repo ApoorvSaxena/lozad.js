@@ -236,14 +236,14 @@ describe('lozad', () => {
   describe('picture inside viewport with different class', () => {
     const src = Math.random()
       .toString(36)
-      .substring(7);
+      .substring(7)
 
     beforeEach(() => {
       document.body.innerHTML = ''
       const picture = document.createElement('picture')
       picture.setAttribute('data-alt', 'alt text')
-      const source = document.createElement('source');
-      source.setAttribute('srcset', src);
+      const source = document.createElement('source')
+      source.setAttribute('srcset', src)
       picture.appendChild(source)
       document.body.appendChild(picture)
     })
@@ -277,6 +277,6 @@ describe('lozad', () => {
 
       const img = picture.children[1]
       assert.equal('alt text', img.getAttribute('alt'))
-    });
+    })
   })
 })
