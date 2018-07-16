@@ -232,4 +232,51 @@ describe('lozad', () => {
       assert.equal(image.getAttribute('src'), image.dataset.src)
     })
   })
+
+  describe('picture inside viewport with different class', () => {
+    const src = Math.random()
+      .toString(36)
+      .substring(7)
+
+    beforeEach(() => {
+      document.body.innerHTML = ''
+      const picture = document.createElement('picture')
+      picture.setAttribute('data-alt', 'alt text')
+      const source = document.createElement('source')
+      source.setAttribute('srcset', src)
+      picture.appendChild(source)
+      document.body.appendChild(picture)
+    })
+
+    it('should load the picture', () => {
+      const className = 'test-class'
+      const observer = lozad('.' + className)
+      const picture = document.getElementsByTagName('picture')[0]
+      picture.setAttribute('class', className)
+      observer.observe()
+      assert.equal('true', picture.dataset.loaded)
+    })
+
+    it('should append image after last source', () => {
+      const className = 'test-class'
+      const observer = lozad('.' + className)
+      const picture = document.getElementsByTagName('picture')[0]
+      picture.setAttribute('class', className)
+      observer.observe()
+
+      const img = picture.children[1]
+      assert.equal('IMG', img.tagName)
+    })
+
+    it('should add alt attribute to image', () => {
+      const className = 'test-class'
+      const observer = lozad('.' + className)
+      const picture = document.getElementsByTagName('picture')[0]
+      picture.setAttribute('class', className)
+      observer.observe()
+
+      const img = picture.children[1]
+      assert.equal('alt text', img.getAttribute('alt'))
+    })
+  })
 })
