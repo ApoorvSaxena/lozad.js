@@ -32,11 +32,11 @@ var defaultConfig = {
       }
       element.appendChild(img);
     }
-    if (element.getAttribute('data-src')) {
-      element.src = element.getAttribute('data-src');
-    }
     if (element.getAttribute('data-srcset')) {
       element.srcset = element.getAttribute('data-srcset');
+    }
+    if (element.getAttribute('data-src')) {
+      element.src = element.getAttribute('data-src');
     }
     if (element.getAttribute('data-background-image')) {
       element.style.backgroundImage = 'url(\'' + element.getAttribute('data-background-image') + '\')';

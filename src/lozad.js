@@ -24,7 +24,7 @@ const defaultConfig = {
     }
     if (element.getAttribute('data-src')) {
       element.src = element.getAttribute('data-src')
-    }    
+    }
     if (element.getAttribute('data-background-image')) {
       element.style.backgroundImage = `url('${element.getAttribute('data-background-image')}')`
     }
