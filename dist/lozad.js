@@ -1,4 +1,4 @@
-/*! lozad.js - v1.4.0 - 2018-07-14
+/*! lozad.js - v1.4.0 - 2018-04-22
 * https://github.com/ApoorvSaxena/lozad.js
 * Copyright (c) 2018 Apoorv Saxena; Licensed MIT */
 
@@ -26,9 +26,6 @@ var defaultConfig = {
       var img = document.createElement('img');
       if (isIE && element.getAttribute('data-iesrc')) {
         img.src = element.getAttribute('data-iesrc');
-      }
-      if (element.getAttribute('data-alt')) {
-        img.alt = element.getAttribute('data-alt');
       }
       element.appendChild(img);
     }
