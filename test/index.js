@@ -279,4 +279,27 @@ describe('lozad', () => {
       assert.equal('alt text', img.getAttribute('alt'))
     })
   })
+
+  describe('toggle class', () => {
+    beforeEach(() => {
+      document.body.innerHTML = ''
+      const el = document.createElement('div')
+      el.dataset.toggleClass = 'test'
+      el.setAttribute('class', 'lozad')
+      document.body.appendChild(el)
+    })
+
+    it('should not toggle till observe function is called', () => {
+      lozad()
+      const el = document.getElementsByTagName('div')[0]
+      assert.equal(false, el.classList.contains('test'))
+    })
+
+    it('should toggle after observe function is called', () => {
+      const observer = lozad()
+      const el = document.getElementsByTagName('div')[0]
+      observer.observe()
+      assert.equal(true, el.classList.contains('test'))
+    })
+  })
 })
