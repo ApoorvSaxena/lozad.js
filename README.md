@@ -166,15 +166,17 @@ Create _a broken_ picture element structure.
 > IE browser don't support picture tag!
 > You need to set `data-iesrc` attribute (only for your picture tags) with source for IE browser
 
+> `data-alt` attribute can be added to picture tag for use in `alt` attribute of lazy-loaded images
+
 ```html
 <!-- For an element to be caught, add a block type that is different from the inline and some min-height for correct caught into view -->
-<picture class="lozad" style="display: block; min-height: 1rem" data-iesrc="images/thumbs/04.jpg">
+<picture class="lozad" style="display: block; min-height: 1rem" data-iesrc="images/thumbs/04.jpg" data-alt="">
     <source srcset="images/thumbs/04.jpg" media="(min-width: 1280px)">
     <source srcset="images/thumbs/05.jpg" media="(min-width: 980px)">
     <source srcset="images/thumbs/06.jpg" media="(min-width: 320px)">
     <!-- NO img element -->
     <!-- instead of img element, there will be the last source with the minimum dimensions -->
-    <!-- for disabled JS you can set <noscript><img src="images/thumbs/04.jpg"></noscript> -->
+    <!-- for disabled JS you can set <noscript><img src="images/thumbs/04.jpg" alt=""></noscript> -->
 </picture>
 ```
 
@@ -187,6 +189,15 @@ That's all ))
 <iframe data-src="embed.html" class="lozad"></iframe>
 ```
 That's all, just add the `lozad` class.
+
+## Example toggling class
+
+```html
+<div data-toggle-class="active" class="lozad">
+    <!-- content -->
+</div>
+```
+The `active` class will be toggled on the element when it enters the browser’s viewport.
 
 ## Browser Support
 

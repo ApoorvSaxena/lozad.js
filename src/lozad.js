@@ -14,6 +14,9 @@ const defaultConfig = {
       if (isIE && element.getAttribute('data-iesrc')) {
         img.src = element.getAttribute('data-iesrc')
       }
+      if (element.getAttribute('data-alt')) {
+        img.alt = element.getAttribute('data-alt')
+      }
       element.appendChild(img)
     }
     if (element.getAttribute('data-src')) {
@@ -24,6 +27,9 @@ const defaultConfig = {
     }
     if (element.getAttribute('data-background-image')) {
       element.style.backgroundImage = `url('${element.getAttribute('data-background-image')}')`
+    }
+    if (element.getAttribute('data-toggle-class')) {
+      element.classList.toggle(element.getAttribute('data-toggle-class'))
     }
   },
   loaded() {}
