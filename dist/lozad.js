@@ -1,4 +1,4 @@
-/*! lozad.js - v1.5.0 - 2018-07-16
+/*! lozad.js - v1.6.0 - 2018-07-24
 * https://github.com/ApoorvSaxena/lozad.js
 * Copyright (c) 2018 Apoorv Saxena; Licensed MIT */
 
@@ -16,7 +16,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
  * @const {boolean}
  * @private
  */
-var isIE = document.documentMode;
+var isIE = typeof document !== 'undefined' && document.documentMode;
 
 var defaultConfig = {
   rootMargin: '0px',
