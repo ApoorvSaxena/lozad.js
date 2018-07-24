@@ -3,7 +3,7 @@
  * @const {boolean}
  * @private
  */
-const isIE = document.documentMode
+const isIE = typeof document !== 'undefined' && document.documentMode
 
 const defaultConfig = {
   rootMargin: '0px',
