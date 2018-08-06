@@ -6,8 +6,8 @@
   "homepage": "https://github.com/ApoorvSaxena/lozad.js",
   "scripts": {
     "test": "nyc mocha",
-    "build": "cross-env NODE_ENV=production node build.js",
-    "build:watch": "cross-env NODE_ENV=development node build.js",
+    "build": "rollup -c",
+    "build:watch": "rollup -c -w -m inline",
     "prepublish": "npm run build",
     "prelint": "prettier --single-quote --no-semi --no-bracket-spacing --trailing-comma none --write \"lib/**/*.js\" --write build.js --write \"test/*.js\"",
     "precommit": "npm run lint && npm run build",
@@ -21,7 +21,9 @@
     "email": "root@apoorv.pro",
     "url": "https://apoorv.pro"
   },
+  "browser": "dist/lozad.min.js",
   "main": "dist/lozad.js",
+  "module": "dist/lozad.es.js",
   "repository": {
     "type": "git",
     "url": "git://github.com/ApoorvSaxena/lozad.js.git"
@@ -63,11 +65,11 @@
     "npm-run-all": "^4.1.1",
     "nyc": "^11.2.1",
     "prettier": "^1.6.1",
-    "rollup": "^0.49.2",
+    "rollup": "^0.63.5",
     "rollup-plugin-babel": "^3.0.2",
-    "rollup-plugin-filesize": "^1.4.2",
-    "rollup-plugin-license": "^0.5.0",
-    "rollup-plugin-uglify": "^2.0.1",
+    "rollup-plugin-filesize": "^4.0.1",
+    "rollup-plugin-license": "^0.7.0",
+    "rollup-plugin-uglify": "^4.0.0",
     "xo": "^0.18.2"
   },
   "xo": {
