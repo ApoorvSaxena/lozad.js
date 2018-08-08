@@ -66,11 +66,12 @@ const getElements = selector => {
 }
 
 export default function (selector = '.lozad', options = {}) {
-  const {rootMargin, threshold, load, loaded} = {...defaultConfig, ...options}
+  const {root, rootMargin, threshold, load, loaded} = {...defaultConfig, ...options}
   let observer
 
   if (window.IntersectionObserver) {
     observer = new IntersectionObserver(onIntersection(load, loaded), {
+      root,
       rootMargin,
       threshold
     })
