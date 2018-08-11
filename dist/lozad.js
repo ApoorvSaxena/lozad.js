@@ -1,4 +1,4 @@
-/*! lozad.js - v1.6.0 - 2018-08-06
+/*! lozad.js - v1.6.0 - 2018-08-11
 * https://github.com/ApoorvSaxena/lozad.js
 * Copyright (c) 2018 Apoorv Saxena; Licensed MIT */
 
@@ -87,6 +87,7 @@
     var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 
     var _defaultConfig$option = _extends({}, defaultConfig, options),
+        root = _defaultConfig$option.root,
         rootMargin = _defaultConfig$option.rootMargin,
         threshold = _defaultConfig$option.threshold,
         load = _defaultConfig$option.load,
@@ -96,6 +97,7 @@
 
     if (window.IntersectionObserver) {
       observer = new IntersectionObserver(onIntersection(load, loaded), {
+        root: root,
         rootMargin: rootMargin,
         threshold: threshold
       });

@@ -1,4 +1,4 @@
-/*! lozad.js - v1.6.0 - 2018-08-06
+/*! lozad.js - v1.6.0 - 2018-08-11
 * https://github.com/ApoorvSaxena/lozad.js
 * Copyright (c) 2018 Apoorv Saxena; Licensed MIT */
 
@@ -71,11 +71,12 @@ const getElements = selector => {
 };
 
 function lozad (selector = '.lozad', options = {}) {
-  const {rootMargin, threshold, load, loaded} = {...defaultConfig, ...options};
+  const {root, rootMargin, threshold, load, loaded} = {...defaultConfig, ...options};
   let observer;
 
   if (window.IntersectionObserver) {
     observer = new IntersectionObserver(onIntersection(load, loaded), {
+      root,
       rootMargin,
       threshold
     });
