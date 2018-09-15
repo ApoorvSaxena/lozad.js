@@ -43,7 +43,7 @@ const isLoaded = element => element.getAttribute('data-loaded') === 'true'
 
 const onIntersection = (load, loaded) => (entries, observer) => {
   entries.forEach(entry => {
-    if (entry.intersectionRatio > 0) {
+    if (entry.intersectionRatio > 0 || entry.isIntersecting) {
       observer.unobserve(entry.target)
 
       if (!isLoaded(entry.target)) {
