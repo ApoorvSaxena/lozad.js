@@ -1,4 +1,4 @@
-/*! lozad.js - v1.6.0 - 2018-08-11
+/*! lozad.js - v1.6.0 - 2018-09-16
 * https://github.com/ApoorvSaxena/lozad.js
 * Copyright (c) 2018 Apoorv Saxena; Licensed MIT */
 
@@ -48,7 +48,7 @@ const isLoaded = element => element.getAttribute('data-loaded') === 'true';
 
 const onIntersection = (load, loaded) => (entries, observer) => {
   entries.forEach(entry => {
-    if (entry.intersectionRatio > 0) {
+    if (entry.intersectionRatio > 0 || entry.isIntersecting) {
       observer.unobserve(entry.target);
 
       if (!isLoaded(entry.target)) {
