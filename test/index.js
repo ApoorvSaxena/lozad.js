@@ -302,4 +302,20 @@ describe('lozad', () => {
       assert.equal(true, el.classList.contains('test'))
     })
   })
+
+  describe('exported IntersectionObserver', () => {
+    beforeEach(() => {
+      document.body.innerHTML = ''
+      const el = document.createElement('div')
+      el.dataset.toggleClass = 'test'
+      el.setAttribute('class', 'lozad')
+      document.body.appendChild(el)
+    })
+
+    it('should export the IntersectionObserver instance', () => {
+      const observer = lozad()
+
+      assert.equal(true, Object.keys(observer).includes('observer'))
+    })
+  })
 })

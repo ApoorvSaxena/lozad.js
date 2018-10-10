@@ -102,6 +102,7 @@ export default function (selector = '.lozad', options = {}) {
       load(element)
       markAsLoaded(element)
       loaded(element)
-    }
+    },
+    observer
   }
 }
