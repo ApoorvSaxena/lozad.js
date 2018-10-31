@@ -45,10 +45,10 @@ Making this more efficient and performant is what [IntersectionObserver](https:/
 # You can install lozad with npm
 $ npm install --save lozad
 
-# Alternatively you can use Yarn.
+# Alternatively you can use Yarn
 $ yarn add lozad
 
-# Another option is to use Bower.
+# Another option is to use Bower
 $ bower install lozad
 ```
 
@@ -181,8 +181,7 @@ Create _a broken_ picture element structure.
 </picture>
 ```
 
-When _lozad_ load this picture element, it will fix it.
-That's all ))
+When _lozad_ loads this picture element, it will fix it.
 
 ## Example with iframe
 
