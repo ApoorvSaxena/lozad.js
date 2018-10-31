@@ -55,14 +55,14 @@ const onIntersection = (load, loaded) => (entries, observer) => {
   })
 }
 
-const getElements = selector => {
+const getElements = (selector, root = document) => {
   if (selector instanceof Element) {
     return [selector]
   }
   if (selector instanceof NodeList) {
     return selector
   }
-  return document.querySelectorAll(selector)
+  return root.querySelectorAll(selector)
 }
 
 export default function (selector = '.lozad', options = {}) {
@@ -79,7 +79,7 @@ export default function (selector = '.lozad', options = {}) {
 
   return {
     observe() {
-      const elements = getElements(selector)
+      const elements = getElements(selector, root)
 
       for (let i = 0; i < elements.length; i++) {
         if (isLoaded(elements[i])) {
