@@ -14,7 +14,7 @@
 It is written with an aim to lazy load images, iframes, ads, videos or any other element using the recently added [Intersection Observer API](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API) with tremendous performance benefits.
 
 ##### Featured in:
-- [Web | Google Developers] (https://developers.google.com/web/fundamentals/performance/lazy-loading-guidance/images-and-video/)
+- [Web | Google Developers](https://developers.google.com/web/fundamentals/performance/lazy-loading-guidance/images-and-video/)
 - [Product Hunt](https://www.producthunt.com/posts/lozad-js)
 - [Reddit](https://www.reddit.com/r/webdev/comments/6zg1x0/highly_performant_light_05kb_and_configurable/)
 - [CSS Tricks](https://css-tricks.com/lozad-js-performant-lazy-loading-images)
@@ -211,6 +211,7 @@ Checkout the [FAQ Wiki](https://github.com/ApoorvSaxena/lozad.js/wiki/Frequently
 ## More than 3000 sites are using Lozad.js, here's few of them:
 
 * [gis.utah.gov](https://gis.utah.gov)
+* [BNP PARIBAS](https://mabanque.bnpparibas/)
 * [Reitmans](https://www.reitmans.com/)
 * [Black Desert Online](https://www.blackdesertonline.com/)
 * [Barkers](https://www.barkersonline.co.nz/)
