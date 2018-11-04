@@ -191,6 +191,27 @@ picture-09.jpg media="(min-width: 320px)"
       </article>
     </div>
 
+
+    <!-- <video> example -->
+
+    <div class="sub-main">
+      <article class="main-heading">
+        <h1>&lt;video> example</h1>
+      </article>
+    </div>
+    <div id="iframe">
+      <article class="frame">
+          <video width="560" height="315" controls autoplay loop muted class="lozad-picture">
+            <source data-src="video/mov_bbb.mp4" type="video/mp4">
+            <source data-src="video/mov_bbb.ogg" type="video/ogg">
+          </video>
+      </article>
+      <p>
+      Video courtesy of
+      <a href="https://www.bigbuckbunny.org/" target="_blank">Big Buck Bunny</a>.
+      </p>
+    </div>
+
     <!-- Toastr resources for Notifications -->
     <script src="assets/js/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
@@ -210,12 +231,6 @@ picture-09.jpg media="(min-width: 320px)"
     // Initialize library to lazy load images
     var observer = lozad('.lozad', {
         threshold: 0.1,
-        load: function(el) {
-            el.src = el.getAttribute("data-src");
-            el.onload = function() {
-              toastr["success"](el.localName.toUpperCase() + " " + el.getAttribute("data-index") + " lazy loaded.")
-            }
-        }
     })
 
     // Picture observer

@@ -1,4 +1,4 @@
-/*! lozad.js - v1.6.0 - 2018-10-31
+/*! lozad.js - v1.6.0 - 2018-11-04
 * https://github.com/ApoorvSaxena/lozad.js
 * Copyright (c) 2018 Apoorv Saxena; Licensed MIT */
 
@@ -23,6 +23,16 @@ const defaultConfig = {
         img.alt = element.getAttribute('data-alt');
       }
       element.appendChild(img);
+    }
+    if (element.nodeName.toLowerCase() === 'video' && !element.getAttribute('data-src')) {
+
+      if (element.children) {
+        var childs = element.children;
+        for (var i = 0; i <= childs.length -1; i++) {
+          childs[i].src = childs[i].getAttribute('data-src');
+        }
+        element.load();
+      }
     }
     if (element.getAttribute('data-src')) {
       element.src = element.getAttribute('data-src');
@@ -60,14 +70,14 @@ const onIntersection = (load, loaded) => (entries, observer) => {
   });
 };
 
-const getElements = selector => {
+const getElements = (selector, root = document) => {
   if (selector instanceof Element) {
     return [selector]
   }
   if (selector instanceof NodeList) {
     return selector
   }
-  return document.querySelectorAll(selector)
+  return root.querySelectorAll(selector)
 };
 
 function lozad (selector = '.lozad', options = {}) {
@@ -84,7 +94,7 @@ function lozad (selector = '.lozad', options = {}) {
 
   return {
     observe() {
-      const elements = getElements(selector);
+      const elements = getElements(selector, root);
 
       for (let i = 0; i < elements.length; i++) {
         if (isLoaded(elements[i])) {
