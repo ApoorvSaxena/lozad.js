@@ -197,19 +197,28 @@ picture-09.jpg media="(min-width: 320px)"
     <div class="sub-main">
       <article class="main-heading">
         <h1>&lt;video> example</h1>
+        <p>video courtesy of <a href="https://www.bigbuckbunny.org/" target="_blank">Big Buck Bunny</a>.</p>
       </article>
     </div>
-    <div id="iframe">
+    <div id="video">
       <article class="frame">
-          <video width="560" height="315" controls autoplay loop muted class="lozad-picture">
-            <source data-src="video/mov_bbb.mp4" type="video/mp4">
-            <source data-src="video/mov_bbb.ogg" type="video/ogg">
-          </video>
+          <div class="video-example video-example-1">
+            <video width="560" height="315" controls autoplay loop muted class="lozad-picture">
+              <source data-src="video/mov_bbb.mp4" type="video/mp4">
+              <source data-src="video/mov_bbb.ogg" type="video/ogg">
+            </video>
+            <pre>video autoplay & loop  example</pre>
+          </div>
+          <div class="video-example video-example-2">
+            <video width="560" height="315" controls loop muted class="lozad-picture">
+              <source data-src="video/mov_bbb.mp4" type="video/mp4">
+              <source data-src="video/mov_bbb.ogg" type="video/ogg">
+            </video>
+            <pre>normal video example</pre>
+          </div>
+
       </article>
-      <p>
-      Video courtesy of
-      <a href="https://www.bigbuckbunny.org/" target="_blank">Big Buck Bunny</a>.
-      </p>
+
     </div>
 
     <!-- Toastr resources for Notifications -->

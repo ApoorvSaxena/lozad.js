@@ -811,9 +811,9 @@ body.loading #main .thumb {
 	margin: 3rem;
 }
 
-/* iframes */
+/* iframes & video */
 
-#iframe .frame {
+#iframe .frame, #video .frame {
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
@@ -827,7 +827,9 @@ body.loading #main .thumb {
 	justify-content: center;
 	margin-bottom: 10vh;
 }
-
+.video-example{
+	margin: 0 15px;
+}
 @media screen and (max-width: 1680px) {
 	#main .thumb {
 		-moz-transition-delay: 2.075s;
