@@ -1,4 +1,4 @@
-/*! lozad.js - v1.6.0 - 2018-10-31
+/*! lozad.js - v1.6.0 - 2018-11-08
 * https://github.com/ApoorvSaxena/lozad.js
 * Copyright (c) 2018 Apoorv Saxena; Licensed MIT */
 
@@ -36,7 +36,7 @@
         element.src = element.getAttribute('data-src');
       }
       if (element.getAttribute('data-srcset')) {
-        element.srcset = element.getAttribute('data-srcset');
+        element.setAttribute('srcset', element.getAttribute('data-srcset'));
       }
       if (element.getAttribute('data-background-image')) {
         element.style.backgroundImage = 'url(\'' + element.getAttribute('data-background-image') + '\')';
@@ -73,13 +73,15 @@
   };
 
   var getElements = function getElements(selector) {
+    var root = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : document;
+
     if (selector instanceof Element) {
       return [selector];
     }
     if (selector instanceof NodeList) {
       return selector;
     }
-    return document.querySelectorAll(selector);
+    return root.querySelectorAll(selector);
   };
 
   function lozad () {
@@ -105,7 +107,7 @@
 
     return {
       observe: function observe() {
-        var elements = getElements(selector);
+        var elements = getElements(selector, root);
 
         for (var i = 0; i < elements.length; i++) {
           if (isLoaded(elements[i])) {
