@@ -10,14 +10,34 @@ const defaultConfig = {
   threshold: 0,
   load(element) {
     if (element.nodeName.toLowerCase() === 'picture') {
-      const img = document.createElement('img')
-      if (isIE && element.getAttribute('data-iesrc')) {
-        img.src = element.getAttribute('data-iesrc')
+      const imgEl = element.querySelector('img')
+      if (imgEl === null) { // Check to see if there isn't already an img tag
+        const img = document.createElement('img')
+        if (isIE && element.getAttribute('data-iesrc')) {
+          img.src = element.getAttribute('data-iesrc')
+        }
+        if (element.getAttribute('data-alt')) {
+          img.alt = element.getAttribute('data-alt')
+        }
+        element.appendChild(img)
+      } else {
+        // Gets an array of source elements
+        // Node list converted to array because some browsers don't support forEach on a node list
+        const sourceElements = [...element.querySelectorAll('source')]
+        // Loop thrrough them all
+        sourceElements.forEach(source => {
+          // If there is a data-srcset attribute, make it a srcset attribute
+          if (source.getAttribute('data-srcset')) {
+            source.setAttribute('srcset', source.getAttribute('data-srcset'))
+          }
+        })
+        if (imgEl.getAttribute('data-src')) {
+          imgEl.src = imgEl.getAttribute('data-src')
+        }
+        if (imgEl.getAttribute('data-srcset')) {
+          imgEl.setAttribute('srcset', imgEl.getAttribute('data-srcset'))
+        }
       }
-      if (element.getAttribute('data-alt')) {
-        img.alt = element.getAttribute('data-alt')
-      }
-      element.appendChild(img)
     }
     if (element.getAttribute('data-src')) {
       element.src = element.getAttribute('data-src')
