@@ -1,4 +1,4 @@
-/*! lozad.js - v1.6.0 - 2018-11-04
+/*! lozad.js - v1.7.0 - 2018-11-19
 * https://github.com/ApoorvSaxena/lozad.js
 * Copyright (c) 2018 Apoorv Saxena; Licensed MIT */
 
@@ -25,10 +25,9 @@ const defaultConfig = {
       element.appendChild(img);
     }
     if (element.nodeName.toLowerCase() === 'video' && !element.getAttribute('data-src')) {
-
       if (element.children) {
-        var childs = element.children;
-        for (var i = 0; i <= childs.length -1; i++) {
+        const childs = element.children;
+        for (let i = 0; i <= childs.length - 1; i++) {
           childs[i].src = childs[i].getAttribute('data-src');
         }
         element.load();
@@ -38,7 +37,7 @@ const defaultConfig = {
       element.src = element.getAttribute('data-src');
     }
     if (element.getAttribute('data-srcset')) {
-      element.srcset = element.getAttribute('data-srcset');
+      element.setAttribute('srcset', element.getAttribute('data-srcset'));
     }
     if (element.getAttribute('data-background-image')) {
       element.style.backgroundImage = `url('${element.getAttribute('data-background-image')}')`;
