@@ -20,6 +20,7 @@ It is written with an aim to lazy load images, iframes, ads, videos or any other
 - [CSS Tricks](https://css-tricks.com/lozad-js-performant-lazy-loading-images)
 - [David Walsh](https://twitter.com/davidwalshblog/status/915319510646829061)
 - [Codrops](https://twitter.com/Apoorv_Saxena/status/906586828265758720)
+- [Digital Fortress](https://digitalfortress.tech/js/lazy-loading-images-vuejs/)
 
 ## Table of Contents
 
@@ -241,6 +242,7 @@ Checkout the [FAQ Wiki](https://github.com/ApoorvSaxena/lozad.js/wiki/Frequently
 * [Dormy](https://www.dormy.se/)
 * [Nabobil](https://nabobil.no/)
 * [Atbox](https://atbox.io/)
+* [Gospel Music](https://gospelmusic.io/)
 * *[Add your site]* - See [Contributing section](./CONTRIBUTING.md)
 
 ## Support Lozad.js
