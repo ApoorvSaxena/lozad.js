@@ -20,7 +20,6 @@ It is written with an aim to lazy load images, iframes, ads, videos or any other
 - [CSS Tricks](https://css-tricks.com/lozad-js-performant-lazy-loading-images)
 - [David Walsh](https://twitter.com/davidwalshblog/status/915319510646829061)
 - [Codrops](https://twitter.com/Apoorv_Saxena/status/906586828265758720)
-- [Digital Fortress](https://digitalfortress.tech/js/lazy-loading-images-vuejs/)
 
 ## Table of Contents
 
