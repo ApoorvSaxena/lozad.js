@@ -241,6 +241,7 @@ Checkout the [FAQ Wiki](https://github.com/ApoorvSaxena/lozad.js/wiki/Frequently
 * [Dormy](https://www.dormy.se/)
 * [Nabobil](https://nabobil.no/)
 * [Atbox](https://atbox.io/)
+* [Gospel Music](https://gospelmusic.io/)
 * *[Add your site]* - See [Contributing section](./CONTRIBUTING.md)
 
 ## Support Lozad.js
