@@ -1,4 +1,4 @@
-# Lozad.js [![npm version](https://badge.fury.io/js/lozad.svg)](https://badge.fury.io/js/lozad) [![Build Status](https://travis-ci.org/ApoorvSaxena/lozad.js.svg?branch=master)](https://travis-ci.org/ApoorvSaxena/lozad.js) [![](https://data.jsdelivr.com/v1/package/npm/lozad/badge)](https://www.jsdelivr.com/package/npm/lozad) ![Analytics](https://ga-beacon.appspot.com/UA-131689813-1/welcome-page?pixel&useReferer)
+# Lozad.js [![npm version](https://badge.fury.io/js/lozad.svg)](https://badge.fury.io/js/lozad) [![Build Status](https://travis-ci.org/ApoorvSaxena/lozad.js.svg?branch=master)](https://travis-ci.org/ApoorvSaxena/lozad.js) [![](https://data.jsdelivr.com/v1/package/npm/lozad/badge)](https://www.jsdelivr.com/package/npm/lozad)
 
 > Highly performant, light and configurable lazy loader in pure JS with no dependencies for images, iframes and more, using IntersectionObserver API
 
@@ -10,6 +10,7 @@
 - has NO DEPENDENCIES :)
 - allows lazy loading of dynamically added elements as well,
 - supports <img>, <picture>, iframes, videos, audios, responsive images, background images etc.
+- is completely free and open source.
 
 It is written with an aim to lazy load images, iframes, ads, videos or any other element using the recently added [Intersection Observer API](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API) with tremendous performance benefits.
 
@@ -243,10 +244,6 @@ Checkout the [FAQ Wiki](https://github.com/ApoorvSaxena/lozad.js/wiki/Frequently
 * [Atbox](https://atbox.io/)
 * [Gospel Music](https://gospelmusic.io/)
 * *[Add your site]* - See [Contributing section](./CONTRIBUTING.md)
-
-## Support Lozad.js
-
-Lozad.js is completely free and open-source. If you find it useful, you can show your support by starring it or sharing it in your social network or by simply letting me know how much you 💖 it by tweeting to [@Apoorv_Saxena](https://twitter.com/Apoorv_Saxena).
 
 ## Contribute
 
