@@ -72,6 +72,12 @@ Or load via **CDN** and include in the `head` tag of your page.
 
 When loading from CDN, you can find the library on `window.lozad`.
 
+---
+
+<a href="https://www.patreon.com/apoorvsaxena">
+    <img src="https://c5.patreon.com/external/logo/become_a_patron_button@2x.png" width="160">
+</a>
+
 ## Usage
 
 In HTML, add an identifier to the element (default selector identified is `lozad` class):
