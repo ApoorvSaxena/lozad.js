@@ -19,6 +19,19 @@ const defaultConfig = {
       }
       element.appendChild(img)
     }
+    if (element.nodeName.toLowerCase() === 'video' && !element.getAttribute('data-src')) {
+      if (element.children) {
+        const childs = element.children
+        let childSrc
+        for (let i = 0; i <= childs.length - 1; i++) {
+          childSrc = childs[i].getAttribute('data-src')
+          if(childSrc) {
+            childs[i].src = childSrc
+          }
+        }
+        element.load()
+      }
+    }
     if (element.getAttribute('data-src')) {
       element.src = element.getAttribute('data-src')
     }
