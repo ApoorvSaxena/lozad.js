@@ -22,8 +22,12 @@ const defaultConfig = {
     if (element.nodeName.toLowerCase() === 'video' && !element.getAttribute('data-src')) {
       if (element.children) {
         const childs = element.children
+        let childSrc
         for (let i = 0; i <= childs.length - 1; i++) {
-          childs[i].src = childs[i].getAttribute('data-src')
+          childSrc = childs[i].getAttribute('data-src')
+          if(childSrc) {
+            childs[i].src = childSrc
+          }
         }
         element.load()
       }
