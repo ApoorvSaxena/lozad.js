@@ -1,6 +1,6 @@
-/*! lozad.js - v1.7.0 - 2018-11-19
+/*! lozad.js - v1.7.0 - 2019-01-31
 * https://github.com/ApoorvSaxena/lozad.js
-* Copyright (c) 2018 Apoorv Saxena; Licensed MIT */
+* Copyright (c) 2019 Apoorv Saxena; Licensed MIT */
 
 
 (function (global, factory) {
@@ -35,8 +35,12 @@
       if (element.nodeName.toLowerCase() === 'video' && !element.getAttribute('data-src')) {
         if (element.children) {
           var childs = element.children;
+          var childSrc = void 0;
           for (var i = 0; i <= childs.length - 1; i++) {
-            childs[i].src = childs[i].getAttribute('data-src');
+            childSrc = childs[i].getAttribute('data-src');
+            if (childSrc) {
+              childs[i].src = childSrc;
+            }
           }
           element.load();
         }

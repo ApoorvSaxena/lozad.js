@@ -25,7 +25,7 @@ const defaultConfig = {
         let childSrc
         for (let i = 0; i <= childs.length - 1; i++) {
           childSrc = childs[i].getAttribute('data-src')
-          if(childSrc) {
+          if (childSrc) {
             childs[i].src = childSrc
           }
         }
