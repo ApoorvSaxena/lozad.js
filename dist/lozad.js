@@ -1,4 +1,4 @@
-/*! lozad.js - v1.9.0 - 2019-02-09
+/*! lozad.js - v1.9.0 - 2019-06-06
 * https://github.com/ApoorvSaxena/lozad.js
 * Copyright (c) 2019 Apoorv Saxena; Licensed MIT */
 
@@ -110,7 +110,7 @@
 
     var observer = void 0;
 
-    if (window.IntersectionObserver) {
+    if (typeof window !== 'undefined' && window.IntersectionObserver) {
       observer = new IntersectionObserver(onIntersection(load, loaded), {
         root: root,
         rootMargin: rootMargin,

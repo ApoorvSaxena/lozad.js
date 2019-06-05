@@ -4,6 +4,7 @@
   "description": "A light-weight JS library to lazy load any HTML element such as images, ads, videos etc.",
   "version": "1.9.0",
   "homepage": "https://github.com/ApoorvSaxena/lozad.js",
+  "license": "MIT",
   "scripts": {
     "test": "nyc mocha",
     "build": "rollup -c",
@@ -55,22 +56,22 @@
     "babel-core": "^6.26.0",
     "babel-preset-env": "^1.6.0",
     "babel-preset-stage-0": "^6.24.1",
-    "browser-sync": "^2.26.3",
-    "chokidar": "^1.7.0",
+    "browser-sync": "^2.26.5",
+    "chokidar": "^3.0.1",
     "cross-env": "^5.0.5",
     "husky": "^0.14.3",
     "jsdom": "^11.2.0",
     "jsdom-global": "^3.0.2",
     "mocha": "^5.2.0",
     "npm-run-all": "^4.1.1",
-    "nyc": "^11.2.1",
+    "nyc": "^14.1.1",
     "prettier": "^1.6.1",
     "rollup": "^0.63.5",
     "rollup-plugin-babel": "^3.0.2",
     "rollup-plugin-filesize": "^4.0.1",
-    "rollup-plugin-license": "^0.7.0",
+    "rollup-plugin-license": "^0.9.0",
     "rollup-plugin-uglify": "^4.0.0",
-    "xo": "^0.18.2"
+    "xo": "^0.24.0"
   },
   "xo": {
     "envs": [

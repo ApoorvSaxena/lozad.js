@@ -5,19 +5,19 @@ const lozad = require('../dist/lozad.js')
 describe('lozad', () => {
   describe('#lozad', () => {
     it('should be a function', () => {
-      assert.equal('function', typeof lozad)
+      assert.strictEqual('function', typeof lozad)
     })
   })
 
   describe('#lozad return value', () => {
     it('should be an object', () => {
       const observer = lozad()
-      assert.equal('object', typeof observer)
+      assert.strictEqual('object', typeof observer)
     })
 
     it('should expose observe API', () => {
       const observer = lozad()
-      assert.equal('function', typeof observer.observe)
+      assert.strictEqual('function', typeof observer.observe)
     })
   })
 
@@ -28,14 +28,14 @@ describe('lozad', () => {
       image.dataset.src = Math.random()
         .toString(36)
         .substring(7)
-      document.body.appendChild(image)
+      document.body.append(image)
     })
 
     it('should not load image', () => {
       const observer = lozad()
       observer.observe()
-      const image = document.getElementsByTagName('img')[0]
-      assert.equal(undefined, image.dataset.loaded)
+      const image = document.querySelectorAll('img')[0]
+      assert.strictEqual(undefined, image.dataset.loaded)
     })
   })
 
@@ -47,21 +47,21 @@ describe('lozad', () => {
         .toString(36)
         .substring(7)
       image.setAttribute('class', 'lozad')
-      document.body.appendChild(image)
+      document.body.append(image)
     })
 
     it('should not load an image till observe function is called', () => {
       lozad()
-      const image = document.getElementsByTagName('img')[0]
-      assert.equal(undefined, image.dataset.loaded)
+      const image = document.querySelectorAll('img')[0]
+      assert.strictEqual(undefined, image.dataset.loaded)
     })
 
     it('should load an image after observe function is called', () => {
       const observer = lozad()
-      const image = document.getElementsByTagName('img')[0]
+      const image = document.querySelectorAll('img')[0]
       observer.observe()
-      assert.equal('true', image.dataset.loaded)
-      assert.equal(image.getAttribute('src'), image.dataset.src)
+      assert.strictEqual('true', image.dataset.loaded)
+      assert.strictEqual(image.getAttribute('src'), image.dataset.src)
     })
   })
 
@@ -72,17 +72,17 @@ describe('lozad', () => {
       image.dataset.src = Math.random()
         .toString(36)
         .substring(7)
-      document.body.appendChild(image)
+      document.body.append(image)
     })
 
     it('should load the image', () => {
       const className = 'test-class'
       const observer = lozad('.' + className)
-      const image = document.getElementsByTagName('img')[0]
+      const image = document.querySelectorAll('img')[0]
       image.setAttribute('class', className)
       observer.observe()
-      assert.equal('true', image.dataset.loaded)
-      assert.equal(image.getAttribute('src'), image.dataset.src)
+      assert.strictEqual('true', image.dataset.loaded)
+      assert.strictEqual(image.getAttribute('src'), image.dataset.src)
     })
   })
 
@@ -93,15 +93,15 @@ describe('lozad', () => {
       image.dataset.src = Math.random()
         .toString(36)
         .substring(7)
-      document.body.appendChild(image)
+      document.body.append(image)
     })
 
     it('should load the image', () => {
       const node = document.querySelector('img')
       const observer = lozad(node)
       observer.observe()
-      assert.equal('true', node.dataset.loaded)
-      assert.equal(node.getAttribute('src'), node.dataset.src)
+      assert.strictEqual('true', node.dataset.loaded)
+      assert.strictEqual(node.getAttribute('src'), node.dataset.src)
     })
   })
 
@@ -112,22 +112,22 @@ describe('lozad', () => {
       image.dataset.src = Math.random()
         .toString(36)
         .substring(7)
-      document.body.appendChild(image)
+      document.body.append(image)
       const imageTwo = document.createElement('img')
       imageTwo.dataset.src = Math.random()
         .toString(36)
         .substring(7)
-      document.body.appendChild(imageTwo)
+      document.body.append(imageTwo)
     })
 
     it('should load the images', () => {
       const nodes = document.querySelectorAll('img')
       const observer = lozad(nodes)
       observer.observe()
-      assert.equal(nodes.length, 2)
+      assert.strictEqual(nodes.length, 2)
       nodes.forEach(node => {
-        assert.equal('true', node.dataset.loaded)
-        assert.equal(node.getAttribute('src'), node.dataset.src)
+        assert.strictEqual('true', node.dataset.loaded)
+        assert.strictEqual(node.getAttribute('src'), node.dataset.src)
       })
     })
   })
@@ -136,29 +136,29 @@ describe('lozad', () => {
     beforeEach(() => {
       document.body.innerHTML = ''
       const image = document.createElement('img')
-      document.body.appendChild(image)
+      document.body.append(image)
     })
 
     it('should load the image with data-srcset attribute', () => {
       const dataSrcSetAttr = 'test-srcset'
       const observer = lozad()
-      const image = document.getElementsByTagName('img')[0]
+      const image = document.querySelectorAll('img')[0]
       image.setAttribute('class', 'lozad')
       image.setAttribute('data-srcset', dataSrcSetAttr)
       observer.observe()
-      assert.equal('true', image.dataset.loaded)
-      assert.equal(image.getAttribute('srcset'), dataSrcSetAttr)
+      assert.strictEqual('true', image.dataset.loaded)
+      assert.strictEqual(image.getAttribute('srcset'), dataSrcSetAttr)
     })
 
     it('should load the image with data-background-image attribute', () => {
       const bgImageAttr = 'test-bg-image'
       const observer = lozad()
-      const image = document.getElementsByTagName('img')[0]
+      const image = document.querySelectorAll('img')[0]
       image.setAttribute('class', 'lozad')
       image.setAttribute('data-background-image', bgImageAttr)
       observer.observe()
-      assert.equal('true', image.dataset.loaded)
-      assert.equal(image.style.backgroundImage, 'url(' + bgImageAttr + ')')
+      assert.strictEqual('true', image.dataset.loaded)
+      assert.strictEqual(image.style.backgroundImage, 'url(' + bgImageAttr + ')')
     })
   })
 
@@ -169,7 +169,7 @@ describe('lozad', () => {
       image.dataset.src = Math.random()
         .toString(36)
         .substring(7)
-      document.body.appendChild(image)
+      document.body.append(image)
     })
 
     it('should not load elements by default when custom load option is passed in', () => {
@@ -178,11 +178,11 @@ describe('lozad', () => {
           element.classList.add('loaded')
         }
       })
-      const image = document.getElementsByTagName('img')[0]
+      const image = document.querySelectorAll('img')[0]
       image.setAttribute('class', 'lozad')
       observer.observe()
-      assert.equal(true, image.classList.contains('loaded'))
-      assert.equal(null, image.getAttribute('src'))
+      assert.strictEqual(true, image.classList.contains('loaded'))
+      assert.strictEqual(null, image.getAttribute('src'))
     })
 
     it('should run loaded option after loading an element', () => {
@@ -191,10 +191,10 @@ describe('lozad', () => {
           element.classList.add('loaded')
         }
       })
-      const image = document.getElementsByTagName('img')[0]
+      const image = document.querySelectorAll('img')[0]
       image.setAttribute('class', 'lozad')
       observer.observe()
-      assert.equal(true, image.classList.contains('loaded'))
+      assert.strictEqual(true, image.classList.contains('loaded'))
     })
 
     it('should set data attribute when loaded option is passed in', () => {
@@ -203,11 +203,11 @@ describe('lozad', () => {
           element.classList.add('loaded')
         }
       })
-      const image = document.getElementsByTagName('img')[0]
+      const image = document.querySelectorAll('img')[0]
       image.setAttribute('class', 'lozad')
       observer.observe()
-      assert.equal(true, image.classList.contains('loaded'))
-      assert.equal('true', image.dataset.loaded)
+      assert.strictEqual(true, image.classList.contains('loaded'))
+      assert.strictEqual('true', image.dataset.loaded)
     })
   })
 
@@ -218,18 +218,18 @@ describe('lozad', () => {
       image.dataset.src = Math.random()
         .toString(36)
         .substring(7)
-      document.body.appendChild(image)
+      document.body.append(image)
     })
 
     it('should load image via triggerLoad function', () => {
       const dataSrcSetAttr = 'test-srcset'
       const observer = lozad()
-      const image = document.getElementsByTagName('img')[0]
+      const image = document.querySelectorAll('img')[0]
       image.setAttribute('class', 'lozad')
       image.setAttribute('data-srcset', dataSrcSetAttr)
       observer.triggerLoad(image)
-      assert.equal('true', image.dataset.loaded)
-      assert.equal(image.getAttribute('src'), image.dataset.src)
+      assert.strictEqual('true', image.dataset.loaded)
+      assert.strictEqual(image.getAttribute('src'), image.dataset.src)
     })
   })
 
@@ -244,39 +244,39 @@ describe('lozad', () => {
       picture.setAttribute('data-alt', 'alt text')
       const source = document.createElement('source')
       source.setAttribute('srcset', src)
-      picture.appendChild(source)
-      document.body.appendChild(picture)
+      picture.append(source)
+      document.body.append(picture)
     })
 
     it('should load the picture', () => {
       const className = 'test-class'
       const observer = lozad('.' + className)
-      const picture = document.getElementsByTagName('picture')[0]
+      const picture = document.querySelectorAll('picture')[0]
       picture.setAttribute('class', className)
       observer.observe()
-      assert.equal('true', picture.dataset.loaded)
+      assert.strictEqual('true', picture.dataset.loaded)
     })
 
     it('should append image after last source', () => {
       const className = 'test-class'
       const observer = lozad('.' + className)
-      const picture = document.getElementsByTagName('picture')[0]
+      const picture = document.querySelectorAll('picture')[0]
       picture.setAttribute('class', className)
       observer.observe()
 
       const img = picture.children[1]
-      assert.equal('IMG', img.tagName)
+      assert.strictEqual('IMG', img.tagName)
     })
 
     it('should add alt attribute to image', () => {
       const className = 'test-class'
       const observer = lozad('.' + className)
-      const picture = document.getElementsByTagName('picture')[0]
+      const picture = document.querySelectorAll('picture')[0]
       picture.setAttribute('class', className)
       observer.observe()
 
       const img = picture.children[1]
-      assert.equal('alt text', img.getAttribute('alt'))
+      assert.strictEqual('alt text', img.getAttribute('alt'))
     })
   })
 
@@ -286,20 +286,20 @@ describe('lozad', () => {
       const el = document.createElement('div')
       el.dataset.toggleClass = 'test'
       el.setAttribute('class', 'lozad')
-      document.body.appendChild(el)
+      document.body.append(el)
     })
 
     it('should not toggle till observe function is called', () => {
       lozad()
-      const el = document.getElementsByTagName('div')[0]
-      assert.equal(false, el.classList.contains('test'))
+      const el = document.querySelectorAll('div')[0]
+      assert.strictEqual(false, el.classList.contains('test'))
     })
 
     it('should toggle after observe function is called', () => {
       const observer = lozad()
-      const el = document.getElementsByTagName('div')[0]
+      const el = document.querySelectorAll('div')[0]
       observer.observe()
-      assert.equal(true, el.classList.contains('test'))
+      assert.strictEqual(true, el.classList.contains('test'))
     })
   })
 
@@ -309,13 +309,13 @@ describe('lozad', () => {
       const el = document.createElement('div')
       el.dataset.toggleClass = 'test'
       el.setAttribute('class', 'lozad')
-      document.body.appendChild(el)
+      document.body.append(el)
     })
 
     it('should export the IntersectionObserver instance', () => {
       const observer = lozad()
 
-      assert.equal(true, Object.keys(observer).includes('observer'))
+      assert.strictEqual(true, Object.keys(observer).includes('observer'))
     })
   })
 })
