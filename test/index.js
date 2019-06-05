@@ -158,7 +158,10 @@ describe('lozad', () => {
       image.setAttribute('data-background-image', bgImageAttr)
       observer.observe()
       assert.strictEqual('true', image.dataset.loaded)
-      assert.strictEqual(image.style.backgroundImage, 'url(' + bgImageAttr + ')')
+      assert.strictEqual(
+        image.style.backgroundImage,
+        'url(' + bgImageAttr + ')'
+      )
     })
   })
 

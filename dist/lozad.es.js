@@ -1,4 +1,4 @@
-/*! lozad.js - v1.9.0 - 2019-06-06
+/*! lozad.js - v1.10.0 - 2019-06-06
 * https://github.com/ApoorvSaxena/lozad.js
 * Copyright (c) 2019 Apoorv Saxena; Licensed MIT */
 
@@ -19,11 +19,14 @@ const defaultConfig = {
       if (isIE && element.getAttribute('data-iesrc')) {
         img.src = element.getAttribute('data-iesrc');
       }
+
       if (element.getAttribute('data-alt')) {
         img.alt = element.getAttribute('data-alt');
       }
-      element.appendChild(img);
+
+      element.append(img);
     }
+
     if (element.nodeName.toLowerCase() === 'video' && !element.getAttribute('data-src')) {
       if (element.children) {
         const childs = element.children;
@@ -34,18 +37,23 @@ const defaultConfig = {
             childs[i].src = childSrc;
           }
         }
+
         element.load();
       }
     }
+
     if (element.getAttribute('data-src')) {
       element.src = element.getAttribute('data-src');
     }
+
     if (element.getAttribute('data-srcset')) {
       element.setAttribute('srcset', element.getAttribute('data-srcset'));
     }
+
     if (element.getAttribute('data-background-image')) {
       element.style.backgroundImage = `url('${element.getAttribute('data-background-image')}')`;
     }
+
     if (element.getAttribute('data-toggle-class')) {
       element.classList.toggle(element.getAttribute('data-toggle-class'));
     }
@@ -77,9 +85,11 @@ const getElements = (selector, root = document) => {
   if (selector instanceof Element) {
     return [selector]
   }
+
   if (selector instanceof NodeList) {
     return selector
   }
+
   return root.querySelectorAll(selector)
 };
 
@@ -103,10 +113,12 @@ function lozad (selector = '.lozad', options = {}) {
         if (isLoaded(elements[i])) {
           continue
         }
+
         if (observer) {
           observer.observe(elements[i]);
           continue
         }
+
         load(elements[i]);
         markAsLoaded(elements[i]);
         loaded(elements[i]);
