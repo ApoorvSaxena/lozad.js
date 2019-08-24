@@ -89,7 +89,7 @@ const getElements = (selector, root = document) => {
 }
 
 export default function (selector = '.lozad', options = {}) {
-  const {root, rootMargin, threshold, load, loaded} = {...defaultConfig, ...options}
+  const {root, rootMargin, threshold, load, loaded} = Object.assign({}, defaultConfig, options)
   let observer
 
   if (typeof window !== 'undefined' && window.IntersectionObserver) {
