@@ -113,7 +113,7 @@ describe('lozad', () => {
       observer.observe()
       node.dataset.src = newSrc
       setTimeout(() => {
-        assert.strictEqual(node.dataset.src, newSrc)
+        assert.strictEqual(node.getAttribute('src'), newSrc)
       }, 2000)
     })
   })
