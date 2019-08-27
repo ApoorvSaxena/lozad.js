@@ -1,4 +1,4 @@
-/*! lozad.js - v1.10.0 - 2019-06-06
+/*! lozad.js - v1.10.0 - 2019-08-27
 * https://github.com/ApoorvSaxena/lozad.js
 * Copyright (c) 2019 Apoorv Saxena; Licensed MIT */
 
@@ -9,14 +9,23 @@
   (global.lozad = factory());
 }(this, (function () { 'use strict';
 
-  var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
   /**
    * Detect IE browser
    * @const {boolean}
    * @private
    */
   var isIE = typeof document !== 'undefined' && document.documentMode;
+
+  /**
+   *
+   * @param {string} type
+   *
+   */
+  var support = function support(type) {
+    return window && window[type];
+  };
+
+  var validAttribute = ['data-iesrc', 'data-alt', 'data-src', 'data-srcset', 'data-background-image', 'data-toggle-class'];
 
   var defaultConfig = {
     rootMargin: '0px',
@@ -93,6 +102,16 @@
     };
   };
 
+  var onMutation = function onMutation(load) {
+    return function (entries) {
+      entries.forEach(function (entry) {
+        if (isLoaded(entry.target) && entry.type === 'attributes' && validAttribute.indexOf(entry.attributeName) > -1) {
+          load(entry.target);
+        }
+      });
+    };
+  };
+
   var getElements = function getElements(selector) {
     var root = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : document;
 
@@ -111,21 +130,25 @@
     var selector = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '.lozad';
     var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 
-    var _defaultConfig$option = _extends({}, defaultConfig, options),
-        root = _defaultConfig$option.root,
-        rootMargin = _defaultConfig$option.rootMargin,
-        threshold = _defaultConfig$option.threshold,
-        load = _defaultConfig$option.load,
-        loaded = _defaultConfig$option.loaded;
+    var _Object$assign = Object.assign({}, defaultConfig, options),
+        root = _Object$assign.root,
+        rootMargin = _Object$assign.rootMargin,
+        threshold = _Object$assign.threshold,
+        load = _Object$assign.load,
+        loaded = _Object$assign.loaded;
 
     var observer = void 0;
-
-    if (typeof window !== 'undefined' && window.IntersectionObserver) {
+    var mutationObserver = void 0;
+    if (support('IntersectionObserver')) {
       observer = new IntersectionObserver(onIntersection(load, loaded), {
         root: root,
         rootMargin: rootMargin,
         threshold: threshold
       });
+    }
+
+    if (support('MutationObserver')) {
+      mutationObserver = new MutationObserver(onMutation(load, loaded));
     }
 
     return {
@@ -140,6 +163,10 @@
           if (observer) {
             observer.observe(elements[i]);
             continue;
+          }
+
+          if (mutationObserver) {
+            mutationObserver.observe(elements[i], { subtree: true, attributes: true, attributeFilter: validAttribute });
           }
 
           load(elements[i]);
@@ -157,7 +184,8 @@
         loaded(element);
       },
 
-      observer: observer
+      observer: observer,
+      mutationObserver: mutationObserver
     };
   }
 

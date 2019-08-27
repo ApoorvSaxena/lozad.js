@@ -103,6 +103,19 @@ describe('lozad', () => {
       assert.strictEqual('true', node.dataset.loaded)
       assert.strictEqual(node.getAttribute('src'), node.dataset.src)
     })
+
+    it('should load the image', () => {
+      const node = document.querySelector('img')
+      const newSrc = Math.random()
+        .toString(36)
+        .substring(7)
+      const observer = lozad(node)
+      observer.observe()
+      node.dataset.src = newSrc
+      setTimeout(() => {
+        assert.strictEqual(node.dataset.src, newSrc)
+      }, 2000)
+    })
   })
 
   describe('images inside viewport using a DOM `NodeList` reference', () => {
@@ -306,7 +319,7 @@ describe('lozad', () => {
     })
   })
 
-  describe('exported IntersectionObserver', () => {
+  describe('exported IntersectionObserver and MutationObserver', () => {
     beforeEach(() => {
       document.body.innerHTML = ''
       const el = document.createElement('div')
@@ -319,6 +332,10 @@ describe('lozad', () => {
       const observer = lozad()
 
       assert.strictEqual(true, Object.keys(observer).includes('observer'))
+      assert.strictEqual(
+        true,
+        Object.keys(observer).includes('mutationObserver')
+      )
     })
   })
 })

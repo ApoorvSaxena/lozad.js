@@ -1,4 +1,4 @@
-/*! lozad.js - v1.10.0 - 2019-06-06
+/*! lozad.js - v1.10.0 - 2019-08-27
 * https://github.com/ApoorvSaxena/lozad.js
 * Copyright (c) 2019 Apoorv Saxena; Licensed MIT */
 
@@ -9,6 +9,15 @@
  * @private
  */
 const isIE = typeof document !== 'undefined' && document.documentMode;
+
+/**
+ *
+ * @param {string} type
+ *
+ */
+const support = type => window && window[type];
+
+const validAttribute = ['data-iesrc', 'data-alt', 'data-src', 'data-srcset', 'data-background-image', 'data-toggle-class'];
 
 const defaultConfig = {
   rootMargin: '0px',
@@ -81,6 +90,14 @@ const onIntersection = (load, loaded) => (entries, observer) => {
   });
 };
 
+const onMutation = load => entries => {
+  entries.forEach(entry => {
+    if (isLoaded(entry.target) && entry.type === 'attributes' && validAttribute.indexOf(entry.attributeName) > -1) {
+      load(entry.target);
+    }
+  });
+};
+
 const getElements = (selector, root = document) => {
   if (selector instanceof Element) {
     return [selector]
@@ -94,15 +111,19 @@ const getElements = (selector, root = document) => {
 };
 
 function lozad (selector = '.lozad', options = {}) {
-  const {root, rootMargin, threshold, load, loaded} = {...defaultConfig, ...options};
+  const {root, rootMargin, threshold, load, loaded} = Object.assign({}, defaultConfig, options);
   let observer;
-
-  if (typeof window !== 'undefined' && window.IntersectionObserver) {
+  let mutationObserver;
+  if (support('IntersectionObserver')) {
     observer = new IntersectionObserver(onIntersection(load, loaded), {
       root,
       rootMargin,
       threshold
     });
+  }
+
+  if (support('MutationObserver')) {
+    mutationObserver = new MutationObserver(onMutation(load, loaded));
   }
 
   return {
@@ -119,6 +140,10 @@ function lozad (selector = '.lozad', options = {}) {
           continue
         }
 
+        if (mutationObserver) {
+          mutationObserver.observe(elements[i], {subtree: true, attributes: true, attributeFilter: validAttribute});
+        }
+
         load(elements[i]);
         markAsLoaded(elements[i]);
         loaded(elements[i]);
@@ -133,7 +158,8 @@ function lozad (selector = '.lozad', options = {}) {
       markAsLoaded(element);
       loaded(element);
     },
-    observer
+    observer,
+    mutationObserver
   }
 }
 
