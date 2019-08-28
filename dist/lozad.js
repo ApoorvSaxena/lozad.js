@@ -1,4 +1,4 @@
-/*! lozad.js - v1.10.0 - 2019-08-27
+/*! lozad.js - v1.10.0 - 2019-08-28
 * https://github.com/ApoorvSaxena/lozad.js
 * Copyright (c) 2019 Apoorv Saxena; Licensed MIT */
 
@@ -161,12 +161,12 @@
           }
 
           if (observer) {
+            if (mutationObserver) {
+              mutationObserver.observe(elements[i], { subtree: true, attributes: true, attributeFilter: validAttribute });
+            }
+
             observer.observe(elements[i]);
             continue;
-          }
-
-          if (mutationObserver) {
-            mutationObserver.observe(elements[i], { subtree: true, attributes: true, attributeFilter: validAttribute });
           }
 
           load(elements[i]);

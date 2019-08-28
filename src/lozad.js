@@ -134,6 +134,7 @@ export default function (selector = '.lozad', options = {}) {
           if (mutationObserver) {
             mutationObserver.observe(elements[i], {subtree: true, attributes: true, attributeFilter: validAttribute})
           }
+
           observer.observe(elements[i])
           continue
         }
