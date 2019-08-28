@@ -131,12 +131,11 @@ export default function (selector = '.lozad', options = {}) {
         }
 
         if (observer) {
+          if (mutationObserver) {
+            mutationObserver.observe(elements[i], {subtree: true, attributes: true, attributeFilter: validAttribute})
+          }
           observer.observe(elements[i])
           continue
-        }
-
-        if (mutationObserver) {
-          mutationObserver.observe(elements[i], {subtree: true, attributes: true, attributeFilter: validAttribute})
         }
 
         load(elements[i])
