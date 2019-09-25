@@ -46,10 +46,6 @@ const defaultConfig = {
     }
 
     if (element.getAttribute('data-background-image')) {
-      element.style.backgroundImage = `url('${element.getAttribute('data-background-image')}')`
-    }
-
-    if (element.getAttribute('data-background-image')) {
       element.style.backgroundImage = `url('${element.getAttribute('data-background-image').split(',').join('\'),url(\'')}')`
     }
 
