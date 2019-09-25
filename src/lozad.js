@@ -50,7 +50,7 @@ const defaultConfig = {
     }
 
     if (element.getAttribute('data-background-image')) {
-      element.style.backgroundImage = `url('${element.getAttribute.( 'data-background-image' ).split( ',' ).join( "'),url('" )}')`;
+      element.style.backgroundImage = `url('${element.getAttribute('data-background-image').split(',').join('\'),url(\'')}')`
     }
 
     if (element.getAttribute('data-toggle-class')) {
