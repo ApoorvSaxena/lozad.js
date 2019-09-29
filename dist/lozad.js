@@ -1,4 +1,4 @@
-/*! lozad.js - v1.10.0 - 2019-09-28
+/*! lozad.js - v1.11.0 - 2019-09-29
 * https://github.com/ApoorvSaxena/lozad.js
 * Copyright (c) 2019 Apoorv Saxena; Licensed MIT */
 
@@ -6,8 +6,8 @@
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
   typeof define === 'function' && define.amd ? define(factory) :
-  (global.lozad = factory());
-}(this, (function () { 'use strict';
+  (global = global || self, global.lozad = factory());
+}(this, function () { 'use strict';
 
   /**
    * Detect IE browser
@@ -161,4 +161,4 @@
 
   return lozad;
 
-})));
+}));

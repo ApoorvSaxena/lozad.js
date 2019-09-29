@@ -2,7 +2,7 @@
   "name": "lozad",
   "title": "lozad.js",
   "description": "A light-weight JS library to lazy load any HTML element such as images, ads, videos etc.",
-  "version": "1.10.0",
+  "version": "1.11.0",
   "homepage": "https://github.com/ApoorvSaxena/lozad.js",
   "license": "MIT",
   "scripts": {
@@ -69,7 +69,7 @@
     "rollup": "^0.63.5",
     "rollup-plugin-babel": "^3.0.2",
     "rollup-plugin-filesize": "^4.0.1",
-    "rollup-plugin-license": "^0.9.0",
+    "rollup-plugin-license": "^0.12.1",
     "rollup-plugin-uglify": "^4.0.0",
     "xo": "^0.24.0"
   },
