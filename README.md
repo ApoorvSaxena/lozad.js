@@ -9,7 +9,7 @@
 - is a light-weight library, just [![](http://img.badgesize.io/https://cdn.jsdelivr.net/npm/lozad?compression=gzip)](https://cdn.jsdelivr.net/npm/lozad) minified & gzipped,
 - has NO DEPENDENCIES :)
 - allows lazy loading of dynamically added elements as well,
-- supports &lt;img&gt;, &lt;picture&gt;, iframes, videos, audios, responsive images, background images etc.
+- supports &lt;img&gt;, &lt;picture&gt;, iframes, videos, audios, responsive images, background images and multiple background images etc.
 - is completely free and open source.
 
 It is written with an aim to lazy load images, iframes, ads, videos or any other element using the recently added [Intersection Observer API](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API) with tremendous performance benefits.
@@ -154,6 +154,13 @@ for use with background images
 ```html
 <!-- background image example -->
 <div class="lozad" data-background-image="image.png">
+</div>
+```
+
+for use with multiple background images
+```html
+<!-- multiple background image example -->
+<div class="lozad" data-background-image="path/to/first/image,path/to/second/image,path/to/third/image">
 </div>
 ```
 

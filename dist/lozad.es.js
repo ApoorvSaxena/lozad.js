@@ -1,4 +1,4 @@
-/*! lozad.js - v1.10.0 - 2019-06-06
+/*! lozad.js - v1.10.0 - 2019-09-28
 * https://github.com/ApoorvSaxena/lozad.js
 * Copyright (c) 2019 Apoorv Saxena; Licensed MIT */
 
@@ -51,7 +51,7 @@ const defaultConfig = {
     }
 
     if (element.getAttribute('data-background-image')) {
-      element.style.backgroundImage = `url('${element.getAttribute('data-background-image')}')`;
+      element.style.backgroundImage = `url('${element.getAttribute('data-background-image').split(',').join('\'),url(\'')}')`;
     }
 
     if (element.getAttribute('data-toggle-class')) {
@@ -94,7 +94,7 @@ const getElements = (selector, root = document) => {
 };
 
 function lozad (selector = '.lozad', options = {}) {
-  const {root, rootMargin, threshold, load, loaded} = {...defaultConfig, ...options};
+  const {root, rootMargin, threshold, load, loaded} = Object.assign({}, defaultConfig, options);
   let observer;
 
   if (typeof window !== 'undefined' && window.IntersectionObserver) {
