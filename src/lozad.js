@@ -47,6 +47,15 @@ const defaultConfig = {
 
     if (element.getAttribute('data-background-image')) {
       element.style.backgroundImage = `url('${element.getAttribute('data-background-image').split(',').join('\'),url(\'')}')`
+    } else if (element.getAttribute('data-background-image-set')) {
+      const imageSetLinks = element.getAttribute('data-background-image-set').split(',')
+      let firstUrlLink = (imageSetLinks[0].substr(0, imageSetLinks[0].indexOf(' ')) || imageSetLinks[0]); // substring before ... 1x
+      firstUrlLink = firstUrlLink.indexOf('url(') === -1 ? `url(${firstUrlLink})` : firstUrlLink
+      if (imageSetLinks.length === 1) {
+        element.style.backgroundImage = firstUrlLink
+      } else {
+        element.setAttribute('style', (element.getAttribute('style') || '') + `background-image: ${firstUrlLink}; background-image: -webkit-image-set(${imageSetLinks}); background-image: image-set(${imageSetLinks})`)
+      }
     }
 
     if (element.getAttribute('data-toggle-class')) {
