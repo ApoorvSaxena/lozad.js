@@ -28,7 +28,7 @@ describe('lozad', () => {
       image.dataset.src = Math.random()
         .toString(36)
         .substring(7)
-      document.body.append(image)
+      document.body.appendChild(image)
     })
 
     it('should not load image', () => {
@@ -47,7 +47,7 @@ describe('lozad', () => {
         .toString(36)
         .substring(7)
       image.setAttribute('class', 'lozad')
-      document.body.append(image)
+      document.body.appendChild(image)
     })
 
     it('should not load an image till observe function is called', () => {
@@ -72,7 +72,7 @@ describe('lozad', () => {
       image.dataset.src = Math.random()
         .toString(36)
         .substring(7)
-      document.body.append(image)
+      document.body.appendChild(image)
     })
 
     it('should load the image', () => {
@@ -93,7 +93,7 @@ describe('lozad', () => {
       image.dataset.src = Math.random()
         .toString(36)
         .substring(7)
-      document.body.append(image)
+      document.body.appendChild(image)
     })
 
     it('should load the image', () => {
@@ -112,12 +112,12 @@ describe('lozad', () => {
       image.dataset.src = Math.random()
         .toString(36)
         .substring(7)
-      document.body.append(image)
+      document.body.appendChild(image)
       const imageTwo = document.createElement('img')
       imageTwo.dataset.src = Math.random()
         .toString(36)
         .substring(7)
-      document.body.append(imageTwo)
+      document.body.appendChild(imageTwo)
     })
 
     it('should load the images', () => {
@@ -136,7 +136,7 @@ describe('lozad', () => {
     beforeEach(() => {
       document.body.innerHTML = ''
       const image = document.createElement('img')
-      document.body.append(image)
+      document.body.appendChild(image)
     })
 
     it('should load the image with data-srcset attribute', () => {
@@ -215,7 +215,7 @@ describe('lozad', () => {
       image.dataset.src = Math.random()
         .toString(36)
         .substring(7)
-      document.body.append(image)
+      document.body.appendChild(image)
     })
 
     it('should not load elements by default when custom load option is passed in', () => {
@@ -264,7 +264,7 @@ describe('lozad', () => {
       image.dataset.src = Math.random()
         .toString(36)
         .substring(7)
-      document.body.append(image)
+      document.body.appendChild(image)
     })
 
     it('should load image via triggerLoad function', () => {
@@ -291,7 +291,7 @@ describe('lozad', () => {
       const source = document.createElement('source')
       source.setAttribute('srcset', src)
       picture.append(source)
-      document.body.append(picture)
+      document.body.appendChild(picture)
     })
 
     it('should load the picture', () => {
@@ -332,7 +332,7 @@ describe('lozad', () => {
       const el = document.createElement('div')
       el.dataset.toggleClass = 'test'
       el.setAttribute('class', 'lozad')
-      document.body.append(el)
+      document.body.appendChild(el)
     })
 
     it('should not toggle till observe function is called', () => {
@@ -355,7 +355,7 @@ describe('lozad', () => {
       const el = document.createElement('div')
       el.dataset.toggleClass = 'test'
       el.setAttribute('class', 'lozad')
-      document.body.append(el)
+      document.body.appendChild(el)
     })
 
     it('should export the IntersectionObserver instance', () => {
