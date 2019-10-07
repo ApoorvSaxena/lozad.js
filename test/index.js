@@ -163,7 +163,7 @@ describe('lozad', () => {
         'url(' + bgImageAttr + ')'
       )
     })
-    // handle a single image src
+    // Handle a single image src
     it('should load the image with data-background-image-set attribute', () => {
       const bgImageSetAttr = 'url("photo.jpg")'
       const observer = lozad()
@@ -174,10 +174,10 @@ describe('lozad', () => {
       assert.strictEqual('true', image.dataset.loaded)
       assert.strictEqual(
         image.style.cssText,
-        "background-image: url(photo.jpg);"
+        'background-image: url(photo.jpg);'
       )
     })
-    // handle a single image set
+    // Handle a single image set
     it('should load the image with data-background-image-set attribute', () => {
       const bgImageSetAttr = 'url("photo.jpg") 1x, url("photo@2x.jpg") 2x'
       const observer = lozad()
@@ -192,7 +192,7 @@ describe('lozad', () => {
         'background: white;background-image: url("photo.jpg"); background-image: -webkit-image-set(url("photo.jpg") 1x, url("photo@2x.jpg") 2x); background-image: image-set(url("photo.jpg") 1x, url("photo@2x.jpg") 2x)'
       )
     })
-    // handle a single image set
+    // Handle a single image set
     it('should load the image with data-background-image-set attribute', () => {
       const bgImageSetAttr = 'url("photo.jpg") 1x'
       const observer = lozad()
@@ -203,7 +203,7 @@ describe('lozad', () => {
       assert.strictEqual('true', image.dataset.loaded)
       assert.strictEqual(
         image.style.cssText,
-        "background-image: url(photo.jpg);"
+        'background-image: url(photo.jpg);'
       )
     })
   })
