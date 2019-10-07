@@ -290,7 +290,7 @@ describe('lozad', () => {
       picture.setAttribute('data-alt', 'alt text')
       const source = document.createElement('source')
       source.setAttribute('srcset', src)
-      picture.append(source)
+      picture.appendChild(source)
       document.body.appendChild(picture)
     })
 
