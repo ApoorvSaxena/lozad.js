@@ -81,7 +81,7 @@
     "semicolon": false,
     "space": true,
     "rules": {
-      "unicorn/prefer-node-append": "false"
+      "unicorn/prefer-node-append": "off"
     }
   }
 }

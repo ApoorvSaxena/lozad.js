@@ -60,7 +60,7 @@
         element.style.backgroundImage = 'url(\'' + element.getAttribute('data-background-image').split(',').join('\'),url(\'') + '\')';
       } else if (element.getAttribute('data-background-image-set')) {
         var imageSetLinks = element.getAttribute('data-background-image-set').split(',');
-        var firstUrlLink = imageSetLinks[0].substr(0, imageSetLinks[0].indexOf(' ')) || imageSetLinks[0]; // substring before ... 1x
+        var firstUrlLink = imageSetLinks[0].substr(0, imageSetLinks[0].indexOf(' ')) || imageSetLinks[0]; // Substring before ... 1x
         firstUrlLink = firstUrlLink.indexOf('url(') === -1 ? 'url(' + firstUrlLink + ')' : firstUrlLink;
         if (imageSetLinks.length === 1) {
           element.style.backgroundImage = firstUrlLink;
