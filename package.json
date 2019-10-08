@@ -79,6 +79,9 @@
       "mocha"
     ],
     "semicolon": false,
-    "space": true
+    "space": true,
+    "rules": {
+      "unicorn/prefer-node-append": "off"
+    }
   }
 }

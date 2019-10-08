@@ -164,6 +164,13 @@ for use with multiple background images
 </div>
 ```
 
+for use with responsive background images (image-set)
+```html
+<!-- responsive background image-set example -->
+<div class="lozad" data-background-image-set="url('photo.jpg') 1x, url('photo@2x.jpg') 2x">
+</div>
+```
+
 If you want to load the images before they appear:
 
 ```js

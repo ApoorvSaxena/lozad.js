@@ -28,7 +28,7 @@ describe('lozad', () => {
       image.dataset.src = Math.random()
         .toString(36)
         .substring(7)
-      document.body.append(image)
+      document.body.appendChild(image)
     })
 
     it('should not load image', () => {
@@ -47,7 +47,7 @@ describe('lozad', () => {
         .toString(36)
         .substring(7)
       image.setAttribute('class', 'lozad')
-      document.body.append(image)
+      document.body.appendChild(image)
     })
 
     it('should not load an image till observe function is called', () => {
@@ -72,7 +72,7 @@ describe('lozad', () => {
       image.dataset.src = Math.random()
         .toString(36)
         .substring(7)
-      document.body.append(image)
+      document.body.appendChild(image)
     })
 
     it('should load the image', () => {
@@ -93,7 +93,7 @@ describe('lozad', () => {
       image.dataset.src = Math.random()
         .toString(36)
         .substring(7)
-      document.body.append(image)
+      document.body.appendChild(image)
     })
 
     it('should load the image', () => {
@@ -112,12 +112,12 @@ describe('lozad', () => {
       image.dataset.src = Math.random()
         .toString(36)
         .substring(7)
-      document.body.append(image)
+      document.body.appendChild(image)
       const imageTwo = document.createElement('img')
       imageTwo.dataset.src = Math.random()
         .toString(36)
         .substring(7)
-      document.body.append(imageTwo)
+      document.body.appendChild(imageTwo)
     })
 
     it('should load the images', () => {
@@ -136,7 +136,7 @@ describe('lozad', () => {
     beforeEach(() => {
       document.body.innerHTML = ''
       const image = document.createElement('img')
-      document.body.append(image)
+      document.body.appendChild(image)
     })
 
     it('should load the image with data-srcset attribute', () => {
@@ -163,6 +163,49 @@ describe('lozad', () => {
         'url(' + bgImageAttr + ')'
       )
     })
+    // Handle a single image src
+    it('should load the image with data-background-image-set attribute', () => {
+      const bgImageSetAttr = 'url("photo.jpg")'
+      const observer = lozad()
+      const image = document.querySelectorAll('img')[0]
+      image.setAttribute('class', 'lozad')
+      image.setAttribute('data-background-image-set', bgImageSetAttr)
+      observer.observe()
+      assert.strictEqual('true', image.dataset.loaded)
+      assert.strictEqual(
+        image.style.cssText,
+        'background-image: url(photo.jpg);'
+      )
+    })
+    // Handle a single image set
+    it('should load the image with data-background-image-set attribute', () => {
+      const bgImageSetAttr = 'url("photo.jpg") 1x, url("photo@2x.jpg") 2x'
+      const observer = lozad()
+      const image = document.querySelectorAll('img')[0]
+      image.setAttribute('class', 'lozad')
+      image.style.background = 'white'
+      image.setAttribute('data-background-image-set', bgImageSetAttr)
+      observer.observe()
+      assert.strictEqual('true', image.dataset.loaded)
+      assert.strictEqual(
+        image.getAttribute('style'),
+        'background: white;background-image: url("photo.jpg"); background-image: -webkit-image-set(url("photo.jpg") 1x, url("photo@2x.jpg") 2x); background-image: image-set(url("photo.jpg") 1x, url("photo@2x.jpg") 2x)'
+      )
+    })
+    // Handle a single image set
+    it('should load the image with data-background-image-set attribute', () => {
+      const bgImageSetAttr = 'url("photo.jpg") 1x'
+      const observer = lozad()
+      const image = document.querySelectorAll('img')[0]
+      image.setAttribute('class', 'lozad')
+      image.setAttribute('data-background-image-set', bgImageSetAttr)
+      observer.observe()
+      assert.strictEqual('true', image.dataset.loaded)
+      assert.strictEqual(
+        image.style.cssText,
+        'background-image: url(photo.jpg);'
+      )
+    })
   })
 
   describe('when passing options', () => {
@@ -172,7 +215,7 @@ describe('lozad', () => {
       image.dataset.src = Math.random()
         .toString(36)
         .substring(7)
-      document.body.append(image)
+      document.body.appendChild(image)
     })
 
     it('should not load elements by default when custom load option is passed in', () => {
@@ -221,7 +264,7 @@ describe('lozad', () => {
       image.dataset.src = Math.random()
         .toString(36)
         .substring(7)
-      document.body.append(image)
+      document.body.appendChild(image)
     })
 
     it('should load image via triggerLoad function', () => {
@@ -247,8 +290,8 @@ describe('lozad', () => {
       picture.setAttribute('data-alt', 'alt text')
       const source = document.createElement('source')
       source.setAttribute('srcset', src)
-      picture.append(source)
-      document.body.append(picture)
+      picture.appendChild(source)
+      document.body.appendChild(picture)
     })
 
     it('should load the picture', () => {
@@ -289,7 +332,7 @@ describe('lozad', () => {
       const el = document.createElement('div')
       el.dataset.toggleClass = 'test'
       el.setAttribute('class', 'lozad')
-      document.body.append(el)
+      document.body.appendChild(el)
     })
 
     it('should not toggle till observe function is called', () => {
@@ -312,7 +355,7 @@ describe('lozad', () => {
       const el = document.createElement('div')
       el.dataset.toggleClass = 'test'
       el.setAttribute('class', 'lozad')
-      document.body.append(el)
+      document.body.appendChild(el)
     })
 
     it('should export the IntersectionObserver instance', () => {

@@ -1,4 +1,4 @@
-/*! lozad.js - v1.11.0 - 2019-09-29
+/*! lozad.js - v1.11.0 - 2019-10-07
 * https://github.com/ApoorvSaxena/lozad.js
 * Copyright (c) 2019 Apoorv Saxena; Licensed MIT */
 
@@ -6,8 +6,8 @@
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
   typeof define === 'function' && define.amd ? define(factory) :
-  (global = global || self, global.lozad = factory());
-}(this, function () { 'use strict';
+  (global.lozad = factory());
+}(this, (function () { 'use strict';
 
   /**
    * Detect IE browser
@@ -58,6 +58,15 @@
 
       if (element.getAttribute('data-background-image')) {
         element.style.backgroundImage = 'url(\'' + element.getAttribute('data-background-image').split(',').join('\'),url(\'') + '\')';
+      } else if (element.getAttribute('data-background-image-set')) {
+        var imageSetLinks = element.getAttribute('data-background-image-set').split(',');
+        var firstUrlLink = imageSetLinks[0].substr(0, imageSetLinks[0].indexOf(' ')) || imageSetLinks[0]; // Substring before ... 1x
+        firstUrlLink = firstUrlLink.indexOf('url(') === -1 ? 'url(' + firstUrlLink + ')' : firstUrlLink;
+        if (imageSetLinks.length === 1) {
+          element.style.backgroundImage = firstUrlLink;
+        } else {
+          element.setAttribute('style', (element.getAttribute('style') || '') + ('background-image: ' + firstUrlLink + '; background-image: -webkit-image-set(' + imageSetLinks + '); background-image: image-set(' + imageSetLinks + ')'));
+        }
       }
 
       if (element.getAttribute('data-toggle-class')) {
@@ -161,4 +170,4 @@
 
   return lozad;
 
-}));
+})));
