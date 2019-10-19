@@ -23,6 +23,12 @@ It is written with an aim to lazy load images, iframes, ads, videos or any other
 - [Codrops](https://twitter.com/Apoorv_Saxena/status/906586828265758720)
 - [SitePoint](https://www.sitepoint.com/five-techniques-lazy-load-images-website-performance/)
 
+## Brands using Lozad.js:
+![Tesla](./brands/tesla.png)&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ![Domino's](./brands/dominos.png)&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ![BBC](./brands/bbc.png)&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ![JLM Couture](./brands/jlm-couture.png)&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ![New Balance](./brands/new-balance.png)&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ![Binance](./brands/binance.png)
+
+and many more...
+
+
 ## Table of Contents
 
 - [Demo](https://apoorv.pro/lozad.js/demo/)
