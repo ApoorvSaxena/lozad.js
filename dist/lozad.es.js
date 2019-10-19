@@ -1,4 +1,4 @@
-/*! lozad.js - v1.12.0 - 2019-10-18
+/*! lozad.js - v1.13.0 - 2019-10-19
 * https://github.com/ApoorvSaxena/lozad.js
 * Copyright (c) 2019 Apoorv Saxena; Licensed MIT */
 
