@@ -178,6 +178,65 @@ picture-09.jpg media="(min-width: 320px)"
             </article>
         </div>
     </div>
+
+    <!-- <background> example -->
+        <!-- SubMain -->
+        <div class="sub-main">
+            <article class="main-heading">
+                <h1>&lt;background> example</h1>
+                <p style="font-size: 75%"><em>* You can open your network section in dev tools, for see how background-images are loading</em></p>
+            </article>
+        </div>
+        <!-- Backgrounds -->
+        <div id="backgrounds">
+            <article class="screen">
+                <div class="background">
+                    <div class="lozad-background" data-background-image="images/backgrounds/background-single.jpg">
+                    </div>
+                    <h2>Example 1</h2>
+                    <pre>
+Single Background Image
+                    </pre>
+                </div>
+            </article>
+            <article class="screen">
+                <div class="background">
+                    <div class="lozad-background" data-background-image="images/backgrounds/background-multiple-1.png,images/backgrounds/background-multiple-2.png,images/backgrounds/background-multiple-3.png">
+                    </div>
+                    <h2>Example 2</h2>
+                    <pre>
+Multiple Background Images
+Check the console to see that these are indeed separate images.
+                    </pre>
+                </div>
+            </article>
+            <article class="screen">
+                <div class="background">
+                    <div class="lozad-background" data-background-image="images/backgrounds/background-multiple-fail.png,images/backgrounds/background-multiple-fallback.png">
+                    </div>
+                    <h2>Example 3</h2>
+                    <pre>
+Multiple Background Images
+Fallback Method ( where the first / foremost image fails )
+Check the console to see that the first image is failed to load.
+                    </pre>
+                </div>
+            </article>
+            <article class="screen">
+                <div class="background">
+                    <div class="lozad-background" data-background-image-set="url('images/responsive/photo.jpg') 1x, url('images/responsive/photo@2x.jpg') 2x, url('images/responsive/photo@3x.jpg') 3x">
+                    </div>
+                    <h2>Example 4</h2>
+                    <pre>
+Responsive Background Images set
+Change a device pixel ratio with devtools and check the console to see which image dimension was loaded
+                    </pre>
+                </div>
+            </article>
+
+        </div>
+    </div>
+
     <!-- <iframe> example -->
     <div class="sub-main">
         <article class="main-heading">
@@ -246,9 +305,15 @@ picture-09.jpg media="(min-width: 320px)"
             toastr["success"]("Once data-src change, the element render again.")
         }, 3000)
     }
+    // Background observer
+    // with default `load` method
+    var backgroundObserver = lozad('.lozad-background', {
+        threshold: 0.1
+    })
 
     observer.observe()
     pictureObserver.observe()
+    backgroundObserver.observe()
 
     </script>
     <!-- Global site tag (gtag.js) - Google Analytics -->
