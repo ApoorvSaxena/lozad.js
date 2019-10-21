@@ -10,9 +10,10 @@
 - has NO DEPENDENCIES :)
 - allows lazy loading of dynamically added elements as well,
 - supports &lt;img&gt;, &lt;picture&gt;, iframes, videos, audios, responsive images, background images etc.
+- it will reload when the valid attributes change.
 - is completely free and open source.
 
-It is written with an aim to lazy load images, iframes, ads, videos or any other element using the recently added [Intersection Observer API](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API) with tremendous performance benefits.
+It is written with an aim to lazy load images, iframes, ads, videos or any other element using the recently added [Intersection Observer API](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API) and [MutationObserver](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver) with tremendous performance benefits.
 
 ## Featured in:
 - [Web | Google Developers](https://developers.google.com/web/fundamentals/performance/lazy-loading-guidance/images-and-video/)

@@ -58,7 +58,7 @@
                 <h1>Lozad.js - Performant Lazy Loading Library</h1>
             </article>
             <article class="thumb">
-                <img class="lozad" data-src="images/thumbs/01.jpg" data-index="1" />
+                <img class="lozad" id="mutativeImg1" data-src="images/thumbs/01.jpg" data-index="1" />
                 <noscript><img src="images/thumbs/01.jpg" data-index="1" /></noscript>
                     <h2>Image 1</h2>
             </article>
@@ -68,7 +68,7 @@
                     <h2>Image 2</h2>
             </article>
             <article class="thumb">
-                <img class="lozad" data-src="images/thumbs/03.jpg" data-index="3" />
+                <img class="lozad" id="mutativeImg2" data-src="images/thumbs/03.jpg" data-index="3" />
                 <noscript><img src="images/thumbs/03.jpg" data-index="3" /></noscript>
                     <h2>Image 3</h2>
             </article>
@@ -238,6 +238,14 @@ picture-09.jpg media="(min-width: 320px)"
     var pictureObserver = lozad('.lozad-picture', {
         threshold: 0.1
     })
+
+    window.onload = function () {
+        setTimeout(function () {
+            document.querySelector('#mutativeImg1').dataset.src = 'images/thumbs/02.jpg'
+            document.querySelector('#mutativeImg2').dataset.src = 'images/thumbs/02.jpg'
+            toastr["success"]("Once data-src change, the element render again.")
+        }, 3000)
+    }
 
     observer.observe()
     pictureObserver.observe()
