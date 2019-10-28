@@ -267,16 +267,14 @@ Change a device pixel ratio with devtools and check the console to see which ima
       </article>
     </div>
 
-    <!-- polyfill for Object.assign -->
-    <script type="text/javascript" crossorigin="anonymous" src="https://polyfill.io/v3/polyfill.min.js?flags=gated&features=Object.assign"></script>
+    <!-- polyfill for Object.assign & IntersectionObserver-->
+    <script crossorigin="anonymous"
+        src="https://polyfill.io/v3/polyfill.min.js?flags=gated&features=Object.assign%2CIntersectionObserver"></script>
     <!-- Toastr resources for Notifications -->
     <script src="assets/js/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     <!-- Toastr resources -->
-    <!-- IntersectionObserver Polyfill -->
-    <script src="https://rawgit.com/w3c/IntersectionObserver/master/polyfill/intersection-observer.js"></script>
-    <!-- IntersectionObserver Polyfill -->
     <script src="../dist/lozad.min.js"></script>
     <script type="text/javascript">
     toastr.options = {
