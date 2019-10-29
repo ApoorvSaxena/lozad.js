@@ -3,7 +3,8 @@ language: node_js
 node_js:
   - '8'
 script:
-  - npm run clean
+  - rm -rf node_modules
+  - npm install
   - npm run build
   - npm run test
 
