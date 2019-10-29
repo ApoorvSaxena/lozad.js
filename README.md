@@ -229,7 +229,7 @@ The `active` class will be toggled on the element when it enters the browser’s
 
 ## Browser Support
 
-Available in [latest browsers](http://caniuse.com/#feat=intersectionobserver). If browser support is not available, then make use of this [polyfill](https://www.npmjs.com/package/intersection-observer).
+Available in [latest browsers](http://caniuse.com/#feat=intersectionobserver). If browser support is not available, then make use of this [polyfill](https://polyfill.io/v3/polyfill.min.js?flags=gated&features=IntersectionObserver).
 
 ## FAQs
 
