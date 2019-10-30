@@ -357,7 +357,9 @@ describe('lozad', () => {
       el.setAttribute('class', 'lozad')
       el.setAttribute('data-poster', 'test')
       document.body.appendChild(el)
-      window.HTMLMediaElement.prototype.load = () => { /* do nothing */ };
+      window.HTMLMediaElement.prototype.load = () => {
+        /* Do nothing */
+      }
     })
 
     it('should not toggle till observe function is called', () => {

@@ -37,8 +37,8 @@ const defaultConfig = {
       }
     }
 
-    if (element.getAttribute('data-poster')){
-        element.poster = element.getAttribute('data-poster')
+    if (element.getAttribute('data-poster')) {
+      element.poster = element.getAttribute('data-poster')
     }
 
     if (element.getAttribute('data-src')) {
