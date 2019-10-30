@@ -231,6 +231,8 @@ The `active` class will be toggled on the element when it enters the browser’s
 
 Available in [latest browsers](http://caniuse.com/#feat=intersectionobserver). If browser support is not available, then make use of this [polyfill](https://polyfill.io/v3/polyfill.min.js?flags=gated&features=IntersectionObserver).
 
+For IE11 support, make use of this [polyfill](https://polyfill.io/v3/polyfill.min.js?flags=gated&features=Object.assign%2CIntersectionObserver) which includes all required polyfills.
+
 ## FAQs
 
 Checkout the [FAQ Wiki](https://github.com/ApoorvSaxena/lozad.js/wiki/Frequently-Asked-Questions) for some common gotchas to be aware of while using **lozad.js**
