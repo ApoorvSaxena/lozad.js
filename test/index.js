@@ -261,9 +261,10 @@ describe('lozad', () => {
     beforeEach(() => {
       document.body.innerHTML = ''
       const image = document.createElement('img')
-      image.dataset.src = Math.random()
+      const src = Math.random()
         .toString(36)
         .substring(7)
+      image.dataset.src = src
       document.body.appendChild(image)
     })
 
@@ -373,7 +374,7 @@ describe('lozad', () => {
       const el = document.querySelectorAll('video')[0]
       observer.observe()
       assert.strictEqual(true, el.classList.contains('test'))
-      assert.strictEqual('test', el.poster)
+      assert.strictEqual(el.dataset.poster, el.poster)
     })
   })
 
