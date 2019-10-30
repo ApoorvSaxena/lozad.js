@@ -211,6 +211,15 @@ Create _a broken_ picture element structure.
 
 When _lozad_ loads this picture element, it will fix it.
 
+## Example with video
+
+```html
+<video data-poster="images/backgrounds/video-poster.jpeg">
+    <source data-src="video/mov_bbb.mp4" type="video/mp4">
+    <source data-src="video/mov_bbb.ogg" type="video/ogg">
+</video>
+```
+
 ## Example with iframe
 
 ```html
