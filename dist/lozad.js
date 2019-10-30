@@ -6,8 +6,8 @@
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
   typeof define === 'function' && define.amd ? define(factory) :
-  (global = global || self, global.lozad = factory());
-}(this, function () { 'use strict';
+  (global.lozad = factory());
+}(this, (function () { 'use strict';
 
   /**
    * Detect IE browser
@@ -174,4 +174,4 @@
 
   return lozad;
 
-}));
+})));

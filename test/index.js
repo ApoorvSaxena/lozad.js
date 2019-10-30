@@ -349,6 +349,32 @@ describe('lozad', () => {
     })
   })
 
+  describe('video', () => {
+    beforeEach(() => {
+      document.body.innerHTML = ''
+      const el = document.createElement('video')
+      el.dataset.toggleClass = 'test'
+      el.setAttribute('class', 'lozad')
+      el.setAttribute('data-poster', 'test')
+      document.body.appendChild(el)
+      window.HTMLMediaElement.prototype.load = () => { /* do nothing */ };
+    })
+
+    it('should not toggle till observe function is called', () => {
+      lozad()
+      const el = document.querySelectorAll('video')[0]
+      assert.strictEqual(false, el.classList.contains('test'))
+    })
+
+    it('should toggle class and poster value after observe function is called', () => {
+      const observer = lozad()
+      const el = document.querySelectorAll('video')[0]
+      observer.observe()
+      assert.strictEqual(true, el.classList.contains('test'))
+      assert.strictEqual('test', el.poster)
+    })
+  })
+
   describe('exported IntersectionObserver', () => {
     beforeEach(() => {
       document.body.innerHTML = ''
