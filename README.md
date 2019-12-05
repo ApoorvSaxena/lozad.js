@@ -1,6 +1,6 @@
 # Lozad.js [![npm version](https://badge.fury.io/js/lozad.svg)](https://badge.fury.io/js/lozad) [![Build Status](https://travis-ci.org/ApoorvSaxena/lozad.js.svg?branch=master)](https://travis-ci.org/ApoorvSaxena/lozad.js) [![npm](https://img.shields.io/npm/dm/lozad)](https://www.npmjs.com/package/lozad) [![](https://data.jsdelivr.com/v1/package/npm/lozad/badge)](https://www.jsdelivr.com/package/npm/lozad)
 
-> Highly performant, light and configurable lazy loader in pure JS with no dependencies for images, iframes and more, using IntersectionObserver API
+> Highly performant, light and configurable lazy loader in pure JS with no dependencies. its compatible with images, videos, iframes and more, using [IntersectionObserver API](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API)
 
 ![lozad.js lazy loading javascript library](./banner/lozad-banner.jpg "lozad.js lazy loading javascript library")
 
@@ -14,6 +14,8 @@
 
 It is written with an aim to lazy load images, iframes, ads, videos or any other element using the recently added [Intersection Observer API](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API) with tremendous performance benefits.
 
+To See [Demo](https://apoorv.pro/lozad.js/demo/) of how package looks like in application
+
 ## Featured in:
 - [Web | Google Developers](https://developers.google.com/web/fundamentals/performance/lazy-loading-guidance/images-and-video/)
 - [Product Hunt](https://www.producthunt.com/posts/lozad-js)
@@ -26,13 +28,12 @@ It is written with an aim to lazy load images, iframes, ads, videos or any other
 ## Brands using Lozad.js:
 ![Tesla](./brands/tesla.png)&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ![Binance](./brands/binance.png)&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ![Domino's](./brands/dominos.png)&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ![BNP Paribas](./brands/bnp-paribas.png)&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ![Mi](./brands/xiaomi.png)&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ![JLM Couture](./brands/jlm-couture.png)&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ![New Balance](./brands/new-balance.png)&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ![BBC](./brands/bbc.png)
 
-and many more...
+
+**and many more...**
 
 
 ## Table of Contents
-
-- [Demo](https://apoorv.pro/lozad.js/demo/)
-- [Background](#yet-another-lazy-loading-javascript-library-why)
+- [why lozad?](#yet-another-lazy-loading-javascript-library-why)
 - [Install](#install)
 - [Usage](#usage)
 - [Example with picture tag](#example-with-picture-tag)
@@ -42,10 +43,10 @@ and many more...
 - [Changelog](#changelog)
 - [License](#license)
 
-## Yet another Lazy Loading JavaScript library, why?
-Existing lazy loading libraries hook up to the scroll event or use a periodic timer and call `getBoundingClientRect()` on elements that need to be lazy loaded. This approach, however, is painfully slow as each call to `getBoundingClientRect()` forces the browser to re-layout the entire page and will introduce considerable jank to your website.
+## Why To Choose Lozad?
+Other lazy loading libraries hook up to the scroll event or use a periodic timer and call `getBoundingClientRect()` on elements that need to be lazy loaded. In this approach, each call to `getBoundingClientRect()` forces the browser to re-layout the entire page and will introduce considerable jank to your website, **thats why other libraries is painfully slow** 
 
-Making this more efficient and performant is what [IntersectionObserver](https://developers.google.com/web/updates/2016/04/intersectionobserver) is designed for, and it’s landed in Chrome 51. IntersectionObservers let you know when an observed element enters or exits the browser’s viewport.
+Making this more **efficient and performant** is what [IntersectionObserver](https://developers.google.com/web/updates/2016/04/intersectionobserver) is designed for, and it’s landed in Chrome 51. IntersectionObservers let you know when an observed element enters or exits the browser’s viewport.
 
 ## Install
 
@@ -60,7 +61,7 @@ $ yarn add lozad
 $ bower install lozad
 ```
 
-Then with a module bundler like rollup or webpack, use as you would anything else:
+and to import it, you can use it as follows:
 
 ```javascript
 // using ES6 modules
@@ -70,13 +71,13 @@ import lozad from 'lozad'
 var lozad = require('lozad')
 ```
 
-Or load via **CDN** and include in the `head` tag of your page.
+Or via **CDN** and include in the `head` tag of your page 
+and you can find the library on `window.lozad`.
 
 ```html
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
 ```
 
-When loading from CDN, you can find the library on `window.lozad`.
 
 ---
 
@@ -104,9 +105,10 @@ observer.observe();
 ```
 or with custom options:
 ```js
+
 const observer = lozad('.lozad', {
     rootMargin: '10px 0px', // syntax similar to that of CSS Margin
-    threshold: 0.1 // ratio of element convergence
+    threshold: 0.1 // ratio of element visibility
 });
 observer.observe();
 ```
