@@ -242,6 +242,8 @@ Available in [latest browsers](http://caniuse.com/#feat=intersectionobserver). I
 
 For IE11 support, please make use of these [polyfills](https://polyfill.io/v3/polyfill.min.js?flags=gated&features=Object.assign%2CIntersectionObserver).
 
+[ParentNode.append() pollyfill](https://developer.mozilla.org/en-US/docs/Web/API/ParentNode/append#Polyfill) is also required when using &lt;picture&gt; in IE11.
+
 ## FAQs
 
 Checkout the [FAQ Wiki](https://github.com/ApoorvSaxena/lozad.js/wiki/Frequently-Asked-Questions) for some common gotchas to be aware of while using **lozad.js**
