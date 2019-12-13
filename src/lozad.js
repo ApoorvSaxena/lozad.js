@@ -19,7 +19,7 @@ const defaultConfig = {
         img.alt = element.getAttribute('data-alt')
       }
 
-      element.append(img)
+      element.appendChild(img)
     }
 
     if (element.nodeName.toLowerCase() === 'video' && !element.getAttribute('data-src')) {
@@ -102,7 +102,7 @@ const getElements = (selector, root = document) => {
 }
 
 export default function (selector = '.lozad', options = {}) {
-  const {root, rootMargin, threshold, load, loaded} = Object.assign({}, defaultConfig, options)
+  const {root, rootMargin, threshold, load, loaded} = {...defaultConfig, ...options}
   let observer
 
   if (typeof window !== 'undefined' && window.IntersectionObserver) {

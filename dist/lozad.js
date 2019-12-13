@@ -1,4 +1,4 @@
-/*! lozad.js - v1.14.0 - 2019-10-31
+/*! lozad.js - v1.14.0 - 2019-12-13
 * https://github.com/ApoorvSaxena/lozad.js
 * Copyright (c) 2019 Apoorv Saxena; Licensed MIT */
 
@@ -8,6 +8,8 @@
   typeof define === 'function' && define.amd ? define(factory) :
   (global.lozad = factory());
 }(this, (function () { 'use strict';
+
+  var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
   /**
    * Detect IE browser
@@ -30,7 +32,7 @@
           img.alt = element.getAttribute('data-alt');
         }
 
-        element.append(img);
+        element.appendChild(img);
       }
 
       if (element.nodeName.toLowerCase() === 'video' && !element.getAttribute('data-src')) {
@@ -122,12 +124,12 @@
     var selector = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '.lozad';
     var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 
-    var _Object$assign = Object.assign({}, defaultConfig, options),
-        root = _Object$assign.root,
-        rootMargin = _Object$assign.rootMargin,
-        threshold = _Object$assign.threshold,
-        load = _Object$assign.load,
-        loaded = _Object$assign.loaded;
+    var _defaultConfig$option = _extends({}, defaultConfig, options),
+        root = _defaultConfig$option.root,
+        rootMargin = _defaultConfig$option.rootMargin,
+        threshold = _defaultConfig$option.threshold,
+        load = _defaultConfig$option.load,
+        loaded = _defaultConfig$option.loaded;
 
     var observer = void 0;
 

@@ -1,4 +1,4 @@
-/*! lozad.js - v1.14.0 - 2019-10-31
+/*! lozad.js - v1.14.0 - 2019-12-13
 * https://github.com/ApoorvSaxena/lozad.js
 * Copyright (c) 2019 Apoorv Saxena; Licensed MIT */
 
@@ -24,7 +24,7 @@ const defaultConfig = {
         img.alt = element.getAttribute('data-alt');
       }
 
-      element.append(img);
+      element.appendChild(img);
     }
 
     if (element.nodeName.toLowerCase() === 'video' && !element.getAttribute('data-src')) {
@@ -107,7 +107,7 @@ const getElements = (selector, root = document) => {
 };
 
 function lozad (selector = '.lozad', options = {}) {
-  const {root, rootMargin, threshold, load, loaded} = Object.assign({}, defaultConfig, options);
+  const {root, rootMargin, threshold, load, loaded} = {...defaultConfig, ...options};
   let observer;
 
   if (typeof window !== 'undefined' && window.IntersectionObserver) {
