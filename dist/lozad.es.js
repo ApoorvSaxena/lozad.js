@@ -1,4 +1,4 @@
-/*! lozad.js - v1.14.0 - 2020-01-25
+/*! lozad.js - v1.14.0 - 2020-05-22
 * https://github.com/ApoorvSaxena/lozad.js
 * Copyright (c) 2020 Apoorv Saxena; Licensed MIT */
 
@@ -54,10 +54,15 @@ const defaultConfig = {
       element.setAttribute('srcset', element.getAttribute('data-srcset'));
     }
 
+    let backgroundImageDelimiter = ',';
+    if (element.getAttribute('data-background-delimiter')) {
+      backgroundImageDelimiter = element.getAttribute('data-background-delimiter');
+    }
+
     if (element.getAttribute('data-background-image')) {
-      element.style.backgroundImage = `url('${element.getAttribute('data-background-image').split(',').join('\'),url(\'')}')`;
+      element.style.backgroundImage = `url('${element.getAttribute('data-background-image').split(backgroundImageDelimiter).join('\'),url(\'')}')`;
     } else if (element.getAttribute('data-background-image-set')) {
-      const imageSetLinks = element.getAttribute('data-background-image-set').split(',');
+      const imageSetLinks = element.getAttribute('data-background-image-set').split(backgroundImageDelimiter);
       let firstUrlLink = (imageSetLinks[0].substr(0, imageSetLinks[0].indexOf(' ')) || imageSetLinks[0]); // Substring before ... 1x
       firstUrlLink = firstUrlLink.indexOf('url(') === -1 ? `url(${firstUrlLink})` : firstUrlLink;
       if (imageSetLinks.length === 1) {

@@ -180,6 +180,17 @@ for use with responsive background images (image-set)
 </div>
 ```
 
+To change the delimiter that splits background images:
+```html
+<!-- custom delimiter for background images example -->
+<div
+  class="lozad"
+  data-background-image="/first/custom,image,path/image.png-/second/custom,image,path/image.png"
+  data-background-delimiter="-"
+>
+</div>
+```
+
 If you want to load the images before they appear:
 
 ```js
