@@ -207,7 +207,7 @@ observer.triggerLoad(coolImage);
 Sometimes image loading takes a long time. For this case, you can add a placeholder color:
 
 ```html
-<img class="lozad" data-placeholder-color="red" data-src="image.png" />
+<img class="lozad" data-placeholder="red" data-src="image.png" />
 ```
 
 Lozad set the background of `img` element and users will see the fallback.

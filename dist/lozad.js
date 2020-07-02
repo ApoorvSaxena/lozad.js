@@ -90,8 +90,8 @@
   }
 
   function preLoad(element) {
-    if (element.getAttribute('data-placeholder-color')) {
-      element.style.backgroundColor = element.getAttribute('data-placeholder-color');
+    if (element.getAttribute('data-placeholder')) {
+      element.style.background = element.getAttribute('data-placeholder');
     }
   }
 
