@@ -78,6 +78,12 @@ function markAsLoaded(element) {
   element.setAttribute('data-loaded', true)
 }
 
+function preLoad(element) {
+  if (element.getAttribute('data-placeholder-color')) {
+    element.style.backgroundColor = element.getAttribute('data-placeholder-color')
+  }
+}
+
 const isLoaded = element => element.getAttribute('data-loaded') === 'true'
 
 const onIntersection = (load, loaded) => (entries, observer) => {
@@ -116,6 +122,11 @@ export default function (selector = '.lozad', options = {}) {
       rootMargin,
       threshold
     })
+  }
+
+  const elements = getElements(selector, root)
+  for (let i = 0; i < elements.length; i++) {
+    preLoad(elements[i])
   }
 
   return {

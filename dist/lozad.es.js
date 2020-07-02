@@ -1,4 +1,4 @@
-/*! lozad.js - v1.15.0 - 2020-05-23
+/*! lozad.js - v1.15.0 - 2020-07-02
 * https://github.com/ApoorvSaxena/lozad.js
 * Copyright (c) 2020 Apoorv Saxena; Licensed MIT */
 
@@ -83,6 +83,12 @@ function markAsLoaded(element) {
   element.setAttribute('data-loaded', true);
 }
 
+function preLoad(element) {
+  if (element.getAttribute('data-placeholder-color')) {
+    element.style.backgroundColor = element.getAttribute('data-placeholder-color');
+  }
+}
+
 const isLoaded = element => element.getAttribute('data-loaded') === 'true';
 
 const onIntersection = (load, loaded) => (entries, observer) => {
@@ -121,6 +127,11 @@ function lozad (selector = '.lozad', options = {}) {
       rootMargin,
       threshold
     });
+  }
+
+  const elements = getElements(selector, root);
+  for (let i = 0; i < elements.length; i++) {
+    preLoad(elements[i]);
   }
 
   return {
