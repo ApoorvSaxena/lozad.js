@@ -84,8 +84,8 @@ function markAsLoaded(element) {
 }
 
 function preLoad(element) {
-  if (element.getAttribute('data-placeholder')) {
-    element.style.background = element.getAttribute('data-placeholder');
+  if (element.getAttribute('data-placeholder-background')) {
+    element.style.background = element.getAttribute('data-placeholder-background');
   }
 }
 
