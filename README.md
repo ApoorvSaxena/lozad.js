@@ -202,6 +202,16 @@ const coolImage = document.querySelector('.image-to-load-first')
 observer.triggerLoad(coolImage);
 ```
 
+### Large image improvment
+
+Sometimes image loading takes a long time. For this case, you can add a placeholder background:
+
+```html
+<img class="lozad" data-placeholder-background="red" data-src="image.png" />
+```
+
+Lozad sets a placeholder background color of img element and users will see the fallback till the image loads.
+
 ## Example with picture tag
 
 Create _a broken_ picture element structure.

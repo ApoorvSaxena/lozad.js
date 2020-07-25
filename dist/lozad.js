@@ -1,4 +1,4 @@
-/*! lozad.js - v1.15.0 - 2020-05-23
+/*! lozad.js - v1.15.0 - 2020-07-24
 * https://github.com/ApoorvSaxena/lozad.js
 * Copyright (c) 2020 Apoorv Saxena; Licensed MIT */
 
@@ -89,6 +89,12 @@
     element.setAttribute('data-loaded', true);
   }
 
+  function preLoad(element) {
+    if (element.getAttribute('data-placeholder-background')) {
+      element.style.background = element.getAttribute('data-placeholder-background');
+    }
+  }
+
   var isLoaded = function isLoaded(element) {
     return element.getAttribute('data-loaded') === 'true';
   };
@@ -144,23 +150,28 @@
       });
     }
 
+    var elements = getElements(selector, root);
+    for (var i = 0; i < elements.length; i++) {
+      preLoad(elements[i]);
+    }
+
     return {
       observe: function observe() {
         var elements = getElements(selector, root);
 
-        for (var i = 0; i < elements.length; i++) {
-          if (isLoaded(elements[i])) {
+        for (var _i = 0; _i < elements.length; _i++) {
+          if (isLoaded(elements[_i])) {
             continue;
           }
 
           if (observer) {
-            observer.observe(elements[i]);
+            observer.observe(elements[_i]);
             continue;
           }
 
-          load(elements[i]);
-          markAsLoaded(elements[i]);
-          loaded(elements[i]);
+          load(elements[_i]);
+          markAsLoaded(elements[_i]);
+          loaded(elements[_i]);
         }
       },
       triggerLoad: function triggerLoad(element) {
