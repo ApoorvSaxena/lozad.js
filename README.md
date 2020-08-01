@@ -26,6 +26,7 @@ It is written with an aim to lazy load images, iframes, ads, videos or any other
 ## Brands using Lozad.js:
 ![Tesla](./brands/tesla.png)&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ![Binance](./brands/binance.png)&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ![Domino's](./brands/dominos.png)&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
 ![BNP Paribas](./brands/bnp-paribas.png)&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ![Mi](./brands/xiaomi.png)&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+![Amway](./brands/amway.png)&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ![TATA](./brands/tata.png)&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ![Verizon](./brands/verizon.svg)
 ![Atlassian](./brands/atlassian.svg)&nbsp; &nbsp; ![BNP Paribas](./brands/livemint.svg)
 ![JLM Couture](./brands/jlm-couture.png)&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ![New Balance](./brands/new-balance.png)&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ![BBC](./brands/bbc.png)
 
