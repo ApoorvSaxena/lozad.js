@@ -83,6 +83,12 @@ function markAsLoaded(element) {
   element.setAttribute('data-loaded', true);
 }
 
+function preLoad(element) {
+  if (element.getAttribute('data-placeholder-background')) {
+    element.style.background = element.getAttribute('data-placeholder-background');
+  }
+}
+
 const isLoaded = element => element.getAttribute('data-loaded') === 'true';
 
 const onIntersection = (load, loaded) => (entries, observer) => {
@@ -121,6 +127,11 @@ function lozad (selector = '.lozad', options = {}) {
       rootMargin,
       threshold
     });
+  }
+
+  const elements = getElements(selector, root);
+  for (let i = 0; i < elements.length; i++) {
+    preLoad(elements[i]);
   }
 
   return {

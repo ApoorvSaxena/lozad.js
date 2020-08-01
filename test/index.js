@@ -206,6 +206,17 @@ describe('lozad', () => {
         'background-image: url(photo.jpg);'
       )
     })
+    // Handle image background placeholder
+    it('should load the image with data-placeholder-background attribute', () => {
+      const image = document.querySelectorAll('img')[0]
+      const bgImageSetAttr = 'red'
+      image.setAttribute('class', 'lozad')
+      image.setAttribute('data-placeholder-background', bgImageSetAttr)
+      const observer = lozad()
+      observer.observe()
+      assert.strictEqual('true', image.dataset.loaded)
+      assert.strictEqual(image.style.cssText, 'background: red;')
+    })
   })
 
   describe('when passing options', () => {
