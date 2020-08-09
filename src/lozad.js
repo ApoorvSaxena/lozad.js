@@ -22,7 +22,7 @@ const defaultConfig = {
       element.append(img)
     }
 
-    if (element.nodeName.toLowerCase() === 'video' && !element.getAttribute('data-src')) {
+    if ((element.nodeName.toLowerCase() === 'video' || element.nodeName.toLowerCase() === 'audio') && !element.getAttribute('data-src')) {
       if (element.children) {
         const childs = element.children
         let childSrc

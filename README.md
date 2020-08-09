@@ -245,6 +245,14 @@ When _lozad_ loads this picture element, it will fix it.
 </video>
 ```
 
+## Example with audio
+
+```html
+<audio class="lozad">
+    <source data-src="audio/bbb.mp3" type="audio/mp3">
+</audio>
+```
+
 ## Example with iframe
 
 ```html
