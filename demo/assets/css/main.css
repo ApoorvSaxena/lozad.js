@@ -843,9 +843,9 @@ body.loading #main .thumb {
 	background-position: 50% 50%;
 }
 
-/* iframes & video */
+/* iframes & audio & video */
 
-#iframe .frame, #video .frame {
+#iframe .frame, #video .frame, #audio .frame {
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
