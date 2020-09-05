@@ -236,6 +236,18 @@ Create _a broken_ picture element structure.
 
 When _lozad_ loads this picture element, it will fix it.
 
+If you want to use image placeholder (like low quality image placeholder), you can set a temporary `img` tag inside your `picture` tag. It will be removed when _lozad_ loads the picture element.
+
+```html
+<picture class="lozad" style="display: block; min-height: 1rem" data-iesrc="images/thumbs/04.jpg" data-alt="">
+    <source srcset="images/thumbs/04.jpg" media="(min-width: 1280px)">
+    <source srcset="images/thumbs/05.jpg" media="(min-width: 980px)">
+    <source srcset="images/thumbs/06.jpg" media="(min-width: 320px)">
+    <!-- you can define a low quality image placeholder that will be removed when the picture is loaded -->
+    <img src="data:image/jpeg;base64,/some_lqip_in_base_64==" />
+</picture>
+```
+
 ## Example with video
 
 ```html
