@@ -336,6 +336,24 @@ describe('lozad', () => {
       const img = picture.children[1]
       assert.strictEqual('alt text', img.getAttribute('alt'))
     })
+
+    it('should use img tag if inside the picture', () => {
+      const className = 'test-class'
+      const observer = lozad('.' + className)
+      const picture = document.querySelectorAll('picture')[0]
+      picture.setAttribute('class', className)
+
+      const initialImage = document.createElement('img')
+      initialImage.setAttribute('customAttribute', 'custom value')
+      picture.appendChild(initialImage)
+      observer.observe()
+
+      const img = picture.children[1]
+      assert.strictEqual(
+        initialImage.getAttribute('customAttribute'),
+        img.getAttribute('customAttribute')
+      )
+    })
   })
 
   describe('toggle class', () => {

@@ -10,7 +10,14 @@ const defaultConfig = {
   threshold: 0,
   load(element) {
     if (element.nodeName.toLowerCase() === 'picture') {
-      const img = document.createElement('img')
+      let img = element.querySelector('img')
+      let append = false
+
+      if (img === null) {
+        img = document.createElement('img')
+        append = true
+      }
+
       if (isIE && element.getAttribute('data-iesrc')) {
         img.src = element.getAttribute('data-iesrc')
       }
@@ -19,7 +26,9 @@ const defaultConfig = {
         img.alt = element.getAttribute('data-alt')
       }
 
-      element.append(img)
+      if (append) {
+        element.append(img)
+      }
     }
 
     if (element.nodeName.toLowerCase() === 'video' && !element.getAttribute('data-src')) {

@@ -1,4 +1,4 @@
-/*! lozad.js - v1.15.0 - 2020-08-01
+/*! lozad.js - v1.15.0 - 2020-09-05
 * https://github.com/ApoorvSaxena/lozad.js
 * Copyright (c) 2020 Apoorv Saxena; Licensed MIT */
 
@@ -21,7 +21,14 @@
     threshold: 0,
     load: function load(element) {
       if (element.nodeName.toLowerCase() === 'picture') {
-        var img = document.createElement('img');
+        var img = element.querySelector('img');
+        var append = false;
+
+        if (img === null) {
+          img = document.createElement('img');
+          append = true;
+        }
+
         if (isIE && element.getAttribute('data-iesrc')) {
           img.src = element.getAttribute('data-iesrc');
         }
@@ -30,7 +37,9 @@
           img.alt = element.getAttribute('data-alt');
         }
 
-        element.append(img);
+        if (append) {
+          element.append(img);
+        }
       }
 
       if (element.nodeName.toLowerCase() === 'video' && !element.getAttribute('data-src')) {
