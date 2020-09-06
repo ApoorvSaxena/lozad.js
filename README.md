@@ -10,6 +10,7 @@
 - has NO DEPENDENCIES :)
 - allows lazy loading of dynamically added elements as well,
 - supports &lt;img&gt;, &lt;picture&gt;, iframes, videos, audios, responsive images, background images and multiple background images etc.
+- even supports LQIP (Low Quality Image Placeholder)
 - is completely free and open source.
 
 It is written with an aim to lazy load images, iframes, ads, videos or any other element using the recently added [Intersection Observer API](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API) with tremendous performance benefits.
@@ -27,7 +28,7 @@ It is written with an aim to lazy load images, iframes, ads, videos or any other
 ![Tesla](./brands/tesla.png)&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ![Binance](./brands/binance.png)&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ![Domino's](./brands/dominos.png)&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
 ![BNP Paribas](./brands/bnp-paribas.png)&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ![Mi](./brands/xiaomi.png)&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
 ![Amway](./brands/amway.png)&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ![TATA](./brands/tata.png)&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ![Verizon](./brands/verizon.svg)
-![Atlassian](./brands/atlassian.svg)&nbsp; &nbsp; ![BNP Paribas](./brands/livemint.svg)
+![Atlassian](./brands/atlassian.svg) ![BNP Paribas](./brands/livemint.svg)
 ![JLM Couture](./brands/jlm-couture.png)&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ![New Balance](./brands/new-balance.png)&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ![BBC](./brands/bbc.png)
 
 and many more...
