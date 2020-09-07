@@ -149,6 +149,7 @@ export default function (selector = '.lozad', options = {}) {
       threshold
     })
   }
+
   if (support('MutationObserver')) {
     mutationObserver = new MutationObserver(onMutation(load, loaded))
   }
@@ -157,7 +158,6 @@ export default function (selector = '.lozad', options = {}) {
   for (let i = 0; i < elements.length; i++) {
     preLoad(elements[i])
   }
-
 
   return {
     observe() {

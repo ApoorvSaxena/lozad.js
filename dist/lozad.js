@@ -179,6 +179,7 @@
         threshold: threshold
       });
     }
+
     if (support('MutationObserver')) {
       mutationObserver = new MutationObserver(onMutation(load, loaded));
     }
