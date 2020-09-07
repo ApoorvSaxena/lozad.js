@@ -145,7 +145,7 @@ const getElements = (selector, root = document) => {
 };
 
 function lozad (selector = '.lozad', options = {}) {
-  const {root, rootMargin, threshold, enableAutoReload,  load, loaded} = Object.assign({}, defaultConfig, options);
+  const {root, rootMargin, threshold, enableAutoReload, load, loaded} = Object.assign({}, defaultConfig, options);
   let observer;
   let mutationObserver;
   if (support('IntersectionObserver')) {
