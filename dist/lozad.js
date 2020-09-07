@@ -1,4 +1,4 @@
-/*! lozad.js - v1.14.0 - 2020-07-28
+/*! lozad.js - v1.16.0 - 2020-09-07
 * https://github.com/ApoorvSaxena/lozad.js
 * Copyright (c) 2020 Apoorv Saxena; Licensed MIT */
 
@@ -32,7 +32,14 @@
     threshold: 0,
     load: function load(element) {
       if (element.nodeName.toLowerCase() === 'picture') {
-        var img = document.createElement('img');
+        var img = element.querySelector('img');
+        var append = false;
+
+        if (img === null) {
+          img = document.createElement('img');
+          append = true;
+        }
+
         if (isIE && element.getAttribute('data-iesrc')) {
           img.src = element.getAttribute('data-iesrc');
         }
@@ -41,7 +48,9 @@
           img.alt = element.getAttribute('data-alt');
         }
 
-        element.append(img);
+        if (append) {
+          element.append(img);
+        }
       }
 
       if (element.nodeName.toLowerCase() === 'video' && !element.getAttribute('data-src')) {
@@ -59,6 +68,10 @@
         }
       }
 
+      if (element.getAttribute('data-poster')) {
+        element.poster = element.getAttribute('data-poster');
+      }
+
       if (element.getAttribute('data-src')) {
         element.src = element.getAttribute('data-src');
       }
@@ -67,10 +80,15 @@
         element.setAttribute('srcset', element.getAttribute('data-srcset'));
       }
 
+      var backgroundImageDelimiter = ',';
+      if (element.getAttribute('data-background-delimiter')) {
+        backgroundImageDelimiter = element.getAttribute('data-background-delimiter');
+      }
+
       if (element.getAttribute('data-background-image')) {
-        element.style.backgroundImage = 'url(\'' + element.getAttribute('data-background-image').split(',').join('\'),url(\'') + '\')';
+        element.style.backgroundImage = 'url(\'' + element.getAttribute('data-background-image').split(backgroundImageDelimiter).join('\'),url(\'') + '\')';
       } else if (element.getAttribute('data-background-image-set')) {
-        var imageSetLinks = element.getAttribute('data-background-image-set').split(',');
+        var imageSetLinks = element.getAttribute('data-background-image-set').split(backgroundImageDelimiter);
         var firstUrlLink = imageSetLinks[0].substr(0, imageSetLinks[0].indexOf(' ')) || imageSetLinks[0]; // Substring before ... 1x
         firstUrlLink = firstUrlLink.indexOf('url(') === -1 ? 'url(' + firstUrlLink + ')' : firstUrlLink;
         if (imageSetLinks.length === 1) {
@@ -89,6 +107,12 @@
 
   function markAsLoaded(element) {
     element.setAttribute('data-loaded', true);
+  }
+
+  function preLoad(element) {
+    if (element.getAttribute('data-placeholder-background')) {
+      element.style.background = element.getAttribute('data-placeholder-background');
+    }
   }
 
   var isLoaded = function isLoaded(element) {
@@ -155,32 +179,36 @@
         threshold: threshold
       });
     }
-
     if (support('MutationObserver')) {
       mutationObserver = new MutationObserver(onMutation(load, loaded));
+    }
+
+    var elements = getElements(selector, root);
+    for (var i = 0; i < elements.length; i++) {
+      preLoad(elements[i]);
     }
 
     return {
       observe: function observe() {
         var elements = getElements(selector, root);
 
-        for (var i = 0; i < elements.length; i++) {
-          if (isLoaded(elements[i])) {
+        for (var _i = 0; _i < elements.length; _i++) {
+          if (isLoaded(elements[_i])) {
             continue;
           }
 
           if (observer) {
             if (mutationObserver) {
-              mutationObserver.observe(elements[i], { subtree: true, attributes: true, attributeFilter: validAttribute });
+              mutationObserver.observe(elements[_i], { subtree: true, attributes: true, attributeFilter: validAttribute });
             }
 
-            observer.observe(elements[i]);
+            observer.observe(elements[_i]);
             continue;
           }
 
-          load(elements[i]);
-          markAsLoaded(elements[i]);
-          loaded(elements[i]);
+          load(elements[_i]);
+          markAsLoaded(elements[_i]);
+          loaded(elements[_i]);
         }
       },
       triggerLoad: function triggerLoad(element) {

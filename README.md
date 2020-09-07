@@ -1,4 +1,4 @@
-# Lozad.js [![npm version](https://badge.fury.io/js/lozad.svg)](https://badge.fury.io/js/lozad) [![Build Status](https://travis-ci.org/ApoorvSaxena/lozad.js.svg?branch=master)](https://travis-ci.org/ApoorvSaxena/lozad.js) [![](https://data.jsdelivr.com/v1/package/npm/lozad/badge)](https://www.jsdelivr.com/package/npm/lozad)
+# Lozad.js [![npm version](https://badge.fury.io/js/lozad.svg)](https://badge.fury.io/js/lozad) [![Build Status](https://travis-ci.org/ApoorvSaxena/lozad.js.svg?branch=master)](https://travis-ci.org/ApoorvSaxena/lozad.js) [![npm](https://img.shields.io/npm/dm/lozad)](https://www.npmjs.com/package/lozad) [![](https://data.jsdelivr.com/v1/package/npm/lozad/badge)](https://www.jsdelivr.com/package/npm/lozad)
 
 > Highly performant, light and configurable lazy loader in pure JS with no dependencies for images, iframes and more, using IntersectionObserver API
 
@@ -9,9 +9,10 @@
 - is a light-weight library, just [![](http://img.badgesize.io/https://cdn.jsdelivr.net/npm/lozad?compression=gzip)](https://cdn.jsdelivr.net/npm/lozad) minified & gzipped,
 - has NO DEPENDENCIES :)
 - allows lazy loading of dynamically added elements as well,
-- supports &lt;img&gt;, &lt;picture&gt;, iframes, videos, audios, responsive images, background images etc.
-- it will reload when the valid attributes change.
+- supports &lt;img&gt;, &lt;picture&gt;, iframes, videos, audios, responsive images, background images and multiple background images etc.
+- even supports LQIP (Low Quality Image Placeholder)
 - is completely free and open source.
+- it will reload when the valid attributes change.
 
 It is written with an aim to lazy load images, iframes, ads, videos or any other element using the recently added [Intersection Observer API](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API) and [MutationObserver](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver) with tremendous performance benefits.
 
@@ -25,7 +26,11 @@ It is written with an aim to lazy load images, iframes, ads, videos or any other
 - [SitePoint](https://www.sitepoint.com/five-techniques-lazy-load-images-website-performance/)
 
 ## Brands using Lozad.js:
-![Tesla](./brands/tesla.png)&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ![Domino's](./brands/dominos.png)&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ![BBC](./brands/bbc.png)&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ![JLM Couture](./brands/jlm-couture.png)&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ![New Balance](./brands/new-balance.png)&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ![Binance](./brands/binance.png)
+![Tesla](./brands/tesla.png)&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ![Binance](./brands/binance.png)&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ![Domino's](./brands/dominos.png)&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+![BNP Paribas](./brands/bnp-paribas.png)&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ![Mi](./brands/xiaomi.png)&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+![Amway](./brands/amway.png)&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ![TATA](./brands/tata.png)&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ![Verizon](./brands/verizon.svg)
+![Atlassian](./brands/atlassian.svg) ![BNP Paribas](./brands/livemint.svg)
+![JLM Couture](./brands/jlm-couture.png)&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ![New Balance](./brands/new-balance.png)&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ![BBC](./brands/bbc.png)
 
 and many more...
 
@@ -178,6 +183,17 @@ for use with responsive background images (image-set)
 </div>
 ```
 
+To change the delimiter that splits background images:
+```html
+<!-- custom delimiter for background images example -->
+<div
+  class="lozad"
+  data-background-image="/first/custom,image,path/image.png-/second/custom,image,path/image.png"
+  data-background-delimiter="-"
+>
+</div>
+```
+
 If you want to load the images before they appear:
 
 ```js
@@ -188,6 +204,16 @@ const coolImage = document.querySelector('.image-to-load-first')
 // ... trigger the load of a image before it appears on the viewport
 observer.triggerLoad(coolImage);
 ```
+
+### Large image improvment
+
+Sometimes image loading takes a long time. For this case, you can add a placeholder background:
+
+```html
+<img class="lozad" data-placeholder-background="red" data-src="image.png" />
+```
+
+Lozad sets a placeholder background color of img element and users will see the fallback till the image loads.
 
 ## Example with picture tag
 
@@ -212,6 +238,27 @@ Create _a broken_ picture element structure.
 
 When _lozad_ loads this picture element, it will fix it.
 
+If you want to use image placeholder (like low quality image placeholder), you can set a temporary `img` tag inside your `picture` tag. It will be removed when _lozad_ loads the picture element.
+
+```html
+<picture class="lozad" style="display: block; min-height: 1rem" data-iesrc="images/thumbs/04.jpg" data-alt="">
+    <source srcset="images/thumbs/04.jpg" media="(min-width: 1280px)">
+    <source srcset="images/thumbs/05.jpg" media="(min-width: 980px)">
+    <source srcset="images/thumbs/06.jpg" media="(min-width: 320px)">
+    <!-- you can define a low quality image placeholder that will be removed when the picture is loaded -->
+    <img src="data:image/jpeg;base64,/some_lqip_in_base_64==" />
+</picture>
+```
+
+## Example with video
+
+```html
+<video class="lozad" data-poster="images/backgrounds/video-poster.jpeg">
+    <source data-src="video/mov_bbb.mp4" type="video/mp4">
+    <source data-src="video/mov_bbb.ogg" type="video/ogg">
+</video>
+```
+
 ## Example with iframe
 
 ```html
@@ -230,7 +277,9 @@ The `active` class will be toggled on the element when it enters the browser’s
 
 ## Browser Support
 
-Available in [latest browsers](http://caniuse.com/#feat=intersectionobserver). If browser support is not available, then make use of this [polyfill](https://www.npmjs.com/package/intersection-observer).
+Available in [latest browsers](http://caniuse.com/#feat=intersectionobserver). If browser support is not available, then make use of [polyfill](https://www.npmjs.com/package/intersection-observer).
+
+For IE11 support, please make use of these [polyfills](https://polyfill.io/v3/polyfill.min.js?flags=gated&features=Object.assign%2CIntersectionObserver).
 
 ## FAQs
 

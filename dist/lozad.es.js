@@ -1,4 +1,4 @@
-/*! lozad.js - v1.14.0 - 2020-07-28
+/*! lozad.js - v1.16.0 - 2020-09-07
 * https://github.com/ApoorvSaxena/lozad.js
 * Copyright (c) 2020 Apoorv Saxena; Licensed MIT */
 
@@ -24,7 +24,14 @@ const defaultConfig = {
   threshold: 0,
   load(element) {
     if (element.nodeName.toLowerCase() === 'picture') {
-      const img = document.createElement('img');
+      let img = element.querySelector('img');
+      let append = false;
+
+      if (img === null) {
+        img = document.createElement('img');
+        append = true;
+      }
+
       if (isIE && element.getAttribute('data-iesrc')) {
         img.src = element.getAttribute('data-iesrc');
       }
@@ -33,7 +40,9 @@ const defaultConfig = {
         img.alt = element.getAttribute('data-alt');
       }
 
-      element.append(img);
+      if (append) {
+        element.append(img);
+      }
     }
 
     if (element.nodeName.toLowerCase() === 'video' && !element.getAttribute('data-src')) {
@@ -51,6 +60,10 @@ const defaultConfig = {
       }
     }
 
+    if (element.getAttribute('data-poster')) {
+      element.poster = element.getAttribute('data-poster');
+    }
+
     if (element.getAttribute('data-src')) {
       element.src = element.getAttribute('data-src');
     }
@@ -59,10 +72,15 @@ const defaultConfig = {
       element.setAttribute('srcset', element.getAttribute('data-srcset'));
     }
 
+    let backgroundImageDelimiter = ',';
+    if (element.getAttribute('data-background-delimiter')) {
+      backgroundImageDelimiter = element.getAttribute('data-background-delimiter');
+    }
+
     if (element.getAttribute('data-background-image')) {
-      element.style.backgroundImage = `url('${element.getAttribute('data-background-image').split(',').join('\'),url(\'')}')`;
+      element.style.backgroundImage = `url('${element.getAttribute('data-background-image').split(backgroundImageDelimiter).join('\'),url(\'')}')`;
     } else if (element.getAttribute('data-background-image-set')) {
-      const imageSetLinks = element.getAttribute('data-background-image-set').split(',');
+      const imageSetLinks = element.getAttribute('data-background-image-set').split(backgroundImageDelimiter);
       let firstUrlLink = (imageSetLinks[0].substr(0, imageSetLinks[0].indexOf(' ')) || imageSetLinks[0]); // Substring before ... 1x
       firstUrlLink = firstUrlLink.indexOf('url(') === -1 ? `url(${firstUrlLink})` : firstUrlLink;
       if (imageSetLinks.length === 1) {
@@ -81,6 +99,12 @@ const defaultConfig = {
 
 function markAsLoaded(element) {
   element.setAttribute('data-loaded', true);
+}
+
+function preLoad(element) {
+  if (element.getAttribute('data-placeholder-background')) {
+    element.style.background = element.getAttribute('data-placeholder-background');
+  }
 }
 
 const isLoaded = element => element.getAttribute('data-loaded') === 'true';
@@ -130,10 +154,15 @@ function lozad (selector = '.lozad', options = {}) {
       threshold
     });
   }
-
   if (support('MutationObserver')) {
     mutationObserver = new MutationObserver(onMutation(load, loaded));
   }
+
+  const elements = getElements(selector, root);
+  for (let i = 0; i < elements.length; i++) {
+    preLoad(elements[i]);
+  }
+
 
   return {
     observe() {

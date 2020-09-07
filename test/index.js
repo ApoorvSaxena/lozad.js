@@ -219,6 +219,17 @@ describe('lozad', () => {
         'background-image: url(photo.jpg);'
       )
     })
+    // Handle image background placeholder
+    it('should load the image with data-placeholder-background attribute', () => {
+      const image = document.querySelectorAll('img')[0]
+      const bgImageSetAttr = 'red'
+      image.setAttribute('class', 'lozad')
+      image.setAttribute('data-placeholder-background', bgImageSetAttr)
+      const observer = lozad()
+      observer.observe()
+      assert.strictEqual('true', image.dataset.loaded)
+      assert.strictEqual(image.style.cssText, 'background: red;')
+    })
   })
 
   describe('when passing options', () => {
@@ -274,9 +285,10 @@ describe('lozad', () => {
     beforeEach(() => {
       document.body.innerHTML = ''
       const image = document.createElement('img')
-      image.dataset.src = Math.random()
+      const src = Math.random()
         .toString(36)
         .substring(7)
+      image.dataset.src = src
       document.body.appendChild(image)
     })
 
@@ -337,6 +349,24 @@ describe('lozad', () => {
       const img = picture.children[1]
       assert.strictEqual('alt text', img.getAttribute('alt'))
     })
+
+    it('should use img tag if inside the picture', () => {
+      const className = 'test-class'
+      const observer = lozad('.' + className)
+      const picture = document.querySelectorAll('picture')[0]
+      picture.setAttribute('class', className)
+
+      const initialImage = document.createElement('img')
+      initialImage.setAttribute('customAttribute', 'custom value')
+      picture.appendChild(initialImage)
+      observer.observe()
+
+      const img = picture.children[1]
+      assert.strictEqual(
+        initialImage.getAttribute('customAttribute'),
+        img.getAttribute('customAttribute')
+      )
+    })
   })
 
   describe('toggle class', () => {
@@ -362,7 +392,35 @@ describe('lozad', () => {
     })
   })
 
-  describe('exported IntersectionObserver and MutationObserver', () => {
+  describe('video', () => {
+    beforeEach(() => {
+      document.body.innerHTML = ''
+      const el = document.createElement('video')
+      el.dataset.toggleClass = 'test'
+      el.setAttribute('class', 'lozad')
+      el.setAttribute('data-poster', 'test')
+      document.body.appendChild(el)
+      window.HTMLMediaElement.prototype.load = () => {
+        /* Do nothing */
+      }
+    })
+
+    it('should not toggle till observe function is called', () => {
+      lozad()
+      const el = document.querySelectorAll('video')[0]
+      assert.strictEqual(false, el.classList.contains('test'))
+    })
+
+    it('should toggle class and poster value after observe function is called', () => {
+      const observer = lozad()
+      const el = document.querySelectorAll('video')[0]
+      observer.observe()
+      assert.strictEqual(true, el.classList.contains('test'))
+      assert.strictEqual(el.dataset.poster, el.poster)
+    })
+  })
+
+  describe('exported IntersectionObserver', () => {
     beforeEach(() => {
       document.body.innerHTML = ''
       const el = document.createElement('div')
