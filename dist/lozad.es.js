@@ -22,6 +22,7 @@ const validAttribute = ['data-iesrc', 'data-alt', 'data-src', 'data-srcset', 'da
 const defaultConfig = {
   rootMargin: '0px',
   threshold: 0,
+  enableAutoReload: false,
   load(element) {
     if (element.nodeName.toLowerCase() === 'picture') {
       let img = element.querySelector('img');
@@ -144,7 +145,7 @@ const getElements = (selector, root = document) => {
 };
 
 function lozad (selector = '.lozad', options = {}) {
-  const {root, rootMargin, threshold, load, loaded} = Object.assign({}, defaultConfig, options);
+  const {root, rootMargin, threshold, enableAutoReload,  load, loaded} = Object.assign({}, defaultConfig, options);
   let observer;
   let mutationObserver;
   if (support('IntersectionObserver')) {
@@ -155,7 +156,7 @@ function lozad (selector = '.lozad', options = {}) {
     });
   }
 
-  if (support('MutationObserver')) {
+  if (support('MutationObserver') && enableAutoReload) {
     mutationObserver = new MutationObserver(onMutation(load, loaded));
   }
 
@@ -174,7 +175,7 @@ function lozad (selector = '.lozad', options = {}) {
         }
 
         if (observer) {
-          if (mutationObserver) {
+          if (mutationObserver && enableAutoReload) {
             mutationObserver.observe(elements[i], {subtree: true, attributes: true, attributeFilter: validAttribute});
           }
 

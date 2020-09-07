@@ -30,6 +30,7 @@
   var defaultConfig = {
     rootMargin: '0px',
     threshold: 0,
+    enableAutoReload: false,
     load: function load(element) {
       if (element.nodeName.toLowerCase() === 'picture') {
         var img = element.querySelector('img');
@@ -167,6 +168,7 @@
         root = _Object$assign.root,
         rootMargin = _Object$assign.rootMargin,
         threshold = _Object$assign.threshold,
+        enableAutoReload = _Object$assign.enableAutoReload,
         load = _Object$assign.load,
         loaded = _Object$assign.loaded;
 
@@ -180,7 +182,7 @@
       });
     }
 
-    if (support('MutationObserver')) {
+    if (support('MutationObserver') && enableAutoReload) {
       mutationObserver = new MutationObserver(onMutation(load, loaded));
     }
 
@@ -199,7 +201,7 @@
           }
 
           if (observer) {
-            if (mutationObserver) {
+            if (mutationObserver && enableAutoReload) {
               mutationObserver.observe(elements[_i], { subtree: true, attributes: true, attributeFilter: validAttribute });
             }
 
