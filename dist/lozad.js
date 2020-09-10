@@ -1,4 +1,4 @@
-/*! lozad.js - v1.16.0 - 2020-09-06
+/*! lozad.js - v1.16.0 - 2020-09-10
 * https://github.com/ApoorvSaxena/lozad.js
 * Copyright (c) 2020 Apoorv Saxena; Licensed MIT */
 
@@ -16,9 +16,21 @@
    */
   var isIE = typeof document !== 'undefined' && document.documentMode;
 
+  /**
+   *
+   * @param {string} type
+   *
+   */
+  var support = function support(type) {
+    return window && window[type];
+  };
+
+  var validAttribute = ['data-iesrc', 'data-alt', 'data-src', 'data-srcset', 'data-background-image', 'data-toggle-class'];
+
   var defaultConfig = {
     rootMargin: '0px',
     threshold: 0,
+    enableAutoReload: false,
     load: function load(element) {
       if (element.nodeName.toLowerCase() === 'picture') {
         var img = element.querySelector('img');
@@ -124,6 +136,16 @@
     };
   };
 
+  var onMutation = function onMutation(load) {
+    return function (entries) {
+      entries.forEach(function (entry) {
+        if (isLoaded(entry.target) && entry.type === 'attributes' && validAttribute.indexOf(entry.attributeName) > -1) {
+          load(entry.target);
+        }
+      });
+    };
+  };
+
   var getElements = function getElements(selector) {
     var root = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : document;
 
@@ -146,17 +168,22 @@
         root = _Object$assign.root,
         rootMargin = _Object$assign.rootMargin,
         threshold = _Object$assign.threshold,
+        enableAutoReload = _Object$assign.enableAutoReload,
         load = _Object$assign.load,
         loaded = _Object$assign.loaded;
 
     var observer = void 0;
-
-    if (typeof window !== 'undefined' && window.IntersectionObserver) {
+    var mutationObserver = void 0;
+    if (support('IntersectionObserver')) {
       observer = new IntersectionObserver(onIntersection(load, loaded), {
         root: root,
         rootMargin: rootMargin,
         threshold: threshold
       });
+    }
+
+    if (support('MutationObserver') && enableAutoReload) {
+      mutationObserver = new MutationObserver(onMutation(load, loaded));
     }
 
     var elements = getElements(selector, root);
@@ -174,6 +201,10 @@
           }
 
           if (observer) {
+            if (mutationObserver && enableAutoReload) {
+              mutationObserver.observe(elements[_i], { subtree: true, attributes: true, attributeFilter: validAttribute });
+            }
+
             observer.observe(elements[_i]);
             continue;
           }
@@ -193,7 +224,8 @@
         loaded(element);
       },
 
-      observer: observer
+      observer: observer,
+      mutationObserver: mutationObserver
     };
   }
 

@@ -5,9 +5,19 @@
  */
 const isIE = typeof document !== 'undefined' && document.documentMode
 
+/**
+ *
+ * @param {string} type
+ *
+ */
+const support = type => window && window[type]
+
+const validAttribute = ['data-iesrc', 'data-alt', 'data-src', 'data-srcset', 'data-background-image', 'data-toggle-class']
+
 const defaultConfig = {
   rootMargin: '0px',
   threshold: 0,
+  enableAutoReload: false,
   load(element) {
     if (element.nodeName.toLowerCase() === 'picture') {
       let img = element.querySelector('img')
@@ -109,6 +119,14 @@ const onIntersection = (load, loaded) => (entries, observer) => {
   })
 }
 
+const onMutation = load => entries => {
+  entries.forEach(entry => {
+    if (isLoaded(entry.target) && entry.type === 'attributes' && validAttribute.indexOf(entry.attributeName) > -1) {
+      load(entry.target)
+    }
+  })
+}
+
 const getElements = (selector, root = document) => {
   if (selector instanceof Element) {
     return [selector]
@@ -122,15 +140,19 @@ const getElements = (selector, root = document) => {
 }
 
 export default function (selector = '.lozad', options = {}) {
-  const {root, rootMargin, threshold, load, loaded} = Object.assign({}, defaultConfig, options)
+  const {root, rootMargin, threshold, enableAutoReload, load, loaded} = Object.assign({}, defaultConfig, options)
   let observer
-
-  if (typeof window !== 'undefined' && window.IntersectionObserver) {
+  let mutationObserver
+  if (support('IntersectionObserver')) {
     observer = new IntersectionObserver(onIntersection(load, loaded), {
       root,
       rootMargin,
       threshold
     })
+  }
+
+  if (support('MutationObserver') && enableAutoReload) {
+    mutationObserver = new MutationObserver(onMutation(load, loaded))
   }
 
   const elements = getElements(selector, root)
@@ -148,6 +170,10 @@ export default function (selector = '.lozad', options = {}) {
         }
 
         if (observer) {
+          if (mutationObserver && enableAutoReload) {
+            mutationObserver.observe(elements[i], {subtree: true, attributes: true, attributeFilter: validAttribute})
+          }
+
           observer.observe(elements[i])
           continue
         }
@@ -166,6 +192,7 @@ export default function (selector = '.lozad', options = {}) {
       markAsLoaded(element)
       loaded(element)
     },
-    observer
+    observer,
+    mutationObserver
   }
 }

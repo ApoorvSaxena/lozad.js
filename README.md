@@ -12,8 +12,9 @@
 - supports &lt;img&gt;, &lt;picture&gt;, iframes, videos, audios, responsive images, background images and multiple background images etc.
 - even supports LQIP (Low Quality Image Placeholder)
 - is completely free and open source.
+- it will reload when the valid attributes change.
 
-It is written with an aim to lazy load images, iframes, ads, videos or any other element using the recently added [Intersection Observer API](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API) with tremendous performance benefits.
+It is written with an aim to lazy load images, iframes, ads, videos or any other element using the recently added [Intersection Observer API](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API) and [MutationObserver](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver) with tremendous performance benefits.
 
 ## Featured in:
 - [Web | Google Developers](https://developers.google.com/web/fundamentals/performance/lazy-loading-guidance/images-and-video/)
@@ -112,6 +113,7 @@ or with custom options:
 const observer = lozad('.lozad', {
     rootMargin: '10px 0px', // syntax similar to that of CSS Margin
     threshold: 0.1 // ratio of element convergence
+    enableAutoReload: true // it will reload the new image when validating attributes changes
 });
 observer.observe();
 ```

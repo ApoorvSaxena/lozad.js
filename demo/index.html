@@ -58,7 +58,7 @@
                 <h1>Lozad.js - Performant Lazy Loading Library</h1>
             </article>
             <article class="thumb">
-                <img class="lozad" data-placeholder-background="#583624" data-src="images/thumbs/01.jpg" data-index="1" />
+                <img class="lozad" id="mutativeImg1" data-placeholder-background="#583624" data-src="images/thumbs/01.jpg" data-index="1" />
                 <noscript><img src="images/thumbs/01.jpg" data-index="1" /></noscript>
                     <h2>Image 1</h2>
             </article>
@@ -68,7 +68,7 @@
                     <h2>Image 2</h2>
             </article>
             <article class="thumb">
-                <img class="lozad" data-placeholder-background="#352629" data-src="images/thumbs/03.jpg" data-index="3" />
+                <img class="lozad" id="mutativeImg2" data-placeholder-background="#352629" data-src="images/thumbs/03.jpg" data-index="3" />
                 <noscript><img src="images/thumbs/03.jpg" data-index="3" /></noscript>
                     <h2>Image 3</h2>
             </article>
@@ -284,6 +284,7 @@ Change a device pixel ratio with devtools and check the console to see which ima
     // Initialize library to lazy load images
     var observer = lozad('.lozad', {
         threshold: 0.1,
+        enableAutoReload: true,
         load: function(el) {
             el.src = el.getAttribute("data-src");
             el.onload = function() {
@@ -298,6 +299,13 @@ Change a device pixel ratio with devtools and check the console to see which ima
         threshold: 0.1
     })
 
+    window.onload = function () {
+        setTimeout(function () {
+            document.querySelector('#mutativeImg1').dataset.src = 'images/thumbs/02.jpg'
+            document.querySelector('#mutativeImg2').dataset.src = 'images/thumbs/02.jpg'
+            toastr["success"]("Once data-src change, the element render again.")
+        }, 3000)
+    }
     // Background observer
     // with default `load` method
     var backgroundObserver = lozad('.lozad-background', {
