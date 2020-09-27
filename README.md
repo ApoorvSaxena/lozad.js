@@ -17,6 +17,7 @@
 It is written with an aim to lazy load images, iframes, ads, videos or any other element using the recently added [Intersection Observer API](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API) and [MutationObserver](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver) with tremendous performance benefits.
 
 ## Featured in:
+
 - [Web | Google Developers](https://developers.google.com/web/fundamentals/performance/lazy-loading-guidance/images-and-video/)
 - [Product Hunt](https://www.producthunt.com/posts/lozad-js)
 - [Reddit](https://www.reddit.com/r/webdev/comments/6zg1x0/highly_performant_light_05kb_and_configurable/)
@@ -26,6 +27,7 @@ It is written with an aim to lazy load images, iframes, ads, videos or any other
 - [SitePoint](https://www.sitepoint.com/five-techniques-lazy-load-images-website-performance/)
 
 ## Brands using Lozad.js:
+
 ![Tesla](./brands/tesla.png)&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ![Binance](./brands/binance.png)&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ![Domino's](./brands/dominos.png)&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
 ![BNP Paribas](./brands/bnp-paribas.png)&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ![Mi](./brands/xiaomi.png)&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
 ![Amway](./brands/amway.png)&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ![TATA](./brands/tata.png)&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ![Verizon](./brands/verizon.svg)
@@ -33,7 +35,6 @@ It is written with an aim to lazy load images, iframes, ads, videos or any other
 ![JLM Couture](./brands/jlm-couture.png)&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ![New Balance](./brands/new-balance.png)&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ![BBC](./brands/bbc.png)
 
 and many more...
-
 
 ## Table of Contents
 
@@ -49,6 +50,7 @@ and many more...
 - [License](#license)
 
 ## Yet another Lazy Loading JavaScript library, why?
+
 Existing lazy loading libraries hook up to the scroll event or use a periodic timer and call `getBoundingClientRect()` on elements that need to be lazy loaded. This approach, however, is painfully slow as each call to `getBoundingClientRect()` forces the browser to re-layout the entire page and will introduce considerable jank to your website.
 
 Making this more efficient and performant is what [IntersectionObserver](https://developers.google.com/web/updates/2016/04/intersectionobserver) is designed for, and it’s landed in Chrome 51. IntersectionObservers let you know when an observed element enters or exits the browser’s viewport.
@@ -94,7 +96,7 @@ When loading from CDN, you can find the library on `window.lozad`.
 
 In HTML, add an identifier to the element (default selector identified is `lozad` class):
 ```html
-<img class="lozad" data-src="image.png" />
+<img class="lozad" data-src="image.png">
 ```
 
 All you need to do now is just instantiate Lozad as follows:
@@ -112,8 +114,8 @@ or with custom options:
 ```js
 const observer = lozad('.lozad', {
     rootMargin: '10px 0px', // syntax similar to that of CSS Margin
-    threshold: 0.1 // ratio of element convergence
-    enableAutoReload: true // it will reload the new image when validating attributes changes
+    threshold: 0.1, // ratio of element convergence
+    enableAutoReload: true, // it will reload the new image when validating attributes changes
 });
 observer.observe();
 ```
@@ -160,7 +162,7 @@ for use with responsive images
 
 ```html
 <!-- responsive image example -->
-<img class="lozad" data-src="image.png" data-srcset="image.png 1000w, image-2x.png 2000w" />
+<img class="lozad" data-src="image.png" data-srcset="image.png 1000w, image-2x.png 2000w">
 ```
 
 for use with background images
@@ -201,7 +203,7 @@ If you want to load the images before they appear:
 const observer = lozad();
 observer.observe();
 
-const coolImage = document.querySelector('.image-to-load-first')
+const coolImage = document.querySelector('.image-to-load-first');
 // ... trigger the load of a image before it appears on the viewport
 observer.triggerLoad(coolImage);
 ```
@@ -211,7 +213,7 @@ observer.triggerLoad(coolImage);
 Sometimes image loading takes a long time. For this case, you can add a placeholder background:
 
 ```html
-<img class="lozad" data-placeholder-background="red" data-src="image.png" />
+<img class="lozad" data-placeholder-background="red" data-src="image.png">
 ```
 
 Lozad sets a placeholder background color of img element and users will see the fallback till the image loads.
@@ -247,7 +249,7 @@ If you want to use image placeholder (like low quality image placeholder), you c
     <source srcset="images/thumbs/05.jpg" media="(min-width: 980px)">
     <source srcset="images/thumbs/06.jpg" media="(min-width: 320px)">
     <!-- you can define a low quality image placeholder that will be removed when the picture is loaded -->
-    <img src="data:image/jpeg;base64,/some_lqip_in_base_64==" />
+    <img src="data:image/jpeg;base64,/some_lqip_in_base_64==">
 </picture>
 ```
 
