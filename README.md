@@ -230,9 +230,9 @@ Create _a broken_ picture element structure.
 ```html
 <!-- For an element to be caught, add a block type that is different from the inline and some min-height for correct caught into view -->
 <picture class="lozad" style="display: block; min-height: 1rem" data-iesrc="images/thumbs/04.jpg" data-alt="">
-    <source srcset="images/thumbs/04.jpg" media="(min-width: 1280px)">
-    <source srcset="images/thumbs/05.jpg" media="(min-width: 980px)">
-    <source srcset="images/thumbs/06.jpg" media="(min-width: 320px)">
+    <source class="lozad" data-srcset="images/thumbs/04.jpg" media="(min-width: 1280px)">
+    <source class="lozad" data-srcset="images/thumbs/05.jpg" media="(min-width: 980px)">
+    <source class="lozad" data-srcset="images/thumbs/06.jpg" media="(min-width: 320px)">
     <!-- NO img element -->
     <!-- instead of img element, there will be the last source with the minimum dimensions -->
     <!-- for disabled JS you can set <noscript><img src="images/thumbs/04.jpg" alt=""></noscript> -->
@@ -245,9 +245,9 @@ If you want to use image placeholder (like low quality image placeholder), you c
 
 ```html
 <picture class="lozad" style="display: block; min-height: 1rem" data-iesrc="images/thumbs/04.jpg" data-alt="">
-    <source srcset="images/thumbs/04.jpg" media="(min-width: 1280px)">
-    <source srcset="images/thumbs/05.jpg" media="(min-width: 980px)">
-    <source srcset="images/thumbs/06.jpg" media="(min-width: 320px)">
+    <source class="lozad" data-srcset="images/thumbs/04.jpg" media="(min-width: 1280px)">
+    <source class="lozad" data-srcset="images/thumbs/05.jpg" media="(min-width: 980px)">
+    <source class="lozad" data-srcset="images/thumbs/06.jpg" media="(min-width: 320px)">
     <!-- you can define a low quality image placeholder that will be removed when the picture is loaded -->
     <img src="data:image/jpeg;base64,/some_lqip_in_base_64==">
 </picture>
