@@ -22,7 +22,7 @@
     "email": "root@apoorv.pro",
     "url": "https://apoorv.pro"
   },
-  "browser": "dist/lozad.min.js",
+  "browser": "dist/lozad.es.js",
   "main": "dist/lozad.js",
   "module": "dist/lozad.es.js",
   "repository": {
