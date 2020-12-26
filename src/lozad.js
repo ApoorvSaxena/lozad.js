@@ -36,8 +36,8 @@ const defaultConfig = {
         img.alt = element.getAttribute('data-alt')
       }
       
-      if (element.getAttribute('data-syle')) {
-        img.style = element.getAttribute('data-alt')
+      if (element.getAttribute('data-style')) {
+        img.style = element.getAttribute('data-style')
       }
 
       if (append) {
