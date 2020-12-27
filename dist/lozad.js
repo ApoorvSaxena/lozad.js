@@ -1,4 +1,4 @@
-/*! lozad.js - v1.16.0 - 2020-12-27
+/*! lozad.js - v1.17.0 - 2020-12-27
 * https://github.com/ApoorvSaxena/lozad.js
 * Copyright (c) 2020 Apoorv Saxena; Licensed MIT */
 
@@ -25,7 +25,7 @@
     return window && window[type];
   };
 
-  var validAttribute = ['data-iesrc', 'data-alt', 'data-src', 'data-srcset', 'data-background-image', 'data-toggle-class'];
+  var validAttribute = ['data-iesrc', 'data-alt', 'data-syle', 'data-src', 'data-srcset', 'data-background-image', 'data-toggle-class'];
 
   var defaultConfig = {
     rootMargin: '0px',
