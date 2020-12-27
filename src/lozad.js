@@ -12,7 +12,7 @@ const isIE = typeof document !== 'undefined' && document.documentMode
  */
 const support = type => window && window[type]
 
-const validAttribute = ['data-iesrc', 'data-alt', 'data-syle', 'data-src', 'data-srcset', 'data-background-image', 'data-toggle-class'];
+const validAttribute = ['data-iesrc', 'data-alt', 'data-syle', 'data-src', 'data-srcset', 'data-background-image', 'data-toggle-class']
 
 const defaultConfig = {
   rootMargin: '0px',
