@@ -1,4 +1,4 @@
-/*! lozad.js - v1.16.0 - 2020-09-10
+/*! lozad.js - v1.16.0 - 2020-12-27
 * https://github.com/ApoorvSaxena/lozad.js
 * Copyright (c) 2020 Apoorv Saxena; Licensed MIT */
 
@@ -39,6 +39,10 @@ const defaultConfig = {
 
       if (element.getAttribute('data-alt')) {
         img.alt = element.getAttribute('data-alt');
+      }
+      
+      if (element.getAttribute('data-style')) {
+        img.style = element.getAttribute('data-style');
       }
 
       if (append) {
