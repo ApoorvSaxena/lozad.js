@@ -25,7 +25,7 @@
     return window && window[type];
   };
 
-  var validAttribute = ['data-iesrc', 'data-alt', 'data-syle', 'data-src', 'data-srcset', 'data-background-image', 'data-toggle-class'];
+  var validAttribute = ['data-iesrc', 'data-alt', 'data-style', 'data-src', 'data-srcset', 'data-background-image', 'data-toggle-class'];
 
   var defaultConfig = {
     rootMargin: '0px',
