@@ -69,7 +69,7 @@
     "rollup": "^0.63.5",
     "rollup-plugin-babel": "^3.0.2",
     "rollup-plugin-filesize": "^4.0.1",
-    "rollup-plugin-license": "^0.12.1",
+    "rollup-plugin-license": "^3.0.1",
     "rollup-plugin-uglify": "^4.0.0",
     "xo": "^0.24.0"
   },
