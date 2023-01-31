@@ -1,4 +1,4 @@
-/*! lozad.js - v1.16.0 - 2020-09-10
+/*! lozad.js - v1.17.0 - 2020-12-27
 * https://github.com/ApoorvSaxena/lozad.js
 * Copyright (c) 2020 Apoorv Saxena; Licensed MIT */
 
@@ -25,7 +25,7 @@
     return window && window[type];
   };
 
-  var validAttribute = ['data-iesrc', 'data-alt', 'data-src', 'data-srcset', 'data-background-image', 'data-toggle-class'];
+  var validAttribute = ['data-iesrc', 'data-alt', 'data-style', 'data-src', 'data-srcset', 'data-background-image', 'data-toggle-class'];
 
   var defaultConfig = {
     rootMargin: '0px',
@@ -47,6 +47,10 @@
 
         if (element.getAttribute('data-alt')) {
           img.alt = element.getAttribute('data-alt');
+        }
+
+        if (element.getAttribute('data-style')) {
+          img.style = element.getAttribute('data-style');
         }
 
         if (append) {

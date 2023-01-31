@@ -12,7 +12,7 @@ const isIE = typeof document !== 'undefined' && document.documentMode
  */
 const support = type => window && window[type]
 
-const validAttribute = ['data-iesrc', 'data-alt', 'data-src', 'data-srcset', 'data-background-image', 'data-toggle-class']
+const validAttribute = ['data-iesrc', 'data-alt', 'data-style', 'data-src', 'data-srcset', 'data-background-image', 'data-toggle-class']
 
 const defaultConfig = {
   rootMargin: '0px',
@@ -34,6 +34,10 @@ const defaultConfig = {
 
       if (element.getAttribute('data-alt')) {
         img.alt = element.getAttribute('data-alt')
+      }
+
+      if (element.getAttribute('data-style')) {
+        img.style = element.getAttribute('data-style')
       }
 
       if (append) {
