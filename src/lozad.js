@@ -63,9 +63,8 @@ const defaultConfig = {
     if (element.getAttribute('data-src')) {
       if (element.nodeName.toLowerCase() === 'iframe') {
         element.contentWindow.location.replace(element.getAttribute('data-src'))
-      } else {
-        element.src = element.getAttribute('data-src')
       }
+      element.src = element.getAttribute('data-src')
     }
 
     if (element.getAttribute('data-srcset')) {
