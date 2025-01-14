@@ -304,6 +304,11 @@ pre {
 	margin: 0 0 2em 0;
 }
 
+pre:not(.code) {
+	white-space: wrap;
+	max-width: 100%;
+}
+
 pre code {
 	display: block;
 	line-height: 1.75;
@@ -837,7 +842,7 @@ body.loading #main .thumb {
 	display: block;
 	min-height: 12rem;
 	min-width: 240px;
-	
+
 	background-size: contain;
 	background-repeat: no-repeat;
 	background-position: 50% 50%;
@@ -861,6 +866,9 @@ body.loading #main .thumb {
 }
 .video-example{
 	margin: 0 15px;
+}
+video {
+	max-width: 100%;
 }
 @media screen and (max-width: 1680px) {
 	#main .thumb {
