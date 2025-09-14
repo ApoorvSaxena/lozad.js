@@ -71,7 +71,7 @@
     "rollup-plugin-filesize": "^4.0.1",
     "rollup-plugin-license": "^3.0.1",
     "rollup-plugin-uglify": "^4.0.0",
-    "xo": "^0.24.0"
+    "xo": "^1.2.2"
   },
   "xo": {
     "envs": [
