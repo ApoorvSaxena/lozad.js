@@ -5787,8 +5787,8 @@ tapable@^2.2.0:
   resolved "https://registry.yarnpkg.com/tapable/-/tapable-2.2.3.tgz#4b67b635b2d97578a06a2713d2f04800c237e99b"
 
 tar-fs@^1.13.0:
-  version "1.16.3"
-  resolved "https://registry.yarnpkg.com/tar-fs/-/tar-fs-1.16.3.tgz#966a628841da2c4010406a82167cbd5e0c72d509"
+  version "1.16.5"
+  resolved "https://registry.yarnpkg.com/tar-fs/-/tar-fs-1.16.5.tgz#716a323609c11182d1d3d7b5bf277d15dc128665"
   dependencies:
     chownr "^1.0.1"
     mkdirp "^0.5.1"
