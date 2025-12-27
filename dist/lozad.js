@@ -1,6 +1,6 @@
-/*! lozad.js - v1.16.0 - 2020-09-10
+/*! lozad.js - v1.16.0 - 2021-10-13
 * https://github.com/ApoorvSaxena/lozad.js
-* Copyright (c) 2020 Apoorv Saxena; Licensed MIT */
+* Copyright (c) 2021 Apoorv Saxena; Licensed MIT */
 
 
 (function (global, factory) {
@@ -30,6 +30,7 @@
   var defaultConfig = {
     rootMargin: '0px',
     threshold: 0,
+    checkKey: 'default',
     enableAutoReload: false,
     load: function load(element) {
       if (element.nodeName.toLowerCase() === 'picture') {
@@ -106,8 +107,12 @@
     loaded: function loaded() {}
   };
 
-  function markAsLoaded(element) {
-    element.setAttribute('data-loaded', true);
+  function getAttr(element) {
+    return element.getAttribute('data-lozaded') || '';
+  }
+
+  function markAsLoaded(element, checkKey) {
+    element.setAttribute('data-lozaded', (getAttr(element) + ' ' + checkKey).trim());
   }
 
   function preLoad(element) {
@@ -116,31 +121,31 @@
     }
   }
 
-  var isLoaded = function isLoaded(element) {
-    return element.getAttribute('data-loaded') === 'true';
-  };
+  function isLoaded(element, checkKey) {
+    return -1 !== getAttr(element).indexOf(checkKey);
+  }
 
-  var onIntersection = function onIntersection(load, loaded) {
+  var onIntersection = function onIntersection(config) {
     return function (entries, observer) {
       entries.forEach(function (entry) {
         if (entry.intersectionRatio > 0 || entry.isIntersecting) {
           observer.unobserve(entry.target);
 
           if (!isLoaded(entry.target)) {
-            load(entry.target);
-            markAsLoaded(entry.target);
-            loaded(entry.target);
+            config.load(entry.target);
+            markAsLoaded(entry.target, config.checkKey);
+            config.loaded(entry.target);
           }
         }
       });
     };
   };
 
-  var onMutation = function onMutation(load) {
+  var onMutation = function onMutation(config) {
     return function (entries) {
       entries.forEach(function (entry) {
-        if (isLoaded(entry.target) && entry.type === 'attributes' && validAttribute.indexOf(entry.attributeName) > -1) {
-          load(entry.target);
+        if (isLoaded(entry.target, config.checkKey) && entry.type === 'attributes' && validAttribute.indexOf(entry.attributeName) > -1) {
+          config.load(entry.target);
         }
       });
     };
@@ -160,40 +165,43 @@
     return root.querySelectorAll(selector);
   };
 
+  var checkKeyIncrement = 1;
+
   function lozad () {
     var selector = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '.lozad';
     var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 
-    var _Object$assign = Object.assign({}, defaultConfig, options),
-        root = _Object$assign.root,
-        rootMargin = _Object$assign.rootMargin,
-        threshold = _Object$assign.threshold,
-        enableAutoReload = _Object$assign.enableAutoReload,
-        load = _Object$assign.load,
-        loaded = _Object$assign.loaded;
+    // set auto-generated checkKey for custom `load` callback if checkKey is not specified
+    if (options.load && !options.checkKey) {
+      options.checkKey = 'loadfunc' + checkKeyIncrement++;
+    }
 
+    var config = Object.assign({}, defaultConfig, options);
     var observer = void 0;
     var mutationObserver = void 0;
     if (support('IntersectionObserver')) {
-      observer = new IntersectionObserver(onIntersection(load, loaded), {
-        root: root,
-        rootMargin: rootMargin,
-        threshold: threshold
+      observer = new IntersectionObserver(onIntersection(config), {
+        root: config.root,
+        rootMargin: config.rootMargin,
+        threshold: config.threshold
       });
     }
 
-    if (support('MutationObserver') && enableAutoReload) {
-      mutationObserver = new MutationObserver(onMutation(load, loaded));
+    if (support('MutationObserver') && config.enableAutoReload) {
+      mutationObserver = new MutationObserver(onMutation(config));
     }
 
-    var elements = getElements(selector, root);
-    for (var i = 0; i < elements.length; i++) {
-      preLoad(elements[i]);
+    // do preLoad() only for default load callback
+    if ('default' === config.checkKey) {
+      var elements = getElements(selector, config.root);
+      for (var i = 0; i < elements.length; i++) {
+        preLoad(elements[i]);
+      }
     }
 
     return {
       observe: function observe() {
-        var elements = getElements(selector, root);
+        var elements = getElements(selector, config.root);
 
         for (var _i = 0; _i < elements.length; _i++) {
           if (isLoaded(elements[_i])) {
@@ -201,7 +209,7 @@
           }
 
           if (observer) {
-            if (mutationObserver && enableAutoReload) {
+            if (mutationObserver && config.enableAutoReload) {
               mutationObserver.observe(elements[_i], { subtree: true, attributes: true, attributeFilter: validAttribute });
             }
 
@@ -209,9 +217,9 @@
             continue;
           }
 
-          load(elements[_i]);
-          markAsLoaded(elements[_i]);
-          loaded(elements[_i]);
+          config.load(elements[_i]);
+          markAsLoaded(elements[_i], config.checkKey);
+          config.loaded(elements[_i]);
         }
       },
       triggerLoad: function triggerLoad(element) {
@@ -219,9 +227,9 @@
           return;
         }
 
-        load(element);
-        markAsLoaded(element);
-        loaded(element);
+        config.load(element);
+        markAsLoaded(element, config.checkKey);
+        config.loaded(element);
       },
 
       observer: observer,

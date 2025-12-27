@@ -17,6 +17,7 @@ const validAttribute = ['data-iesrc', 'data-alt', 'data-src', 'data-srcset', 'da
 const defaultConfig = {
   rootMargin: '0px',
   threshold: 0,
+  checkKey: 'default',
   enableAutoReload: false,
   load(element) {
     if (element.nodeName.toLowerCase() === 'picture') {
@@ -93,8 +94,12 @@ const defaultConfig = {
   loaded() {}
 }
 
-function markAsLoaded(element) {
-  element.setAttribute('data-loaded', true)
+function getAttr (element) {
+  return element.getAttribute('data-lozaded') || ''
+}
+
+function markAsLoaded (element, checkKey) {
+  element.setAttribute('data-lozaded', `${getAttr(element)} ${checkKey}`.trim())
 }
 
 function preLoad(element) {
@@ -103,26 +108,28 @@ function preLoad(element) {
   }
 }
 
-const isLoaded = element => element.getAttribute('data-loaded') === 'true'
+function isLoaded (element, checkKey) {
+  return -1 !== getAttr(element).indexOf(checkKey)
+}
 
-const onIntersection = (load, loaded) => (entries, observer) => {
+const onIntersection = (config) => (entries, observer) => {
   entries.forEach(entry => {
     if (entry.intersectionRatio > 0 || entry.isIntersecting) {
       observer.unobserve(entry.target)
 
       if (!isLoaded(entry.target)) {
-        load(entry.target)
-        markAsLoaded(entry.target)
-        loaded(entry.target)
+        config.load(entry.target)
+        markAsLoaded(entry.target, config.checkKey)
+        config.loaded(entry.target)
       }
     }
   })
 }
 
-const onMutation = load => entries => {
+const onMutation = config => entries => {
   entries.forEach(entry => {
-    if (isLoaded(entry.target) && entry.type === 'attributes' && validAttribute.indexOf(entry.attributeName) > -1) {
-      load(entry.target)
+    if (isLoaded(entry.target, config.checkKey) && entry.type === 'attributes' && validAttribute.indexOf(entry.attributeName) > -1) {
+      config.load(entry.target)
     }
   })
 }
@@ -139,30 +146,40 @@ const getElements = (selector, root = document) => {
   return root.querySelectorAll(selector)
 }
 
+let checkKeyIncrement = 1
+
 export default function (selector = '.lozad', options = {}) {
-  const {root, rootMargin, threshold, enableAutoReload, load, loaded} = Object.assign({}, defaultConfig, options)
+  // set auto-generated checkKey for custom `load` callback if checkKey is not specified
+  if( options.load && ! options.checkKey ){
+    options.checkKey = `loadfunc${ checkKeyIncrement++ }`
+  }
+
+  let config = Object.assign({}, defaultConfig, options)
   let observer
   let mutationObserver
   if (support('IntersectionObserver')) {
-    observer = new IntersectionObserver(onIntersection(load, loaded), {
-      root,
-      rootMargin,
-      threshold
+    observer = new IntersectionObserver(onIntersection(config), {
+      root: config.root,
+      rootMargin: config.rootMargin,
+      threshold: config.threshold
     })
   }
 
-  if (support('MutationObserver') && enableAutoReload) {
-    mutationObserver = new MutationObserver(onMutation(load, loaded))
+  if (support('MutationObserver') && config.enableAutoReload) {
+    mutationObserver = new MutationObserver(onMutation(config))
   }
 
-  const elements = getElements(selector, root)
-  for (let i = 0; i < elements.length; i++) {
-    preLoad(elements[i])
+  // do preLoad() only for default load callback
+  if( 'default' === config.checkKey ){
+    const elements = getElements(selector, config.root)
+    for (let i = 0; i < elements.length; i++) {
+      preLoad(elements[i])
+    }
   }
 
   return {
     observe() {
-      const elements = getElements(selector, root)
+      const elements = getElements(selector, config.root)
 
       for (let i = 0; i < elements.length; i++) {
         if (isLoaded(elements[i])) {
@@ -170,7 +187,7 @@ export default function (selector = '.lozad', options = {}) {
         }
 
         if (observer) {
-          if (mutationObserver && enableAutoReload) {
+          if (mutationObserver && config.enableAutoReload) {
             mutationObserver.observe(elements[i], {subtree: true, attributes: true, attributeFilter: validAttribute})
           }
 
@@ -178,9 +195,9 @@ export default function (selector = '.lozad', options = {}) {
           continue
         }
 
-        load(elements[i])
-        markAsLoaded(elements[i])
-        loaded(elements[i])
+        config.load(elements[i])
+        markAsLoaded(elements[i], config.checkKey)
+        config.loaded(elements[i])
       }
     },
     triggerLoad(element) {
@@ -188,9 +205,9 @@ export default function (selector = '.lozad', options = {}) {
         return
       }
 
-      load(element)
-      markAsLoaded(element)
-      loaded(element)
+      config.load(element)
+      markAsLoaded(element, config.checkKey)
+      config.loaded(element)
     },
     observer,
     mutationObserver
