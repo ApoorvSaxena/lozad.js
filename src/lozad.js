@@ -21,6 +21,9 @@ const defaultConfig = {
   load(element) {
     if (element.nodeName.toLowerCase() === 'picture') {
       let img = element.querySelector('img')
+      if (img !== null && img.parentElement.nodeName.toLowerCase() !== 'picture') {
+        img = null
+      }
       let append = false
 
       if (img === null) {
