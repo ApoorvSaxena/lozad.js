@@ -240,6 +240,7 @@ Create _a broken_ picture element structure.
 ```
 
 When _lozad_ loads this picture element, it will fix it.
+Note: When using the `<noscript>` tag with vuejs, [see issue 9669](https://github.com/vuejs/vue/issues/9669), and potentially other frameworks, the no-script image might be loaded when the framework initializes. The recommended approach to avoid those unnecessary image loads is to add inline-template attribute to the noscript tag as follow: `<noscript inline-template><img src="images/thumbs/04.jpg" alt=""></noscript>`
 
 If you want to use image placeholder (like low quality image placeholder), you can set a temporary `img` tag inside your `picture` tag. It will be removed when _lozad_ loads the picture element.
 
