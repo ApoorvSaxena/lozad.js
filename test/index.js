@@ -448,4 +448,68 @@ describe('lozad', () => {
       )
     })
   })
+
+  describe('auto reload', () => {
+    it('should reload a background image set when its data attribute changes', done => {
+      const originalWindowObserver = window.IntersectionObserver
+      const originalGlobalObserver = global.IntersectionObserver
+      const originalGlobalMutationObserver = global.MutationObserver
+      const originalGlobalElement = global.Element
+      const originalGlobalNodeList = global.NodeList
+      let intersectionHandler
+      let observer
+      const restore = () => {
+        if (observer && observer.mutationObserver) {
+          observer.mutationObserver.disconnect()
+        }
+        window.IntersectionObserver = originalWindowObserver
+        global.IntersectionObserver = originalGlobalObserver
+        global.MutationObserver = originalGlobalMutationObserver
+        global.Element = originalGlobalElement
+        global.NodeList = originalGlobalNodeList
+        document.body.innerHTML = ''
+      }
+      class MockIntersectionObserver {
+        constructor(handler) {
+          intersectionHandler = handler
+        }
+
+        observe() {}
+
+        unobserve() {}
+      }
+
+      try {
+        window.IntersectionObserver = MockIntersectionObserver
+        global.IntersectionObserver = MockIntersectionObserver
+        global.MutationObserver = window.MutationObserver
+        global.Element = window.Element
+        global.NodeList = window.NodeList
+
+        const element = document.createElement('div')
+        element.setAttribute('data-background-image-set', 'url("first.jpg") 1x')
+        document.body.appendChild(element)
+        observer = lozad(element, {enableAutoReload: true})
+        observer.observe()
+        intersectionHandler([{target: element, intersectionRatio: 1, isIntersecting: true}], observer.observer)
+        assert.ok(element.style.backgroundImage.includes('first.jpg'))
+
+        element.setAttribute('data-background-image-set', 'url("second.jpg") 1x')
+        setTimeout(() => {
+          try {
+            assert.ok(element.style.backgroundImage.includes('second.jpg'))
+          } catch (error) {
+            restore()
+            done(error)
+            return
+          }
+          restore()
+          done()
+        }, 0)
+      } catch (error) {
+        restore()
+        done(error)
+      }
+    })
+  })
 })
